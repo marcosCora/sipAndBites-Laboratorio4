@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Meal } from 'src/app/models/meal';
+import { FoodManagementServiceService } from 'src/app/services/food-management-service.service';
 import { FoodServiceService } from 'src/app/services/food-service.service';
 
 @Component({
@@ -8,16 +10,24 @@ import { FoodServiceService } from 'src/app/services/food-service.service';
 })
 export class ItemViewComponent implements OnInit {
   
-  constructor(private foodService : FoodServiceService){}
+  meals : Meal[] = [];
+  //constructor(private foodManagement : FoodManagementServiceService){}
+  constructor(private foodManagement : FoodServiceService){}
   
   ngOnInit(): void {
-    this.foodService.getFoodByName('a')//de prueba
-      .then(response =>{
-
-      })
-      .catch(response =>{
-        //mensaje
-      })
+    /* this.meals = this.foodManagement.meals;
+    console.log('hola');
+    console.log(this.meals); */
+    this.foodManagement.getMealsByName('r')
+    .then((response)=>{
+      console.log(response);
+      
+      this.meals = JSON.parse(response);
+    })
+    .catch((response)=>{
+      console.log("Error request", response);
+    })
+    
   }
    
 
