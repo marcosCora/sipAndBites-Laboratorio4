@@ -74,8 +74,8 @@ export class ListDrinksComponent implements OnInit{
   }
 
   showDrinkById(){
-    this.drinkService.getDrinksById(11007).subscribe((data : Drink[]) => {
-      this.drinksList = data;
+    this.drinkService.getDrinkById(11007).subscribe((data : Drink) => {
+      this.drinksList[0] = data;
       console.log(this.drinksList);
     }
     );
