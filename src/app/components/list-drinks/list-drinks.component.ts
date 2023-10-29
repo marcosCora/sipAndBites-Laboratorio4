@@ -20,9 +20,9 @@ export class ListDrinksComponent implements OnInit{
     //this.showDrinksByFirstLetter();
     //this.showDrinksByIngredient();
     //this.showAlcoholicDrinks();
-    this.showNonAlcoholicDrinks();
+    //this.showNonAlcoholicDrinks();
     //this.showDrinksByCategory();
-    //this.showDrinkById();
+    this.showDrinkById();
   }
 
   showDrinksByName(){
