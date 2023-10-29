@@ -10,7 +10,7 @@ import { DrinkService } from 'src/app/services/drink.service';
 })
 export class DrinkViewComponent implements OnInit{
 
-  drink : Drink | undefined;
+  drink !: Drink ;
 
   constructor(private drinkService : DrinkService,
               private route : ActivatedRoute){}
@@ -19,13 +19,10 @@ export class DrinkViewComponent implements OnInit{
     this.route.params.subscribe(async param => {
       const idDrink = +param['id'];
       this.drinkService.getDrinkById(idDrink).subscribe((data : Drink) => {
-        this.drink = data;
-        console.log(this.drink);
-      }
-      );
+          this.drink = data;
+          console.log(this.drink);
+        });
     });
-
-    
   }
 
 }
