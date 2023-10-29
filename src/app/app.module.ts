@@ -10,6 +10,7 @@ import { ItemViewComponent } from './components/item-view/item-view.component';
 import { NewRecipeComponent } from './components/new-recipe/new-recipe.component';
 import { ListDrinksComponent } from './components/list-drinks/list-drinks.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DrinkViewComponent } from './components/drink-view/drink-view.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     SignUpComponent,
     ItemViewComponent,
     NewRecipeComponent,
-    ListDrinksComponent
+    ListDrinksComponent,
+    DrinkViewComponent
   ],
   imports: [
     BrowserModule,

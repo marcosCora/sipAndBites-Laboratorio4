@@ -53,7 +53,7 @@ export class DrinkService {
     );
   }
 
-  getDrinksById(id : number) : Observable<Drink[]> {
+  getDrinkById(id : number) : Observable<Drink> {
     return this.http.get<any>(`${this.url}/lookup.php?i=${id}`).pipe(
       map( (response : any) => {
         return response.drinks;
