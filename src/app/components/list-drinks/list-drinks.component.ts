@@ -17,10 +17,10 @@ export class ListDrinksComponent implements OnInit{
 
   ngOnInit(): void {
     //this.showDrinksByName();
-    //this.showDrinksByFirstLetter();
+    this.showDrinksByFirstLetter();
     //this.showDrinksByIngredient();
     //this.showAlcoholicDrinks();
-    this.showNonAlcoholicDrinks();
+    //this.showNonAlcoholicDrinks();
     //this.showDrinksByCategory();
     //this.showDrinkById();
   }
