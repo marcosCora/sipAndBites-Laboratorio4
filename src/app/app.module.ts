@@ -11,6 +11,7 @@ import { NewRecipeComponent } from './components/new-recipe/new-recipe.component
 import { HttpClientModule } from '@angular/common/http';
 import { MealServiceService } from './services/meal-service.service';
 import { FormsModule } from '@angular/forms';
+import { ListMealComponentComponent } from './components/list-meal-component/list-meal-component.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     SignUpComponent,
     ItemViewComponent,
-    NewRecipeComponent
+    NewRecipeComponent,
+    ListMealComponentComponent
   ],
   imports: [
     BrowserModule,

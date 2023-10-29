@@ -16,14 +16,12 @@ export class ItemViewComponent implements OnInit {
  
   
   ngOnInit(): void {
-    this.showMeals();
   }
-   showMeals(){
-    this.mealService.getMealByName(this.nameMeal).subscribe((data : Meal[])=>{
-      this.meals = data;
-      console.log(this.meals);
-    })
-   }
+  
+
+
+
+
   }
 
 

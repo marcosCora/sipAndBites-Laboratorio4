@@ -21,4 +21,40 @@ export class MealServiceService {
      );
   }
 
+  getMealById(id : number) : Observable<Meal[]>{
+    let urlCompleta = this.apiMealUrl + 'lookup.php?i=' + id
+    return this.http.get<any>(urlCompleta).pipe(
+      map((response : any)=>{
+        return response.meals
+      })
+    );
+  }
+
+  getMealByCategories() : Observable<Meal[]>{
+    let urlCompleta = this.apiMealUrl + 'categories.php';
+    return this.http.get<any>(urlCompleta).pipe(
+      map((response : any)=>{
+        return response.categories
+      })
+    );
+  }
+
+getMealByFirstLetter(firstLetter : string) : Observable<Meal[]>{
+  let urlCompleta = this.apiMealUrl + 'search.php?f=' + firstLetter;
+  return this.http.get<any>(urlCompleta).pipe(
+    map((response : any)=>{
+      return response.meals
+    })
+  );
+}
+
+getMealByIngredient(ingredient : string) : Observable<Meal[]>{
+  let urlCompleta = this.apiMealUrl + 'filter.php?i=' + ingredient;
+  return this.http.get<any>(urlCompleta).pipe(
+    map((response : any)=>{
+      return response.meals
+    })
+  );
+}
+
 }
