@@ -8,6 +8,8 @@ import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ItemViewComponent } from './components/item-view/item-view.component';
 import { NewRecipeComponent } from './components/new-recipe/new-recipe.component';
+import { NewUserComponent } from './components/new-user/new-user.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import { NewRecipeComponent } from './components/new-recipe/new-recipe.component
     LoginComponent,
     SignUpComponent,
     ItemViewComponent,
-    NewRecipeComponent
+    NewRecipeComponent,
+    NewUserComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
