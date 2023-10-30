@@ -16,8 +16,8 @@ export class ListDrinksComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    //this.showDrinksByName();
-    this.showDrinksByFirstLetter();
+    this.showDrinksByName();
+    //this.showDrinksByFirstLetter();
     //this.showDrinksByIngredient();
     //this.showAlcoholicDrinks();
     //this.showNonAlcoholicDrinks();
@@ -26,7 +26,7 @@ export class ListDrinksComponent implements OnInit{
   }
 
   showDrinksByName(){
-    this.drinkService.getDrinksByName("margarita").subscribe((data : Drink[]) => {
+    this.drinkService.getDrinksByName("").subscribe((data : Drink[]) => {
       this.drinksList = data;
       console.log(this.drinksList);
     }
