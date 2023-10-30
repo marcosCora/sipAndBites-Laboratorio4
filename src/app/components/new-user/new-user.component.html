@@ -36,7 +36,7 @@
 
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email">
+          <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter your email">
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)" class="alert alert-danger">
@@ -55,9 +55,11 @@
             </div>
         </div>
 
-        <div>
-            <input type="hidden" id="idUser" formControlName="idUser">
+        <!-- <div>
+            <input type="hidden" id="id" formControlName="id">
         </div>
+
+        -->
 
         <div class="container-btn">
             <button type="submit" class="btn btn-primary">Submit</button>

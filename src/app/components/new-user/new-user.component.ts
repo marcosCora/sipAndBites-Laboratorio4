@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-new-user',
@@ -12,11 +14,12 @@ export class NewUserComponent implements OnInit{
   user : User = new User();
   userForm !: FormGroup;
 
-  constructor(){}
+  constructor(private userService : UserService,
+              private router : Router){}
   
   ngOnInit() : void {
     this.userForm = new FormGroup({
-      'idUser' : new FormControl(this.user.idUser),
+      //'id' : new FormControl(this.user.id),
       'firstName' : new FormControl(this.user.firstName, [Validators.required]),
       'lastName' : new FormControl(this.user.lastName, [Validators.required]),
       'email' : new FormControl(this.user.email, [Validators.required]),
@@ -30,6 +33,16 @@ export class NewUserComponent implements OnInit{
     if(this.userForm.invalid){
       return;
     }
+    //this.user.id = 0;
+    this.user.firstName = this.userForm.controls['firstName'].value;
+    this.user.lastName = this.userForm.controls['lastName'].value;
+    this.user.email = this.userForm.controls['email'].value;
+    this.user.password = this.userForm.controls['password'].value;
+    this.user.dateOfBirth = this.userForm.controls['dateOfBirth'].value; 
+
+    this.userService.postUser(this.user).subscribe(response => this.router.navigate(['home']), 
+    error => console.log(error));
+    console.log(this.user);
 
   }
 

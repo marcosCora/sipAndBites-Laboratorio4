@@ -9,7 +9,7 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-  url : string = '';
+  url : string = 'http://localhost:4000/users';
 
   constructor(private http : HttpClient, 
               private router : Router){}
@@ -18,19 +18,19 @@ export class UserService {
     return this.http.get<User[]>(this.url);
   }
 
-  postUser(user : User) : void {
-    this.http.post<User>(this.url, user);
-    this.router.navigate(['home']);
+  postUser(user : User) : Observable<User> {
+    return this.http.post<User>(this.url, user); 
+    
   }
 
-  putUser(user : User) : void {
-    this.http.put<User>(this.url, user);
-    this.router.navigate(['home']);
+  putUser(user : User) : Observable<User> {
+    return this.http.put<User>(this.url, user);
+    
   }
 
-  deleteUser(idUser : number) : void {
-    this.http.delete<User>(`${this.url}/${idUser}`);
-    this.router.navigate(['home']);
+  deleteUser(idUser : number) : Observable<User> {
+    return this.http.delete<User>(`${this.url}/${idUser}`);
+    
   }
 
   getUserById(idUser : number) : Observable<User> {

@@ -4,7 +4,7 @@ import { NewUserComponent } from './components/new-user/new-user.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  {path:'home', component: AppComponent},
+  {path:'home', component: NewUserComponent},
   {path:'newUser', component: NewUserComponent}
 ];
 
