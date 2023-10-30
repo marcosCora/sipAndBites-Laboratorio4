@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Meal } from 'src/app/models/meal';
 import { MealServiceService } from 'src/app/services/meal-service.service';
 
@@ -11,11 +12,16 @@ export class ListMealComponentComponent implements OnInit {
 
   mealList : Meal[] = [];
   nameMeal = '';
-  constructor(private mealService : MealServiceService){}
+  constructor(private mealService : MealServiceService, private route : ActivatedRoute){}
  
   
   ngOnInit(): void {
-    this.showMealsByName();
+    this.route.params.subscribe(params =>{
+      this.showMealsByName();
+      //this.showMealByCategories();
+
+    })
+
     //this.showMealById();
     //this.showMealByCategories();
     //this.showMealByFirstLetter();
