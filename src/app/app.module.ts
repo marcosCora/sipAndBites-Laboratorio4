@@ -27,7 +27,7 @@ import { MealViewComponent } from './components/meal-view/meal-view.component';
     ItemViewComponent,
     NewRecipeComponent,
     ListDrinksComponent,
-    showDrinkDetails,
+    ///showDrinkDetails,
     DrinkViewComponent,
     ListMealComponentComponent,
     MealViewComponent
