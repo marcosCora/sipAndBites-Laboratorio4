@@ -7,7 +7,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{meal.strMeal}}</h5>
                   <p class="card-text">{{meal.strCategory}}</p>
-                  <a href="#" class="btn btn-primary">Show details</a>
+                  <a  [routerLink]="['/meal', meal.idMeal]" routerLinkActive="active" class="btn btn-primary">Show details</a>
                 </div>
               </div>
         </div>
