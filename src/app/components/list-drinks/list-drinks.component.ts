@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Drink } from 'src/app/models/drink';
 import { DrinkService } from 'src/app/services/drink.service';
 
@@ -11,12 +12,20 @@ export class ListDrinksComponent implements OnInit{
 
   drinksList : Drink[] = [];
 
-  constructor(private drinkService : DrinkService){
+  constructor(private drinkService : DrinkService, private route : ActivatedRoute){
 
   }
+  /*    this.route.params.subscribe(params=>{
+      let idMeal = params['id'];
+      this.mealService.getMealById(idMeal).subscribe((data : Meal[])=>{
+        this.meal = data[0];
+      })
+    }) */
 
   ngOnInit(): void {
-    this.showDrinksByName();
+    this.route.params.subscribe(params =>{
+      this.showDrinksByName();
+    })
     //this.showDrinksByFirstLetter();
     //this.showDrinksByIngredient();
     //this.showAlcoholicDrinks();

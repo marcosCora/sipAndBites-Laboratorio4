@@ -12,8 +12,7 @@ export class DrinkViewComponent implements OnInit{
 
   drink !: Drink ;
 
-  constructor(private drinkService : DrinkService,
-              private route : ActivatedRoute){}
+  constructor(private drinkService : DrinkService, private route : ActivatedRoute){}
 
   ngOnInit(): void{
     this.route.params.subscribe(async param => {
