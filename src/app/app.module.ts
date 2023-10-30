@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MealServiceService } from './services/meal-service.service';
 import { FormsModule } from '@angular/forms';
 import { ListMealComponentComponent } from './components/list-meal-component/list-meal-component.component';
+import { MealViewComponent } from './components/meal-view/meal-view.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ListMealComponentComponent } from './components/list-meal-component/lis
     ItemViewComponent,
     NewRecipeComponent,
     ListDrinksComponent,
-    ListMealComponentComponent
+    ListMealComponentComponent,
+    MealViewComponent
   ],
   imports: [
     BrowserModule,

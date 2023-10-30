@@ -16,17 +16,17 @@ export class ListDrinksComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    //this.showDrinksByName();
+    this.showDrinksByName();
     //this.showDrinksByFirstLetter();
     //this.showDrinksByIngredient();
     //this.showAlcoholicDrinks();
     //this.showNonAlcoholicDrinks();
     //this.showDrinksByCategory();
-    this.showDrinkById();
+    //this.showDrinkById();
   }
 
   showDrinksByName(){
-    this.drinkService.getDrinksByName("margarita").subscribe((data : Drink[]) => {
+    this.drinkService.getDrinksByName("").subscribe((data : Drink[]) => {
       this.drinksList = data;
       console.log(this.drinksList);
     }
