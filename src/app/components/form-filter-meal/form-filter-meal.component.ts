@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Meal } from 'src/app/models/meal';
+import { MealServiceService } from 'src/app/services/meal-service.service';
+import { MealSharingServiceService } from 'src/app/services/meal-sharing-service.service';
 
 @Component({
   selector: 'app-form-filter-meal',
@@ -12,14 +15,63 @@ export class FormFilterMealComponent implements OnInit{
   nameMeal = '';
   categorieMeal = '';
   ingredientMeal = '';
+  listCategories : Meal[] = [];
+  listMealFilterer : Meal[] = [];
+  //buttonTitle = 'Select Categorie';
 
-  ngOnInit(): void {
+  constructor(private serviceMeal : MealServiceService, private sharingMealService : MealSharingServiceService){}
+
+   ngOnInit(): void {
+    this.showCategories();
     this.filterForm = new FormGroup({
       'name' : new FormControl(this.nameMeal, Validators.required),
-      'categories' : new FormControl(this.categorieMeal, Validators.required),
-      'Ingredient' : new FormControl(this.ingredientMeal, Validators.required)
+      //'categories' : new FormControl(this.categorieMeal, Validators.required),
+      'categories' : new FormControl(this.categorieMeal),
+      //'Ingredient' : new FormControl(this.ingredientMeal, Validators.required)
+      'Ingredient' : new FormControl(this.ingredientMeal)
     });
     
+  } 
+
+   showCategories(){
+    this.serviceMeal.getMealByCategories().subscribe((data : Meal[])=>{
+      this.listCategories = data;
+    })
+  } 
+
+  selectCategorie(categorieSelect : string){
+    this.categorieMeal = categorieSelect;
+    this.filterForm.patchValue({categories : categorieSelect});
   }
+
+  searchMeals(){
+    
+    if (!this.filterForm.invalid) {
+      let name = this.filterForm.controls['name'].value;
+      let categorie = this.filterForm.controls['categories'].value;
+      let Ingredient = this.filterForm.controls['Ingredient'].value;
+      
+      let mealsFilter = this.showMealsByNameFilter(name);
+      console.log(mealsFilter);
+      
+
+      this.sharingMealService.showMealsByName(name);
+
+    }
+  }
+
+  showMealsByNameFilter(name : string) : any{
+    this.serviceMeal.getMealByName(name).subscribe((data : Meal[])=>{
+      this.listMealFilterer = data;
+    });
+  }
+
+
+
+
+
+
+
+
 
 }

@@ -1,14 +1,20 @@
-<form [formGroup]='filterForm'>
+<form [formGroup]='filterForm' (ngSubmit)="searchMeals()">
     <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
         <input formControlName ='name' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
       </div>
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Categories</span>
+      <div class="btn-group">
+        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Select Categorie
+        </button>
         <input formControlName ='categories' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-      </div>
+        <ul class="dropdown-menu">
+            <li *ngFor="let categorie of listCategories"><a (click)="selectCategorie(categorie.strCategory)" class="dropdown-item">{{categorie.strCategory}}</a></li>
+        </ul>
+      </div> 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="inputGroup-sizing-sm">Ingredient</span>
         <input formControlName ='Ingredient' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        <button type="submit" class="btn btn-primary">Search</button>
       </div>
 </form>
