@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Meal } from 'src/app/models/meal';
 import { MealServiceService } from 'src/app/services/meal-service.service';
 
@@ -14,8 +15,11 @@ export class FormFilterMealComponent implements OnInit{
   nameMeal = '';
   categorieMeal = '';
   ingredientMeal = '';
+  countryMeal = '';
   listCategories : Meal[] = [];
   listMealFilterer : Meal[] = [];
+  mealFilter : Meal[] = [];
+
   //buttonTitle = 'Select Categorie';
 
   constructor(private serviceMeal : MealServiceService){}
@@ -27,7 +31,8 @@ export class FormFilterMealComponent implements OnInit{
       //'categories' : new FormControl(this.categorieMeal, Validators.required),
       'categories' : new FormControl(this.categorieMeal),
       //'Ingredient' : new FormControl(this.ingredientMeal, Validators.required)
-      'Ingredient' : new FormControl(this.ingredientMeal)
+      'Ingredient' : new FormControl(this.ingredientMeal),
+      'country' : new FormControl(this.countryMeal)
     });
     
   } 
@@ -42,23 +47,61 @@ export class FormFilterMealComponent implements OnInit{
     this.categorieMeal = categorieSelect;
     this.filterForm.patchValue({categories : categorieSelect});
   }
+   selectCountry(countrySelect : string){
+    this.countryMeal = countrySelect;
+    this.filterForm.patchValue({country : countrySelect});
 
-  searchMeals(){
+  } 
+
+ /*  async searchMeals(){
     
     if (!this.filterForm.invalid) {
       let name = this.filterForm.controls['name'].value;
       let categorie = this.filterForm.controls['categories'].value;
       let Ingredient = this.filterForm.controls['Ingredient'].value;
+      let country = this.filterForm.controls['country'].value;
+      console.log(country);
       
-      let mealsFilter = this.showMealsByNameFilter(name);
+      let filter  = await this.showMealsByNameFilter(name);
+      console.log(filter);
+      
       
 
     }
   }
 
-  showMealsByNameFilter(name : string) : any{
-    this.serviceMeal.getMealByName(name).subscribe((data : Meal[])=>{
-      this.listMealFilterer = data;
+   async showMealsByNameFilter(name : string){
+     this.serviceMeal.getMealByName(name).subscribe((data : Meal[])=>{
+      //console.log(data);
+      //this.mealFilter =  data;
+      return data;
     });
   }
+} */
+
+searchMeals() {
+  if (!this.filterForm.invalid) {
+    let name = this.filterForm.controls['name'].value;
+    let categorie = this.filterForm.controls['categories'].value;
+    let Ingredient = this.filterForm.controls['Ingredient'].value;
+    let country = this.filterForm.controls['country'].value;
+
+    this.showMealsByNameFilter(name).subscribe(data => {
+      //console.log(data);
+      this.prueba(data);
+
+      // Aquí puedes realizar el procesamiento de los datos obtenidos
+    });
+  }
+}
+
+showMealsByNameFilter(name: string): Observable<Meal[]> {
+  return this.serviceMeal.getMealByName(name);
+}
+
+prueba(meals : Meal[]){
+  console.log(meals);
+  
+}
+
 }

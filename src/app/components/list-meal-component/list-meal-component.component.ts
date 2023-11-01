@@ -16,6 +16,7 @@ export class ListMealComponentComponent implements OnInit {
   
   ngOnInit(): void {
     this.showMealsByName();
+    
     //this.showMealById();
     //this.showMealByCategories();
     //this.showMealByFirstLetter();
