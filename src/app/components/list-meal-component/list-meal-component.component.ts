@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Meal } from 'src/app/models/meal';
+import { MealFilterService } from 'src/app/services/meal-filter.service';
 import { MealServiceService } from 'src/app/services/meal-service.service';
 
 @Component({
@@ -11,22 +12,25 @@ export class ListMealComponentComponent implements OnInit {
 
   mealList : Meal[] = [];
   nameMeal = '';
-  constructor(private mealService : MealServiceService){}
+  constructor(private mealService : MealServiceService, private filterService : MealFilterService){}
  
   
   ngOnInit(): void {
     this.showMealsByName();
     
+    this.filterService.filteredMeals$.subscribe((data : Meal[])=>{
+      this.mealList = data;
+    })
+
     //this.showMealById();
     //this.showMealByCategories();
     //this.showMealByFirstLetter();
     //this.showMealByIngredient();
   }
+
    showMealsByName(){
     this.mealService.getMealByName(this.nameMeal).subscribe((data : Meal[])=>{
       this.mealList = data;
-      console.log('Name');
-      console.log(this.mealList);
     });
    }
 

@@ -52,20 +52,6 @@ export class Meal {
     strImageSource : string;
     strCreativeCommonsConfirmed : string;
     dateModified : string; 
-    /* idMeal : string;
-    strMeal : string;
-    strDrinkAlternate : string;
-    strCategory : string;
-    strArea : string;
-    strInstructions : string;
-    strMealThumb : string;
-    strTags : string;
-    strYoutube : string;
-    strIngredients : Array<string>;
-    strMeasures : Array<string>;
-    strImageSource : string;
-    strCreativeCommonsConfirmed : string;
-    dateModified : string; */
 
 
     constructor(){
@@ -119,12 +105,29 @@ export class Meal {
         this.strMeasure18 = '';
         this.strMeasure19 = '';
         this.strMeasure20 = '';
-
-        /*this.strIngredients = [];
-        this.strMeasures = [];*/
         this.strSource = '';
         this.strImageSource = '';
         this.strCreativeCommonsConfirmed = '';
         this.dateModified = '';
     }
+
+     getIngredientsArray() : string[]{
+        let array : string[]= []
+        let i = 0;
+        let flag : boolean = true;
+        while(i<=20 && flag){
+            const ingredientKey = `strIngredient${i}`;
+            if(ingredientKey){
+                array.push(ingredientKey);
+            }else{
+                flag = false;
+            }
+            i++;
+        }
+        return array;
+    } 
+
+
+
+
 }
