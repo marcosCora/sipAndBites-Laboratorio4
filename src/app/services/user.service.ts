@@ -37,4 +37,5 @@ export class UserService {
     return this.http.get<User>(`${this.url}/${idUser}`);
   }
 
+
 }
