@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -17,7 +19,10 @@ export class LoginComponent implements OnInit{
   logInForm !: FormGroup; 
   wrongLogIn : boolean = false;
 
-  constructor(private userService : UserService){}
+  constructor(private userService : UserService,
+              private authenticationService : AuthenticationService,
+              private router : Router
+    ){}
 
   ngOnInit(): void {
 
@@ -49,6 +54,14 @@ export class LoginComponent implements OnInit{
       console.log("El mail existe");
       console.log(this.email);
       console.log(this.password);
+
+
+      this.user = this.getUserByEmail();
+      this.authenticationService.login(this.user);
+      
+      this.router.navigate(['home']);
+
+
     }
   }
 
@@ -69,6 +82,19 @@ export class LoginComponent implements OnInit{
     }
 
     return exists;
+  }
+
+  getUserByEmail() : User {
+
+    for(let i=0 ; i < this.usersList.length ; i++ ){
+
+      if(this.email == this.usersList[i].email){
+        return this.usersList[i];
+      }
+    }
+
+    return new User;
+  
   }
 
   

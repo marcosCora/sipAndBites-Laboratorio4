@@ -55,14 +55,8 @@
             </div>
         </div>
 
-        <!-- <div>
-            <input type="hidden" id="id" formControlName="id">
-        </div>
-
-        -->
-
         <div class="container-btn">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Submit</button>
         </div>
 
     </form>

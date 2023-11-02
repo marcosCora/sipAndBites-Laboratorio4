@@ -24,7 +24,7 @@ export class UserService {
   }
 
   putUser(user : User) : Observable<User> {
-    return this.http.put<User>(this.url, user);
+    return this.http.put<User>(`${this.url}/${user.id}`, user);
     
   }
 
@@ -36,5 +36,6 @@ export class UserService {
   getUserById(idUser : number) : Observable<User> {
     return this.http.get<User>(`${this.url}/${idUser}`);
   }
+
 
 }

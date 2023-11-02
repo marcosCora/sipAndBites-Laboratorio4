@@ -10,11 +10,11 @@
     },
     {
       "id": 2,
-      "firstName": "Juan",
-      "lastName": "Perez",
-      "email": "jp@gmail.com",
-      "dateOfBirth": "1990-01-05",
-      "password": "1235"
+      "firstName": "Juan Carlos",
+      "lastName": "Garcia",
+      "email": "jcg@gmail.com",
+      "dateOfBirth": "2023-10-19",
+      "password": "1234"
     },
     {
       "id": 3,
@@ -39,6 +39,22 @@
       "dateOfBirth": "2023-10-11",
       "email": "lucialopezmiranda@yahoo.com.ar",
       "password": "adsasd"
+    },
+    {
+      "id": 6,
+      "firstName": "Angeles Maria",
+      "lastName": "Higa",
+      "dateOfBirth": "2023-10-07",
+      "email": "a",
+      "password": "aa"
+    },
+    {
+      "id": 7,
+      "firstName": "Lucia",
+      "lastName": "Lopez Miranda",
+      "dateOfBirth": "1960-11-21",
+      "email": "lucialopezmiranda@yahoo.com.ar",
+      "password": "1234"
     }
   ]
 }
