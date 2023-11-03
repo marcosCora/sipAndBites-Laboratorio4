@@ -17,7 +17,6 @@ export class FormFilterMealComponent implements OnInit {
   //contenido del formulario reactivo
   nameMeal = '';
   categorieMeal = '';
-  ingredientMeal = '';
   countryMeal = '';
 
   listCategories: Meal[] = [];
@@ -30,11 +29,10 @@ export class FormFilterMealComponent implements OnInit {
   ngOnInit(): void {
     this.showCategories();
     this.filterForm = new FormGroup({
-      'name': new FormControl(this.nameMeal, Validators.required),
+      'name': new FormControl(this.nameMeal),
       //'categories' : new FormControl(this.categorieMeal, Validators.required),
       'categories': new FormControl(this.categorieMeal),
       //'Ingredient' : new FormControl(this.ingredientMeal, Validators.required)
-      'Ingredient': new FormControl(this.ingredientMeal),
       'country': new FormControl(this.countryMeal)
     });
 
@@ -61,10 +59,8 @@ export class FormFilterMealComponent implements OnInit {
     if (!this.filterForm.invalid) {
       let name = this.filterForm.controls['name'].value;
       let categorie = this.filterForm.controls['categories'].value;
-      let ingredient = this.filterForm.controls['Ingredient'].value;
       let country = this.filterForm.controls['country'].value;
-
-      this.filterService.filterMeals(name, categorie, country, ingredient);
+      this.filterService.filterMeals(name, categorie, country);
     }
   }
 
