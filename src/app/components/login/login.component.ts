@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit{
 
     for(let i=0 ; i < this.usersList.length ; i++ ){
 
-      if(this.email == this.usersList[i].email && this.password == this.usersList[i].password){
+      if(this.email == this.usersList[i].email && this.password == this.usersList[i].password && this.usersList[i].active){
         exists = true;
         break;
       }

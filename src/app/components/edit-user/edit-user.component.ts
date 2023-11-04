@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UserService } from 'src/app/services/user.service';
+import { CustomValidator } from '../custom-validator';
 
 @Component({
   selector: 'app-edit-user',
@@ -33,8 +34,8 @@ export class EditUserComponent {
       'firstName' : new FormControl(this.editUser.firstName, [Validators.required]),
       'lastName' : new FormControl(this.editUser.lastName, [Validators.required]),
       'email' : new FormControl(this.editUser.email, [Validators.required]),
-      'password' : new FormControl(this.editUser.password, [Validators.required]),
-      'dateOfBirth' : new FormControl(this.editUser.dateOfBirth, [Validators.required])
+      'password' : new FormControl(this.editUser.password, [Validators.required, Validators.minLength(8)]),
+      'dateOfBirth' : new FormControl(this.editUser.dateOfBirth, [Validators.required, CustomValidator.legalAge])
     });
   }
 
@@ -54,6 +55,13 @@ export class EditUserComponent {
     error => console.log(error));
     console.log(this.editUser);
 
+  }
+
+  logOut() {
+
+    this.editUser.active = false;
+    this.authenticationService.logout();
+    this.router.navigate(['home']);
   }
 
   

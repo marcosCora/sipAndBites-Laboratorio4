@@ -6,5 +6,6 @@ export class User {
     dateOfBirth : Date = new Date();
     email : string = '';
     password : string = '';
+    active : boolean = true;
     
 }
