@@ -1,38 +1,28 @@
-<form [formGroup]='filterForm' (ngSubmit)="searchMeals()">
+
+<form [formGroup]='filterForm' (ngSubmit)="searchMeals()" class="d-flex flex-row">
     
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
-        <input formControlName ='name' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-       
-      </div>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
+    <input formControlName='name' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+  </div>
 
-      <div class="btn-group">
-        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Select Categorie
-        </button>
-        <input formControlName ='categories' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-        <ul class="dropdown-menu">
-            <li *ngFor="let categorie of listCategories"><a (click)="selectCategorie(categorie.strCategory)" class="dropdown-item">{{categorie.strCategory}}</a></li>
-        </ul>
-        
-      </div> 
+  <div class="input-group mb-3">
+    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+    <select formControlName='categories' class="form-select" id="inputGroupSelect01">
+      <option value="" disabled selected>Select an option</option>
+      <option *ngFor="let categorie of listCategories" [value]="categorie.strCategory">{{categorie.strCategory}}</option>
+    </select>
+  </div>
 
-      <div class="btn-group">
-        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Select Country
-        </button>
-        <input formControlName ='country' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-         <ul class="dropdown-menu">
-      <!-- <li *ngFor="let categorie of listCategories"><a (click)="selectCategorie(categorie.strCategory)" class="dropdown-item">{{categorie.strCategory}}</a></li> -->
-            <li><a (click)="selectCountry('Canadian')" #text class="dropdown-item">Canadian</a></li>
-            <li><a (click)="selectCountry('Italian')" class="dropdown-item">Italian</a></li>
-            <li><a (click)="selectCountry('Indian')" class="dropdown-item">Indian</a></li>
-            <li><a (click)="selectCountry('Dutch')" class="dropdown-item">Dutch</a></li>
-            <li><a (click)="selectCountry('French')" class="dropdown-item">French</a></li>
-            <li><a (click)="selectCountry('American')" class="dropdown-item">American</a></li>
-        </ul> 
-        <button type="submit" class="btn btn-primary">Search</button>
-      </div>
+  <div class="input-group mb-3">
+    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+    <select formControlName='country' class="form-select" id="inputGroupSelect01">
+      <option value="" disabled selected>Select an option</option>
+      <option *ngFor="let country of listCountry" [value]="country.strArea">{{country.strArea}}</option>
+    </select>
+  </div>
 
-      
+  <button class="btn btn-primary" type="submit">Button</button>
+  
 </form>
+

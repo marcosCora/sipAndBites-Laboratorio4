@@ -20,14 +20,14 @@ export class FormFilterMealComponent implements OnInit {
   countryMeal = '';
 
   listCategories: Meal[] = [];
-  listMealFilterer: Meal[] = [];
-  mealFilter: Meal[] = [];
+  listCountry : Meal[] = [];
 
 
   constructor(private serviceMeal: MealServiceService, private filterService: MealFilterService) { }
 
   ngOnInit(): void {
     this.showCategories();
+    this.showCountry();
     this.filterForm = new FormGroup({
       'name': new FormControl(this.nameMeal),
       //'categories' : new FormControl(this.categorieMeal, Validators.required),
@@ -38,6 +38,13 @@ export class FormFilterMealComponent implements OnInit {
 
 
   }
+
+  showCountry(){
+    this.serviceMeal.getMealByName(this.nameMeal).subscribe((data : Meal[])=>{
+      this.listCountry = data;
+    });
+   }
+
 
   showCategories() {
     this.serviceMeal.getMealByCategories().subscribe((data: Meal[]) => {
@@ -60,6 +67,7 @@ export class FormFilterMealComponent implements OnInit {
       let name = this.filterForm.controls['name'].value;
       let categorie = this.filterForm.controls['categories'].value;
       let country = this.filterForm.controls['country'].value;
+      
       this.filterService.filterMeals(name, categorie, country);
     }
   }
