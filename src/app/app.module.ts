@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -12,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { HomeComponent } from './home/home.component';
+import { NewDrinkComponent } from './components/new-drink/new-drink.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { HomeComponent } from './home/home.component';
     NewRecipeComponent,
     NewUserComponent,
     EditUserComponent,
-    HomeComponent
+    HomeComponent,
+    NewDrinkComponent
   ],
   imports: [
     BrowserModule,

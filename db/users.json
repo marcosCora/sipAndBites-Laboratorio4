@@ -35,6 +35,15 @@
       "email": "j@gmail.com",
       "password": "11111111",
       "active": false
+    },
+    {
+      "id": 5,
+      "firstName": "ana",
+      "lastName": "lopez",
+      "dateOfBirth": "2000-02-02",
+      "email": "ana@gmail.com",
+      "password": "12345678",
+      "active": true
     }
   ]
 }

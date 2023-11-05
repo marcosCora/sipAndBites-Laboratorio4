@@ -1,0 +1,51 @@
+<h3>Add your Drink recipe!</h3>
+
+<div class="container">
+
+    <form [formGroup]="newDrinkForm" (ngSubmit)="addRecipe()">
+        <div class="form-group">
+            <label for="strDrink">Name</label>
+            <input type="text" class="form-control" id="strDrink" formControlName="strDrink" placeholder="Enter the name">
+        </div>
+        <div *ngIf="newDrinkForm.get('strDrink')?.invalid && (newDrinkForm.get('strDrink')?.dirty || newDrinkForm.get('strDrink')?.touched)" class="alert alert-danger">
+            <div *ngIf="newDrinkForm.get('strDrink')?.errors?.['required']">
+                Drink's name is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="strCategory">Category</label>
+            <input type="text" class="form-control" id="strCategory" formControlName="strCategory" placeholder="Enter the category">
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="Alcoholic" id="strAlcoholic" formControlName="strAlcoholic">
+            <label class="form-check-label" for="strAlcoholic">Alcoholic</label>
+        </div>
+
+        <div class="form-group">
+            <label for="strGlass">Glass</label>
+            <input type="text" class="form-control" id="strGlass" formControlName="strGlass" placeholder="Enter the glass type">
+        </div>
+        
+        <div class="form-group">
+            <label for="strInstructions">Instructions</label>
+            <input type="text" class="form-control" id="strInstructions" formControlName="strInstructions" placeholder="Enter the instructions">
+        </div>
+        <div *ngIf="newDrinkForm.get('strInstructions')?.invalid && (newDrinkForm.get('strInstructions')?.dirty || newDrinkForm.get('strInstructions')?.touched)" class="alert alert-danger">
+            <div *ngIf="newDrinkForm.get('strInstructions')?.errors?.['required']">
+                Intructions are required
+            </div>
+        </div>
+        
+        
+        
+
+          
+
+        <div class="container-btn">
+            <button type="submit" class="btn btn-primary" [disabled]="newDrinkForm.invalid">Save</button>
+        </div>
+
+    </form>
+</div>
