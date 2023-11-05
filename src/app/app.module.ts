@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewDrinkComponent } from './components/new-drink/new-drink.component';
+import { NewMealComponent } from './components/new-meal/new-meal.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NewDrinkComponent } from './components/new-drink/new-drink.component';
     NewUserComponent,
     EditUserComponent,
     HomeComponent,
-    NewDrinkComponent
+    NewDrinkComponent,
+    NewMealComponent
   ],
   imports: [
     BrowserModule,

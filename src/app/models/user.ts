@@ -1,4 +1,5 @@
 import { Drink } from "./drink";
+import { Meal } from "./meal";
 
 export class User {
     
@@ -11,5 +12,6 @@ export class User {
     active : boolean = true;
 
     drinks : Drink[] = [];
+    meals : Meal[] = [];
     
 }
