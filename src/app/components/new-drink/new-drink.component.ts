@@ -84,7 +84,8 @@ export class NewDrinkComponent implements OnInit {
     this.newDrink.strCategory = this.newDrinkForm.controls['strCategory'].value;
     this.newDrink.strAlcoholic = this.newDrinkForm.controls['strAlcoholic'].value;
     this.newDrink.strGlass = this.newDrinkForm.controls['strGlass'].value;
-    this.newDrink.strInstructions = this.newDrinkForm.controls['strInstructions'].value; 
+    this.newDrink.strInstructions = this.newDrinkForm.controls['strInstructions'].value;
+    //this.newDrink.strDrinkThumb = this.newDrinkForm.controls['strDrinkThumb'].value; //ver como se guarda
 
     this.newDrink.strIngredient1 = this.newDrinkForm.controls['strIngredient1'].value; 
     this.newDrink.strIngredient2 = this.newDrinkForm.controls['strIngredient2'].value; 
