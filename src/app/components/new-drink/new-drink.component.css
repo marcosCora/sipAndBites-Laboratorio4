@@ -5,7 +5,7 @@ h3 {
 }
 
 .container{
-    width: 35%;
+    width: 50%;
     margin-top: 2rem;
     margin-bottom: 2rem;
     background-color: #E8CDE8;
@@ -36,7 +36,28 @@ h3 {
     margin-bottom: 1rem;
 }
 
+#addIngridient {
+    background-color: #892889;
+    border-color: #892889;
+    justify-content: left;
+}
+
 .form-check-input:checked{
     background-color: #892889;
     border-color: #892889;
+}
+
+#strInstructions {
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: .375rem;
+    width: 100%; 
+    height: 100px;
+    
+}
+
+.container-ingredients{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
 }

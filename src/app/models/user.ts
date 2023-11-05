@@ -1,3 +1,5 @@
+import { Drink } from "./drink";
+
 export class User {
     
     id : number = 0;
@@ -7,5 +9,7 @@ export class User {
     email : string = '';
     password : string = '';
     active : boolean = true;
+
+    drinks : Drink[] = [];
     
 }
