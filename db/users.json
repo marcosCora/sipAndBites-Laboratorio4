@@ -168,7 +168,8 @@
           "strCreativeCommonsConfirmed": "",
           "dateModified": ""
         }
-      ]
+      ],
+      "meals": []
     },
     {
       "id": 2,
@@ -178,7 +179,8 @@
       "dateOfBirth": "2023-10-19",
       "password": "1234",
       "active": true,
-      "drinks": []
+      "drinks": [],
+      "meals": []
     }
   ]
 }
