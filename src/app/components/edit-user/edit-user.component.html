@@ -1,0 +1,75 @@
+<h3>My Account</h3>
+
+<div class="container">
+
+    <form [formGroup]="editUserForm" (ngSubmit)="updateUser()">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName" value="{{editUser.firstName}}">
+        </div>
+        <div *ngIf="editUserForm.get('firstName')?.invalid && (editUserForm.get('firstName')?.dirty || editUserForm.get('firstName')?.touched)" class="alert alert-danger">
+            <div *ngIf="editUserForm.get('firstName')?.errors?.['required']">
+                First Name is required
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName" value="{{editUser.lastName}}">
+        </div>
+        <div *ngIf="editUserForm.get('lastName')?.invalid && (editUserForm.get('lastName')?.dirty || editUserForm.get('lastName')?.touched)" class="alert alert-danger">
+            <div *ngIf="editUserForm.get('lastName')?.errors?.['required']">
+                Last Name is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="dateOfBirth">Date of Birth</label>
+            <input type="date" class="form-control" id="dateOfBirth" formControlName="dateOfBirth" value="{{editUser.dateOfBirth}}">
+        </div>
+        <div *ngIf="editUserForm.get('dateOfBirth')?.invalid && (editUserForm.get('dateOfBirth')?.dirty || editUserForm.get('dateOfBirth')?.touched)" class="alert alert-danger">
+            <div *ngIf="editUserForm.get('dateOfBirth')?.errors?.['required']">
+                Date of Birth is required
+            </div>
+            <div *ngIf="editUserForm.get('dateOfBirth')?.errors?.['notLegalAge']">
+                You have to be at least 18 years old
+            </div>
+        </div>
+
+
+        <!--
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email" value="{{editUser.email}}">
+        </div>
+        <div *ngIf="editUserForm.get('email')?.invalid && (editUserForm.get('email')?.dirty || editUserForm.get('email')?.touched)" class="alert alert-danger">
+            <div *ngIf="editUserForm.get('email')?.errors?.['required']">
+                Email is required
+            </div>
+        </div>
+        -->
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" formControlName="password" placeholder="{{editUser.email}}" >
+        </div>
+        <div *ngIf="editUserForm.get('password')?.invalid && (editUserForm.get('password')?.dirty || editUserForm.get('password')?.touched)" class="alert alert-danger">
+            <div *ngIf="editUserForm.get('password')?.errors?.['required']">
+                Password is required
+            </div>
+            <div *ngIf="editUserForm.get('password')?.errors?.['minlength']">
+                Password is required
+            </div>
+        </div>
+
+        
+        <div class="container-btn">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+
+
+        
+
+    </form>
+</div>
+
