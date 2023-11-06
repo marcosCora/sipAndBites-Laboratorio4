@@ -21,27 +21,13 @@ export class NavBarComponent implements OnInit{
   ngOnInit(): void {
     
       this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
-      this.loggedUser = user;
-     
-        
-          
-        
-       
+        this.loggedUser = user;
       });
-
-      
 
       this.authenticationService.authStatusChangesIsLoggedIn.subscribe((isLoggedIn: boolean) => {
         this.isLoggedIn = isLoggedIn;
-      
-          
-            console.log(this.loggedUser.firstName);
-          
-         
-        });
-    
-
-    
+        console.log(this.loggedUser.firstName); 
+      });
   }
 
   logOut() : void {
@@ -55,6 +41,5 @@ export class NavBarComponent implements OnInit{
       error => console.log(error));
     this.authenticationService.logout();
   }
-
-    
+  
 }
