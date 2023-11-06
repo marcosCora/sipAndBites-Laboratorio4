@@ -139,7 +139,7 @@ export class NewMealComponent {
 
     this.loggedUser.meals.push(this.newMeal);
 
-    this.userService.putUser(this.loggedUser).subscribe(response => this.router.navigate(['newMeal']), 
+    this.userService.putUser(this.loggedUser).subscribe(response => this.router.navigate(['userRecipes']), 
     error => console.log(error));
     console.log(this.newMeal);
 

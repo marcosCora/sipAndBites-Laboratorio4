@@ -82,7 +82,14 @@ export class NewDrinkComponent implements OnInit {
     
     this.newDrink.strDrink = this.newDrinkForm.controls['strDrink'].value;
     this.newDrink.strCategory = this.newDrinkForm.controls['strCategory'].value;
-    this.newDrink.strAlcoholic = this.newDrinkForm.controls['strAlcoholic'].value;
+
+    if(this.newDrinkForm.controls['strAlcoholic'].value == true){
+      this.newDrink.strAlcoholic = 'Alcoholic';
+    } else {
+      this.newDrink.strAlcoholic = 'Non Alcoholic';
+    }
+
+    
     this.newDrink.strGlass = this.newDrinkForm.controls['strGlass'].value;
     this.newDrink.strInstructions = this.newDrinkForm.controls['strInstructions'].value;
     //this.newDrink.strDrinkThumb = this.newDrinkForm.controls['strDrinkThumb'].value; //ver como se guarda
@@ -122,7 +129,7 @@ export class NewDrinkComponent implements OnInit {
 
     this.loggedUser.drinks.push(this.newDrink);
 
-    this.userService.putUser(this.loggedUser).subscribe(response => this.router.navigate(['newDrink']), 
+    this.userService.putUser(this.loggedUser).subscribe(response => this.router.navigate(['userRecipes']), 
     error => console.log(error));
     console.log(this.newDrink);
 
