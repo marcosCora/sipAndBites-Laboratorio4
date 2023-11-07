@@ -14,12 +14,12 @@ export class MealViewComponent implements OnInit {
   constructor(private mealService : MealServiceService ,private route : ActivatedRoute){}
   
   ngOnInit(): void {
-    this.route.params.subscribe(params=>{
+     this.route.params.subscribe(params=>{
       let idMeal = params['id'];
       this.mealService.getMealById(idMeal).subscribe((data : Meal[])=>{
         this.meal = data[0];
       })
-    })
+    }) 
     
   }
 

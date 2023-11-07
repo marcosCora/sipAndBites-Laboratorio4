@@ -5,11 +5,14 @@ import { Meal } from 'src/app/models/meal';
 import { MealFilterService } from 'src/app/services/meal-filter.service';
 import { MealServiceService } from 'src/app/services/meal-service.service';
 
+
+
 @Component({
   selector: 'app-form-filter-meal',
   templateUrl: './form-filter-meal.component.html',
   styleUrls: ['./form-filter-meal.component.css']
 })
+
 export class FormFilterMealComponent implements OnInit {
 
   filterForm!: FormGroup;
@@ -78,8 +81,5 @@ export class FormFilterMealComponent implements OnInit {
       this.filterService.filterMeals(name, categorie, country);
     }
   }
-
-
-
 
 }
