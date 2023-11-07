@@ -15,12 +15,7 @@ export class ListDrinksComponent implements OnInit{
   constructor(private drinkService : DrinkService, private route : ActivatedRoute){
 
   }
-  /*    this.route.params.subscribe(params=>{
-      let idMeal = params['id'];
-      this.mealService.getMealById(idMeal).subscribe((data : Meal[])=>{
-        this.meal = data[0];
-      })
-    }) */
+
 
   ngOnInit(): void {
     this.route.params.subscribe(params =>{

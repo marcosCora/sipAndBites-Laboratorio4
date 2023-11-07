@@ -12,9 +12,10 @@ import { ListDrinksComponent } from './components/list-drinks/list-drinks.compon
 import { HttpClientModule } from '@angular/common/http';
 import { DrinkViewComponent } from './components/drink-view/drink-view.component';
 import { MealServiceService } from './services/meal-service.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListMealComponentComponent } from './components/list-meal-component/list-meal-component.component';
 import { MealViewComponent } from './components/meal-view/meal-view.component';
+import { FormFilterMealComponent } from './components/form-filter-meal/form-filter-meal.component';
 
 
 
@@ -30,13 +31,15 @@ import { MealViewComponent } from './components/meal-view/meal-view.component';
     ///showDrinkDetails,
     DrinkViewComponent,
     ListMealComponentComponent,
-    MealViewComponent
+    MealViewComponent,
+    FormFilterMealComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule 
+    FormsModule,
+    ReactiveFormsModule 
   ],
   providers: [MealServiceService],
   bootstrap: [AppComponent]

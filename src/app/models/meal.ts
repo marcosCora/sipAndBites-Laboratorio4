@@ -52,20 +52,6 @@ export class Meal {
     strImageSource : string;
     strCreativeCommonsConfirmed : string;
     dateModified : string; 
-    /* idMeal : string;
-    strMeal : string;
-    strDrinkAlternate : string;
-    strCategory : string;
-    strArea : string;
-    strInstructions : string;
-    strMealThumb : string;
-    strTags : string;
-    strYoutube : string;
-    strIngredients : Array<string>;
-    strMeasures : Array<string>;
-    strImageSource : string;
-    strCreativeCommonsConfirmed : string;
-    dateModified : string; */
 
 
     constructor(){
@@ -119,12 +105,63 @@ export class Meal {
         this.strMeasure18 = '';
         this.strMeasure19 = '';
         this.strMeasure20 = '';
-
-        /*this.strIngredients = [];
-        this.strMeasures = [];*/
         this.strSource = '';
         this.strImageSource = '';
         this.strCreativeCommonsConfirmed = '';
         this.dateModified = '';
     }
+
+    /* getIngredientsArray() : string[]{
+        //let array : string[]= []
+        let i = 1;
+        //let flag : boolean = true;
+
+        /* array.push(this.strIngredient1)
+        array.push(this.strIngredient2)
+        array.push(this.strIngredient3)
+        array.push(this.strIngredient4)
+        array.push(this.strIngredient5)
+        array.push(this.strIngredient6)
+        array.push(this.strIngredient7)
+        array.push(this.strIngredient8)
+        array.push(this.strIngredient9)
+        array.push(this.strIngredient11)
+        array.push(this.strIngredient12)
+        array.push(this.strIngredient13)
+        array.push(this.strIngredient14)
+        array.push(this.strIngredient15)
+        array.push(this.strIngredient16)
+        array.push(this.strIngredient17)
+        array.push(this.strIngredient18)
+        array.push(this.strIngredient19)
+        array.push(this.strIngredient20) 
+        let arrKeys = Object.getOwnPropertyNames(this);
+        
+        arrKeys.filter(e => {
+            if(e === `strIngredient${i}`) {
+                i++;
+                return true;
+            }else{
+                return false;
+            }
+        });
+
+         /* while(i<=20 && flag){
+            let ingredientKey = `strIngredient${i}`;
+            if(ingredientKey){
+                array.push(ingredientKey);
+            }else{
+                flag = false;
+            }
+            i++;
+        } 
+ 
+
+        //return array;
+        return arrKeys;
+    }   */
+
+
+
+
 }
