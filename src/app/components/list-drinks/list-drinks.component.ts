@@ -21,6 +21,8 @@ export class ListDrinksComponent implements OnInit{
     this.route.params.subscribe(params =>{
       this.showDrinksByName();
     })
+
+    
     //this.showDrinksByFirstLetter();
     //this.showDrinksByIngredient();
     //this.showAlcoholicDrinks();
