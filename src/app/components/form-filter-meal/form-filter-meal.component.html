@@ -1,20 +1,29 @@
-<form [formGroup]='filterForm' (ngSubmit)="searchMeals()">
-    <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
-        <input formControlName ='name' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-      </div>
-      <div class="btn-group">
-        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Select Categorie
-        </button>
-        <input formControlName ='categories' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-        <ul class="dropdown-menu">
-            <li *ngFor="let categorie of listCategories"><a (click)="selectCategorie(categorie.strCategory)" class="dropdown-item">{{categorie.strCategory}}</a></li>
-        </ul>
-      </div> 
-      <div class="input-group input-group-sm mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-sm">Ingredient</span>
-        <input formControlName ='Ingredient' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-        <button type="submit" class="btn btn-primary">Search</button>
-      </div>
+
+<form [formGroup]='filterForm' (ngSubmit)="searchMeals()" class="d-flex flex-row">
+    
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
+    <input formControlName='name' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+  </div>
+
+  <div class="input-group mb-3">
+    <label class="input-group-text" for="inputGroupSelect01">Options Categorie</label>
+    <select formControlName='categories' class="form-select" id="inputGroupSelect01">
+      <option value="">All</option>
+      <option *ngFor="let categorie of listCategories" [value]="categorie.strCategory">{{categorie.strCategory}}</option>
+    </select>
+  </div>
+
+  <div class="input-group mb-3">
+    <label class="input-group-text" for="inputGroupSelect01">Options country</label>
+    <select formControlName='country' class="form-select" id="inputGroupSelect01">
+      <option value="">All</option>
+      <option *ngFor="let country of listCountry" [value]="country">{{country}}</option>
+    </select>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Search</button>
+  
 </form>
+
+
