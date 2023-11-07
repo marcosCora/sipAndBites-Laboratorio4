@@ -20,7 +20,7 @@ export class FormFilterMealComponent implements OnInit {
   countryMeal = '';
 
   listCategories: Meal[] = [];
-  listCountry : Meal[] = [];
+  listCountry : string[] = [];
 
 
   constructor(private serviceMeal: MealServiceService, private filterService: MealFilterService) { }
@@ -41,9 +41,16 @@ export class FormFilterMealComponent implements OnInit {
 
   showCountry(){
     this.serviceMeal.getMealByName(this.nameMeal).subscribe((data : Meal[])=>{
-      this.listCountry = data;
+      let arrayAux : string[] = [];
+      data.forEach(d =>{
+        arrayAux.push(d.strArea);
+      });
+      let uniqueValues = new Set(arrayAux);
+
+      this.listCountry = Array.from(uniqueValues);
     });
    }
+
 
 
   showCategories() {

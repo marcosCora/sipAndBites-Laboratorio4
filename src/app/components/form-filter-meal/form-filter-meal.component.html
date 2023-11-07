@@ -9,7 +9,7 @@
   <div class="input-group mb-3">
     <label class="input-group-text" for="inputGroupSelect01">Options Categorie</label>
     <select formControlName='categories' class="form-select" id="inputGroupSelect01">
-      <option value="" disabled selected>All</option>
+      <option value="">All</option>
       <option *ngFor="let categorie of listCategories" [value]="categorie.strCategory">{{categorie.strCategory}}</option>
     </select>
   </div>
@@ -17,8 +17,8 @@
   <div class="input-group mb-3">
     <label class="input-group-text" for="inputGroupSelect01">Options country</label>
     <select formControlName='country' class="form-select" id="inputGroupSelect01">
-      <option value="" disabled selected>All</option>
-      <option *ngFor="let country of listCountry" [value]="country.strArea">{{country.strArea}}</option>
+      <option value="">All</option>
+      <option *ngFor="let country of listCountry" [value]="country">{{country}}</option>
     </select>
   </div>
 
