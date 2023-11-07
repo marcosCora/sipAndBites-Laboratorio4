@@ -15,8 +15,8 @@ export class MealServiceService {
 
   
   getMealByName(name : string) : Observable<Meal[]>{
-    let urlCompleta = this.apiMealUrl + 'search.php?s=' + name;
-    return this.http.get<any>(urlCompleta).pipe(
+    let urlComplete = this.apiMealUrl + 'search.php?s=' + name;
+    return this.http.get<any>(urlComplete).pipe(
       map((response : any)=>{
       return response.meals;
     })
@@ -24,17 +24,26 @@ export class MealServiceService {
   }
 
   getMealById(id : number) : Observable<Meal[]>{
-    let urlCompleta = this.apiMealUrl + 'lookup.php?i=' + id
-    return this.http.get<any>(urlCompleta).pipe(
+    let urlComplete = this.apiMealUrl + 'lookup.php?i=' + id
+    return this.http.get<any>(urlComplete).pipe(
       map((response : any)=>{
         return response.meals
       })
     );
   }
 
+  getMealByCategorieOnly(categorie : string) : Observable<Meal[]>{
+    let urlComplete = this.apiMealUrl + 'filter.php?c=' + categorie;
+    return this.http.get<any>(urlComplete).pipe(
+      map((response : any)=>{ 
+        return response.meals
+      })
+    );
+  }
+
   getMealByCategories() : Observable<Meal[]>{
-    let urlCompleta = this.apiMealUrl + 'categories.php';
-    return this.http.get<any>(urlCompleta).pipe(
+    let urlComplete = this.apiMealUrl + 'categories.php';
+    return this.http.get<any>(urlComplete).pipe(
       map((response : any)=>{
         return response.categories
       })
@@ -42,8 +51,8 @@ export class MealServiceService {
   }
 
 getMealByFirstLetter(firstLetter : string) : Observable<Meal[]>{
-  let urlCompleta = this.apiMealUrl + 'search.php?f=' + firstLetter;
-  return this.http.get<any>(urlCompleta).pipe(
+  let urlComplete = this.apiMealUrl + 'search.php?f=' + firstLetter;
+  return this.http.get<any>(urlComplete).pipe(
     map((response : any)=>{
       return response.meals
     })
@@ -51,8 +60,17 @@ getMealByFirstLetter(firstLetter : string) : Observable<Meal[]>{
 }
 
 getMealByIngredient(ingredient : string) : Observable<Meal[]>{
-  let urlCompleta = this.apiMealUrl + 'filter.php?i=' + ingredient;
-  return this.http.get<any>(urlCompleta).pipe(
+  let urlComplete = this.apiMealUrl + 'filter.php?i=' + ingredient;
+  return this.http.get<any>(urlComplete).pipe(
+    map((response : any)=>{
+      return response.meals
+    })
+  );
+}
+
+getMealByCountry(country : string) : Observable<Meal[]>{
+  let urlComplete = this.apiMealUrl + 'filter.php?a=' + country;
+  return this.http.get<any>(urlComplete).pipe(
     map((response : any)=>{
       return response.meals
     })

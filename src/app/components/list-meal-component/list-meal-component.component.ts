@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Meal } from 'src/app/models/meal';
+import { MealFilterService } from 'src/app/services/meal-filter.service';
 import { MealServiceService } from 'src/app/services/meal-service.service';
 import { MealSharingServiceService } from 'src/app/services/meal-sharing-service.service';
 
@@ -13,18 +14,58 @@ export class ListMealComponentComponent implements OnInit {
 
   mealList : Meal[] = [];
   nameMeal = '';
-  constructor(private mealSharing : MealSharingServiceService, private route : ActivatedRoute){}
-  //constructor(private mealService : MealServiceService, private route : ActivatedRoute){}
+  constructor(private mealService : MealServiceService, private filterService : MealFilterService){}
  
   
   ngOnInit(): void {
+    this.showMealsByName();
+    
+    this.filterService.filteredMeals$.subscribe((data : Meal[])=>{
+      this.mealList = data;
+    })
 
-    this.route.params.subscribe(params =>{
-    this.mealSharing.showMealsByName(this.nameMeal);
-    this.mealSharing.getListMeal().subscribe(data => {
+    //this.showMealById();
+    //this.showMealByCategories();
+    //this.showMealByFirstLetter();
+    //this.showMealByIngredient();
+  }
+
+   showMealsByName(){
+    this.mealService.getMealByName(this.nameMeal).subscribe((data : Meal[])=>{
       this.mealList = data;
     });
-    }); 
-  }
+   }
+
+   showMealById(){
+    this.mealService.getMealById(52977).subscribe((data : Meal[])=>{
+      this.mealList = data;
+      console.log('ID');
+      console.log(this.mealList);
+    });
+   }
+
+   showMealByCategories(){
+    this.mealService.getMealByCategories().subscribe((data : Meal[])=>{
+      this.mealList = data;
+      console.log('Categories');
+      console.log(this.mealList);
+    });
+   }
+
+   showMealByFirstLetter(){
+    this.mealService.getMealByFirstLetter('l').subscribe((data : Meal[])=>{
+      this.mealList = data;
+      console.log('Priemra letra');
+      console.log(this.mealList);
+    });
+   }
+
+   showMealByIngredient(){
+    this.mealService.getMealByIngredient('onion').subscribe((data : Meal[])=>{
+      this.mealList = data;
+      console.log('Ingrediente');
+      console.log(this.mealList);
+    })
+   }
 
 }
