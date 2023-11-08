@@ -23,17 +23,12 @@ export class MealFilterService {
 
   filterMeals(name: string, categorie: string, country: string) {
 
-    if (name && (categorie || country)) {
+    if (name) {
       this.mealService.getMealByName(name).subscribe((response: Meal[]) => {
-        this.filterComplete(response, categorie, country);
+          this.filterComplete(response, categorie, country);
       })
     }else if(categorie && country){
       this.filterMealsByCategorieAndCountry(categorie, country);
-    }
-    else if(name){
-      this.mealService.getMealByName(name).subscribe((response: Meal[]) => {
-        this.filteredMeals.next(response);
-      });
     }else if(categorie){
       this.mealService.getMealByCategorieOnly(categorie).subscribe((response: Meal[]) => {
         this.filteredMeals.next(response);
@@ -46,17 +41,16 @@ export class MealFilterService {
   }
 
   filterComplete(meals: Meal[], categorie: string, country: string) {
-    if (categorie) {
-      let mealsFilterCategorie = this.filterMealsByCategorie(meals, categorie);
-      if (country) {
-        let mealsFilterCountry = this.filterMealsByCountry(mealsFilterCategorie, country);
-        this.filteredMeals.next(mealsFilterCountry);
-      }else{
-        this.filteredMeals.next(mealsFilterCategorie);
+    if(meals){
+      if (categorie) {
+        meals = this.filterMealsByCategorie(meals, categorie);
       }
-    }else if(country){
-      let mealsFilterCountry = this.filterMealsByCountry(meals, country);
-      this.filteredMeals.next(mealsFilterCountry);
+      if(country && meals){
+        meals = this.filterMealsByCountry(meals, country);
+      }
+      this.filteredMeals.next(meals);
+    }else{
+      this.filteredMeals.next(meals);
     }
   }
 

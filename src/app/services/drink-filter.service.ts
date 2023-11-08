@@ -24,7 +24,11 @@ export class DrinkFilterService {
   filterDrinks(name : string, category : string, alcohol : boolean){
     if(name){
       this.drinkService.getDrinksByName(name).subscribe(response =>{
+       if(response){
         this.filterComplete(response, category, alcohol);
+      }else{
+        this.filteredDrink.next(response);
+      }
       }) 
     }
     else if(category){

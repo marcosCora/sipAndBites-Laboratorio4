@@ -17,6 +17,7 @@ import { ListMealComponentComponent } from './components/list-meal-component/lis
 import { MealViewComponent } from './components/meal-view/meal-view.component';
 import { FormFilterMealComponent } from './components/form-filter-meal/form-filter-meal.component';
 import { FormFilterDrinkComponent } from './components/form-filter-drink/form-filter-drink.component';
+import { InvalidSearchComponent } from './components/invalid-search/invalid-search.component';
 
 
 
@@ -34,7 +35,8 @@ import { FormFilterDrinkComponent } from './components/form-filter-drink/form-fi
     ListMealComponentComponent,
     MealViewComponent,
     FormFilterMealComponent,
-    FormFilterDrinkComponent
+    FormFilterDrinkComponent,
+    InvalidSearchComponent
   ],
   imports: [
     BrowserModule,
