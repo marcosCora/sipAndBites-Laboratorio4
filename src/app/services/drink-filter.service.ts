@@ -13,8 +13,49 @@ export class DrinkFilterService {
 
   constructor(private drinkService : DrinkService) { }
 
+  getDrinkFilter(){
+    return this.filteredDrink.getValue();
+  }
+
+  setDrinkFilter(drink : Drink[]){
+    this.filteredDrink.next(drink);
+  }
+
+  filterDrinks(name : string, category : string, alcohol : boolean){
+    if(name){
+      this.drinkService.getDrinksByName(name).subscribe(response =>{
+        this.filterComplete(response, category, alcohol);
+      }) 
+    }
+    else if(category){
+      this.drinkService.getDrinksByCategoryOnly(category).subscribe(response =>{
+      this.filteredDrink.next(response);
+      });
+    }
   
 
+  }
+
+  filterComplete(drinks : Drink[], category : string, alcohol : boolean){
+
+    if(category){
+       drinks = drinks.filter(drink=>{
+        return drink.strCategory == category;
+      })
+    }
+    if(alcohol){
+      drinks = drinks.filter(drink=>{
+        return drink.strAlcoholic == "Alcoholic";
+      })
+    }
+    this.filteredDrink.next(drinks);
+  }
+
+/*   filterByIngredient(drinks : Drink[], ingredient : string) : Drink[]{
+    return drinks.filter(drink =>{
+      return drink.
+    })
+  } */
 
 
 
