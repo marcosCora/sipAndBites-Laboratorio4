@@ -12,7 +12,7 @@ import { DrinkService } from 'src/app/services/drink.service';
 export class ListDrinksComponent implements OnInit{
 
   drinksList : Drink[] = [];
-
+  searchCheck : boolean = true;
   constructor(private drinkService : DrinkService, private route : ActivatedRoute, private drinksFilter : DrinkFilterService){
 
   }
@@ -24,7 +24,13 @@ export class ListDrinksComponent implements OnInit{
     })
 
     this.drinksFilter.arrayDrink$.subscribe((response : Drink[]) =>{
-      this.drinksList = response;
+      if(response){
+        this.drinksList = response;
+        this.searchCheck = true;
+      }else{
+        this.searchCheck = false;
+      }
+      
     });
     
     //this.showDrinksByFirstLetter();

@@ -48,10 +48,9 @@ export class MealFilterService {
       if(country && meals){
         meals = this.filterMealsByCountry(meals, country);
       }
-      this.filteredMeals.next(meals);
-    }else{
-      this.filteredMeals.next(meals);
+      
     }
+    this.filteredMeals.next(meals);
   }
 
   //funcion que sirve para filtrar por categorias un arreglo de meals completo ya filtrado por name
