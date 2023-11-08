@@ -13,6 +13,7 @@ import { MealServiceService } from 'src/app/services/meal-service.service';
 export class ListMealComponentComponent implements OnInit {
 
   mealList : Meal[] = [];
+  searchCheck : boolean = true;
   nameMeal = '';
   constructor(private mealService : MealServiceService, private filterService : MealFilterService){}
  
@@ -21,13 +22,13 @@ export class ListMealComponentComponent implements OnInit {
     this.showMealsByName();
     
     this.filterService.filteredMeals$.subscribe((data : Meal[])=>{
-      this.mealList = data;
+      if(data){
+        this.mealList = data;
+        this.searchCheck = true;
+      }else{
+        this.searchCheck = false;
+      }   
     })
-
-    //this.showMealById();
-    //this.showMealByCategories();
-    //this.showMealByFirstLetter();
-    //this.showMealByIngredient();
   }
 
    showMealsByName(){

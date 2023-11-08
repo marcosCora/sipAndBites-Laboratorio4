@@ -25,9 +25,8 @@ export class DrinkFilterService {
     if(name){
       this.drinkService.getDrinksByName(name).subscribe(response =>{
         this.filterComplete(response, category, alcohol);
-      }) 
-    }
-    else if(category){
+      });
+    }else if(category){
       this.drinkService.getDrinksByCategoryOnly(category).subscribe(response =>{
       this.filteredDrink.next(response);
       });
@@ -35,18 +34,20 @@ export class DrinkFilterService {
   }
 
   filterComplete(drinks : Drink[], category : string, alcohol : boolean){
-
-    if(category){
+    if(drinks){
+      if(category){
+        drinks = drinks.filter(drink=>{
+         return drink.strCategory == category;
+       })
+     }
+     if(alcohol){
        drinks = drinks.filter(drink=>{
-        return drink.strCategory == category;
-      })
-    }
-    if(alcohol){
-      drinks = drinks.filter(drink=>{
-        return drink.strAlcoholic == "Alcoholic";
-      })
+         return drink.strAlcoholic == "Alcoholic";
+       })
+     }
     }
     this.filteredDrink.next(drinks);
+    
   }
 
 }
