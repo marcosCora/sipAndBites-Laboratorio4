@@ -7,7 +7,7 @@
       "email": "angeles.higa@gmail.com",
       "dateOfBirth": "1996-06-30",
       "password": "1234",
-      "active": false,
+      "active": true,
       "drinks": [
         {
           "idDrink": "11007",
