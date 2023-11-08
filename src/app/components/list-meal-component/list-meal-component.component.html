@@ -1,5 +1,4 @@
 <app-form-filter-meal></app-form-filter-meal>
-<!-- *ngIf="searchCheck; else invalidSearchContent" -->
 <div class="container" >
     <div *ngIf="mealList.length > 0 && searchCheck; else invalidSearchContent" class="list-container">
         <div *ngFor="let meal of mealList">
@@ -9,6 +8,7 @@
                   <h5 class="card-title">{{meal.strMeal}}</h5>
                   <p class="card-text">{{meal.strCategory}}</p>
                   <a  [routerLink]="['/meal', meal.idMeal]" routerLinkActive="active" class="btn btn-primary">Show details</a>
+
                 </div>
               </div>
         </div>
@@ -20,3 +20,4 @@
       <app-invalid-search></app-invalid-search>
   </div>
 </ng-template>
+

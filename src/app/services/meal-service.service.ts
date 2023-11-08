@@ -7,13 +7,11 @@ import { Meal } from '../models/meal';
   providedIn: 'root'
 })
 export class MealServiceService {
-
- 
+  
   constructor(private http : HttpClient) { }
 
   apiMealUrl = 'https://www.themealdb.com/api/json/v1/1/';
 
-  
   getMealByName(name : string) : Observable<Meal[]>{
     let urlComplete = this.apiMealUrl + 'search.php?s=' + name;
     return this.http.get<any>(urlComplete).pipe(

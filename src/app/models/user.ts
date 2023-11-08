@@ -1,3 +1,6 @@
+import { Drink } from "./drink";
+import { Meal } from "./meal";
+
 export class User {
     
     id : number = 0;
@@ -7,5 +10,8 @@ export class User {
     email : string = '';
     password : string = '';
     active : boolean = true;
+
+    drinks : Drink[] = [];
+    meals : Meal[] = [];
     
 }
