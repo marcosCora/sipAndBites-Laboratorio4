@@ -15,7 +15,7 @@ export class ListDrinksComponent implements OnInit{
   searchCheck : boolean = true;
   constructor(private drinkService : DrinkService, private route : ActivatedRoute, private drinksFilter : DrinkFilterService){
 
-  }
+  
 
 
   ngOnInit(): void {
@@ -32,20 +32,13 @@ export class ListDrinksComponent implements OnInit{
       }
       
     });
-    
-    //this.showDrinksByFirstLetter();
-    //this.showDrinksByIngredient();
-    //this.showAlcoholicDrinks();
-    //this.showNonAlcoholicDrinks();
-    //this.showDrinksByCategory();
-    //this.showDrinkById();
-  }
+
+
 
   showDrinksByName(){
     this.drinkService.getDrinksByName("").subscribe((data : Drink[]) => {
       this.drinksList = data;
-    }
-    );
+    });
   }
 
   showDrinksByFirstLetter(){
@@ -95,6 +88,5 @@ export class ListDrinksComponent implements OnInit{
     }
     );
   }
-
 
 }

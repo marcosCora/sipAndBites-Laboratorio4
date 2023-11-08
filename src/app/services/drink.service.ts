@@ -37,8 +37,6 @@ export class DrinkService {
     );
   }
 
-  
-
   getDrinksByAlcohol(drinkType : string) : Observable<Drink[]> {
     return this.http.get<any>(`${this.url}/filter.php?a=${drinkType}`).pipe(
       map( (response : any) => {
@@ -71,8 +69,5 @@ export class DrinkService {
       })
     );
   }
-
-  
-
 
 }

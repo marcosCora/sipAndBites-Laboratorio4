@@ -34,7 +34,7 @@ export class CustomValidator {
         };
     }
 
-    static legalAge(control: AbstractControl) {
+    static legalAge(control : AbstractControl) {
         const birthDate = new Date(control.value);
         const today = new Date();
         
@@ -47,6 +47,27 @@ export class CustomValidator {
     
         // Comparar la edad mínima requerida (en este caso, 18 años)
         return age >= 18 ? null : { notLegalAge: true };
+      }
+
+      static requiredIfOtherFieldHasValue(otherControlName : string): ValidatorFn {
+        return (control : AbstractControl) => {
+          if (!control.parent) {
+            return null;
+          }
+      
+          const thisControl = control;
+          const otherControl = control.parent.get(otherControlName);
+      
+          if (!thisControl || !otherControl) {
+            return null;
+          }
+      
+          if (otherControl.value && !thisControl.value) {
+            return { requiredIfOtherFieldHasValue: true };
+          }
+      
+          return null;
+        };
       }
 }
 

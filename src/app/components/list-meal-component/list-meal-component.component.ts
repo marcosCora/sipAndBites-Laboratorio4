@@ -4,7 +4,6 @@ import { Meal } from 'src/app/models/meal';
 import { MealFilterService } from 'src/app/services/meal-filter.service';
 import { MealServiceService } from 'src/app/services/meal-service.service';
 
-
 @Component({
   selector: 'app-list-meal-component',
   templateUrl: './list-meal-component.component.html',
