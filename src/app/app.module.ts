@@ -5,9 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoginComponent } from './components/login/login.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ItemViewComponent } from './components/item-view/item-view.component';
 import { NewRecipeComponent } from './components/new-recipe/new-recipe.component';
+import { NewUserComponent } from './components/new-user/new-user.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { HomeComponent } from './home/home.component';
 import { ListDrinksComponent } from './components/list-drinks/list-drinks.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DrinkViewComponent } from './components/drink-view/drink-view.component';
@@ -19,16 +22,16 @@ import { FormFilterMealComponent } from './components/form-filter-meal/form-filt
 import { FormFilterDrinkComponent } from './components/form-filter-drink/form-filter-drink.component';
 import { InvalidSearchComponent } from './components/invalid-search/invalid-search.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     LoginComponent,
-    SignUpComponent,
     ItemViewComponent,
     NewRecipeComponent,
+    NewUserComponent,
+    EditUserComponent,
+    HomeComponent
     ListDrinksComponent,
     ///showDrinkDetails,
     DrinkViewComponent,

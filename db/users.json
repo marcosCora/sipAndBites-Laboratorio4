@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Angeles",
+      "lastName": "Higa",
+      "email": "angeles.higa@gmail.com",
+      "dateOfBirth": "1996-06-30",
+      "password": "1234",
+      "active": true
+    },
+    {
+      "id": 2,
+      "firstName": "Juan Carlos",
+      "lastName": "Garcia",
+      "email": "jcg@gmail.com",
+      "dateOfBirth": "2023-10-19",
+      "password": "1234",
+      "active": true
+    },
+    {
+      "id": 3,
+      "firstName": "Juana",
+      "lastName": "Lopez",
+      "dateOfBirth": "1980-02-20",
+      "email": "juana@gmail.com",
+      "password": "12345678",
+      "active": true
+    },
+    {
+      "id": 4,
+      "firstName": "j",
+      "lastName": "j",
+      "dateOfBirth": "2000-01-01",
+      "email": "j@gmail.com",
+      "password": "11111111",
+      "active": false
+    }
+  ]
+}
