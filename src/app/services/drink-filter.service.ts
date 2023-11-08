@@ -32,8 +32,6 @@ export class DrinkFilterService {
       this.filteredDrink.next(response);
       });
     }
-  
-
   }
 
   filterComplete(drinks : Drink[], category : string, alcohol : boolean){
@@ -50,13 +48,5 @@ export class DrinkFilterService {
     }
     this.filteredDrink.next(drinks);
   }
-
-/*   filterByIngredient(drinks : Drink[], ingredient : string) : Drink[]{
-    return drinks.filter(drink =>{
-      return drink.
-    })
-  } */
-
-
 
 }
