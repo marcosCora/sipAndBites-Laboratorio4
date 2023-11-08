@@ -52,21 +52,6 @@ export class Meal {
     strImageSource : string;
     strCreativeCommonsConfirmed : string;
     dateModified : string; 
-    /* idMeal : string;
-    strMeal : string;
-    strDrinkAlternate : string;
-    strCategory : string;
-    strArea : string;
-    strInstructions : string;
-    strMealThumb : string;
-    strTags : string;
-    strYoutube : string;
-    strIngredients : Array<string>;
-    strMeasures : Array<string>;
-    strImageSource : string;
-    strCreativeCommonsConfirmed : string;
-    dateModified : string; */
-
 
     constructor(){
         this.idMeal = '';
@@ -119,9 +104,6 @@ export class Meal {
         this.strMeasure18 = '';
         this.strMeasure19 = '';
         this.strMeasure20 = '';
-
-        /*this.strIngredients = [];
-        this.strMeasures = [];*/
         this.strSource = '';
         this.strImageSource = '';
         this.strCreativeCommonsConfirmed = '';

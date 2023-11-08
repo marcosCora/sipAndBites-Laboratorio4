@@ -45,7 +45,16 @@ export class DrinkService {
     );
   }
 
-  getDrinksByCategory(category : string) : Observable<Drink[]> {
+
+  getDrinkByCategories() : Observable<Drink[]>{
+    return this.http.get<any>(`${this.url}/list.php?c=list`).pipe(
+      map( (response : any) => {
+        return response.drinks;
+      })
+    );
+  }
+
+  getDrinksByCategoryOnly(category : string) : Observable<Drink[]> {
     return this.http.get<any>(`${this.url}/filter.php?c=${category}`).pipe(
       map( (response : any) => {
         return response.drinks;
@@ -60,8 +69,5 @@ export class DrinkService {
       })
     );
   }
-
-  
-
 
 }

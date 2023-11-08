@@ -8,12 +8,21 @@ import { ItemViewComponent } from './components/item-view/item-view.component';
 import { NewRecipeComponent } from './components/new-recipe/new-recipe.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
-import { HomeComponent } from './components/home/home.component';
 import { NewDrinkComponent } from './components/new-drink/new-drink.component';
 import { NewMealComponent } from './components/new-meal/new-meal.component';
 import { ListUserRecipesComponent } from './components/list-user-recipes/list-user-recipes.component';
+import { HomeComponent } from './home/home.component';
+import { ListDrinksComponent } from './components/list-drinks/list-drinks.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DrinkViewComponent } from './components/drink-view/drink-view.component';
+import { MealServiceService } from './services/meal-service.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListMealComponentComponent } from './components/list-meal-component/list-meal-component.component';
+import { MealViewComponent } from './components/meal-view/meal-view.component';
+import { FormFilterMealComponent } from './components/form-filter-meal/form-filter-meal.component';
+import { FormFilterDrinkComponent } from './components/form-filter-drink/form-filter-drink.component';
+import { InvalidSearchComponent } from './components/invalid-search/invalid-search.component';
 
 @NgModule({
   declarations: [
@@ -24,18 +33,27 @@ import { ListUserRecipesComponent } from './components/list-user-recipes/list-us
     NewRecipeComponent,
     NewUserComponent,
     EditUserComponent,
-    HomeComponent,
     NewDrinkComponent,
     NewMealComponent,
-    ListUserRecipesComponent
+    ListUserRecipesComponent,
+    HomeComponent,
+    ListDrinksComponent,
+    ///showDrinkDetails,
+    DrinkViewComponent,
+    ListMealComponentComponent,
+    MealViewComponent,
+    FormFilterMealComponent,
+    FormFilterDrinkComponent,
+    InvalidSearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule 
   ],
-  providers: [],
+  providers: [MealServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
