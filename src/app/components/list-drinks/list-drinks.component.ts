@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Drink } from 'src/app/models/drink';
+import { DrinkFilterService } from 'src/app/services/drink-filter.service';
 import { DrinkService } from 'src/app/services/drink.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class ListDrinksComponent implements OnInit{
 
   drinksList : Drink[] = [];
 
-  constructor(private drinkService : DrinkService, private route : ActivatedRoute){
+  constructor(private drinkService : DrinkService, private route : ActivatedRoute, private drinksFilter : DrinkFilterService){
 
   }
 
@@ -21,6 +22,11 @@ export class ListDrinksComponent implements OnInit{
     this.route.params.subscribe(params =>{
       this.showDrinksByName();
     })
+
+    this.drinksFilter.arrayDrink$.subscribe((response : Drink[]) =>{
+      this.drinksList = response;
+    });
+    
     //this.showDrinksByFirstLetter();
     //this.showDrinksByIngredient();
     //this.showAlcoholicDrinks();
@@ -32,7 +38,6 @@ export class ListDrinksComponent implements OnInit{
   showDrinksByName(){
     this.drinkService.getDrinksByName("").subscribe((data : Drink[]) => {
       this.drinksList = data;
-      console.log(this.drinksList);
     }
     );
   }
@@ -70,7 +75,7 @@ export class ListDrinksComponent implements OnInit{
   }
 
   showDrinksByCategory(){
-    this.drinkService.getDrinksByCategory("Beer").subscribe((data : Drink[]) => {
+    this.drinkService.getDrinksByCategoryOnly("Beer").subscribe((data : Drink[]) => {
       this.drinksList = data;
       console.log(this.drinksList);
     }

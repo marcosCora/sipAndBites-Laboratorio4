@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListMealComponentComponent } from './components/list-meal-component/list-meal-component.component';
 import { MealViewComponent } from './components/meal-view/meal-view.component';
 import { FormFilterMealComponent } from './components/form-filter-meal/form-filter-meal.component';
+import { FormFilterDrinkComponent } from './components/form-filter-drink/form-filter-drink.component';
 
 
 
@@ -32,7 +33,8 @@ import { FormFilterMealComponent } from './components/form-filter-meal/form-filt
     DrinkViewComponent,
     ListMealComponentComponent,
     MealViewComponent,
-    FormFilterMealComponent
+    FormFilterMealComponent,
+    FormFilterDrinkComponent
   ],
   imports: [
     BrowserModule,

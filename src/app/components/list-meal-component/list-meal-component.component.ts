@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Meal } from 'src/app/models/meal';
 import { MealFilterService } from 'src/app/services/meal-filter.service';
 import { MealServiceService } from 'src/app/services/meal-service.service';
-import { MealSharingServiceService } from 'src/app/services/meal-sharing-service.service';
+
 
 @Component({
   selector: 'app-list-meal-component',

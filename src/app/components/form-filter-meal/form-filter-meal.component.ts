@@ -33,9 +33,7 @@ export class FormFilterMealComponent implements OnInit {
     this.showCountry();
     this.filterForm = new FormGroup({
       'name': new FormControl(this.nameMeal),
-      //'categories' : new FormControl(this.categorieMeal, Validators.required),
       'categories': new FormControl(this.categorieMeal),
-      //'Ingredient' : new FormControl(this.ingredientMeal, Validators.required)
       'country': new FormControl(this.countryMeal)
     });
 
