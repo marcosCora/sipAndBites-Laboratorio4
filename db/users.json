@@ -234,7 +234,7 @@
       "email": "jcg@gmail.com",
       "dateOfBirth": "2023-10-19",
       "password": "1234",
-      "active": true,
+      "active": false,
       "drinks": [
         {
           "idDrink": "",
@@ -347,9 +347,18 @@
           "dateModified": ""
         }
       ]
+    },
+    {
+      "id": 3,
+      "firstName": "Marcos",
+      "lastName": "Corasaniti",
+      "dateOfBirth": "1999-12-05",
+      "email": "marcos@gmail.com",
+      "password": "123",
+      "active": true,
+      "drinks": [],
+      "meals": []
     }
   ],
-  "comments" : [
-    
-  ]
+  "comments": []
 }

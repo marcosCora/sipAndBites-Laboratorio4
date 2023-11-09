@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Meal } from 'src/app/models/meal';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { MealServiceService } from 'src/app/services/meal-service.service';
 
 @Component({
@@ -11,13 +12,20 @@ import { MealServiceService } from 'src/app/services/meal-service.service';
 export class MealViewComponent implements OnInit {
   
   meal !: Meal; 
-  constructor(private mealService : MealServiceService ,private route : ActivatedRoute){}
+  userLog : boolean = false;
+  constructor(private mealService : MealServiceService ,
+              private route : ActivatedRoute,
+              private authenticantioUser : AuthenticationService){}
   
   ngOnInit(): void {
      this.route.params.subscribe(params=>{
       let idMeal = params['id'];
       this.mealService.getMealById(idMeal).subscribe((data : Meal[])=>{
         this.meal = data[0];
+        this.authenticantioUser.authStatusChangesIsLoggedIn.subscribe(response =>{
+          this.userLog = response;
+        })
+
       })
     }) 
     
