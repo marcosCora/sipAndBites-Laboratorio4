@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Meal } from 'src/app/models/meal';
+import { User } from 'src/app/models/user';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { MealFilterService } from 'src/app/services/meal-filter.service';
 import { MealServiceService } from 'src/app/services/meal-service.service';
 
@@ -14,7 +16,12 @@ export class ListMealComponentComponent implements OnInit {
   mealList : Meal[] = [];
   searchCheck : boolean = true;
   nameMeal = '';
-  constructor(private mealService : MealServiceService, private filterService : MealFilterService){}
+  isLoggedIn : boolean = false;
+  loggedUser : User = new User();
+
+  constructor(private mealService : MealServiceService,
+              private filterService : MealFilterService,
+              private authenticationService : AuthenticationService){}
  
   
   ngOnInit(): void {
@@ -27,7 +34,11 @@ export class ListMealComponentComponent implements OnInit {
       }else{
         this.searchCheck = false;
       }   
-    })
+    });
+
+    this.authenticationService.authStatusChangesIsLoggedIn.subscribe(result => {
+      this.isLoggedIn = result;
+    });
   }
 
    showMealsByName(){
@@ -66,6 +77,10 @@ export class ListMealComponentComponent implements OnInit {
       console.log('Ingrediente');
       console.log(this.mealList);
     })
+   }
+
+   addToFavList(idMeal : string) {
+    
    }
 
 }

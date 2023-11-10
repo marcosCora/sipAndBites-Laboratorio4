@@ -6,7 +6,13 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h3 class="card-title">{{drink.strDrink}}</h3>
+              <div class="card_title">
+                <h3 class="card-title">{{drink.strDrink}}</h3>
+                <div class="img_star" *ngIf="isLoggedIn">
+                  <img src="../../../assets/star.png" (click)="addToFavList(drink.idDrink)" alt="Add to Favourites">
+                </div>
+              </div>
+              
               <p class="card-text-small"><small class="text-muted">{{drink.strCategory}}</small></p>
               <p class="card-text-small"><small class="text-muted">{{drink.strGlass}}</small></p>
               <p class="card-text-small"><small class="text-muted">{{drink.strAlcoholic}}</small></p>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Drink } from 'src/app/models/drink';
+import { User } from 'src/app/models/user';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DrinkService } from 'src/app/services/drink.service';
 
 @Component({
@@ -11,8 +13,12 @@ import { DrinkService } from 'src/app/services/drink.service';
 export class DrinkViewComponent implements OnInit{
 
   drink !: Drink ;
+  isLoggedIn : boolean = false;
+  loggedUser : User = new User();
 
-  constructor(private drinkService : DrinkService, private route : ActivatedRoute){}
+  constructor(private drinkService : DrinkService,
+              private route : ActivatedRoute,
+              private authenticationService : AuthenticationService){}
 
   ngOnInit(): void{
     this.route.params.subscribe(async param => {
@@ -22,6 +28,18 @@ export class DrinkViewComponent implements OnInit{
           console.log(this.drink);
         });
     });
+
+    this.authenticationService.authStatusChangesIsLoggedIn.subscribe(result => {
+      this.isLoggedIn = result;
+    });
+
+    this.authenticationService.authStatusChangesUser.subscribe(user => {
+      this.loggedUser = user;
+    });
+  }
+
+  addToFavList(idDrink : string){
+
   }
 
 }

@@ -7,9 +7,16 @@
                 <img *ngIf="drink.strDrinkThumb" src={{drink.strDrinkThumb}} class="card-img-top">
                 <img *ngIf="!drink.strDrinkThumb" src="../../../assets/drinkDefaultImg.png" class="card-img-top">
                 <div class="card-body">
-                  <h5 class="card-title">{{drink.strDrink}}</h5>
+                  <div class="card_title">
+                    <h5 class="card-title">{{drink.strDrink}}</h5>
+                    <div *ngIf="isLoggedIn" class="img_star">
+                      <img src="../../../assets/star.png" (click)="addToFavList(drink.idDrink)" alt="Add to Favourites">
+                    </div>
+                  </div>
                   <p class="card-text">{{drink.strCategory}}</p>
-                  <a class="btn btn-primary" [routerLink]="['/drink',drink.idDrink]">Show details</a>
+                  <div class="btn_container">
+                    <a class="btn btn-primary" [routerLink]="['/drink',drink.idDrink]">Show details</a>
+                  </div>
                 </div>
               </div>
         </div>
