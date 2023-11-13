@@ -360,5 +360,30 @@
       "meals": []
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "idProduct": 17222,
+      "idUser": 3,
+      "comment": "muy buen trago",
+      "id": 1
+    },
+    {
+      "idProduct": 14229,
+      "idUser": 3,
+      "comment": "Trago muy rico, especial para un medio dia de calor.",
+      "id": 2
+    },
+    {
+      "idProduct": 17222,
+      "idUser": 1,
+      "comment": "exelente trago, lo volveria a hacer.",
+      "id": 3
+    },
+    {
+      "idProduct": "53060",
+      "idUser": 3,
+      "comment": "muy rica este comida, le puse mas queso y quedo muy rico.",
+      "id": 4
+    }
+  ]
 }

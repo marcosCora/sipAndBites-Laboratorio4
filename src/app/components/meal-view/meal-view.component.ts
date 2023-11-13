@@ -13,14 +13,15 @@ export class MealViewComponent implements OnInit {
   
   meal !: Meal; 
   userLog : boolean = false;
+  idMeal !: number;
   constructor(private mealService : MealServiceService ,
               private route : ActivatedRoute,
               private authenticantioUser : AuthenticationService){}
   
   ngOnInit(): void {
      this.route.params.subscribe(params=>{
-      let idMeal = params['id'];
-      this.mealService.getMealById(idMeal).subscribe((data : Meal[])=>{
+      this.idMeal = params['id'];
+      this.mealService.getMealById(this.idMeal).subscribe((data : Meal[])=>{
         this.meal = data[0];
         this.authenticantioUser.authStatusChangesIsLoggedIn.subscribe(response =>{
           this.userLog = response;
