@@ -384,6 +384,24 @@
       "idUser": 3,
       "comment": "muy rica este comida, le puse mas queso y quedo muy rico.",
       "id": 4
+    },
+    {
+      "idProduct": "52978",
+      "idUser": 3,
+      "comment": "Muy mala convinacion de ingredientes, a dejado que desear esta comida.",
+      "id": 5
+    },
+    {
+      "idProduct": 15997,
+      "idUser": 3,
+      "comment": "Trago muy refrecasnte",
+      "id": 6
+    },
+    {
+      "idProduct": 15288,
+      "idUser": 3,
+      "comment": "Si tomas muchos te genera dolor de panza.",
+      "id": 7
     }
   ]
 }

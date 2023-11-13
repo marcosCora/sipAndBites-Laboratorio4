@@ -1,0 +1,14 @@
+<form class="form-group" [formGroup]="formComment" (ngSubmit)="sendComment()">
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+     <textarea [(ngModel)]="inputValue" placeholder="Add a comment" formControlName="comment"class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Send</button>
+  
+  <!-- hacer que esto funcione para poner una alerta al momento de no añadir ningun comentario -->
+  <!-- <div *ngIf="formComment.get('dataComment')?.errors?.['required']">
+    adding a comment is required
+  </div>
+ -->
+</form>
