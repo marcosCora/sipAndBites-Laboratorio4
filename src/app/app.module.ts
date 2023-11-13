@@ -24,6 +24,7 @@ import { FormFilterMealComponent } from './components/form-filter-meal/form-filt
 import { FormFilterDrinkComponent } from './components/form-filter-drink/form-filter-drink.component';
 import { InvalidSearchComponent } from './components/invalid-search/invalid-search.component';
 import { HomeComponent } from './components/home/home.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { HomeComponent } from './components/home/home.component';
     MealViewComponent,
     FormFilterMealComponent,
     FormFilterDrinkComponent,
-    InvalidSearchComponent
+    InvalidSearchComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

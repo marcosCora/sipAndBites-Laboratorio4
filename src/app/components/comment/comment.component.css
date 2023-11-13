@@ -1,0 +1,31 @@
+/* Estilos para el formulario de comentarios */
+.estyleCss {
+    margin-bottom: 1rem;
+    text-align: center;
+    line-height: 25%
+    
+  }
+  
+
+  
+  textarea {
+     margin: 0 auto; 
+     text-align: left;
+     width: 60rem; 
+     resize: vertical; 
+      
+  }
+  
+  button {
+    margin: 0.5%;
+    background-color: #E8CDE8;
+    display: inline;
+    border-radius: 15px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-right: 0.25rem;
+  /*   margin-top: 0.5rem;
+    background-color: #E8CDE8; */
+  }
+  
+  

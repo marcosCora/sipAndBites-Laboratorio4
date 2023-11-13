@@ -35,5 +35,8 @@
           </div>
         </div>
       </div>
-    
 </div>
+
+<ng-container *ngIf="userLog">
+  <app-comment [idProduct]="idDrink"></app-comment>
+</ng-container>

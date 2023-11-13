@@ -234,7 +234,7 @@
       "email": "jcg@gmail.com",
       "dateOfBirth": "2023-10-19",
       "password": "1234",
-      "active": true,
+      "active": false,
       "drinks": [
         {
           "idDrink": "",
@@ -350,14 +350,58 @@
     },
     {
       "id": 3,
-      "firstName": "Marcos Agustin",
+      "firstName": "Marcos",
       "lastName": "Corasaniti",
-      "dateOfBirth": "2002-05-18",
-      "email": "maagustin51@gmail.com",
-      "password": "12345678",
+      "dateOfBirth": "1999-12-05",
+      "email": "marcos@gmail.com",
+      "password": "123",
       "active": true,
       "drinks": [],
       "meals": []
+    }
+  ],
+  "comments": [
+    {
+      "idProduct": 17222,
+      "idUser": 3,
+      "comment": "muy buen trago",
+      "id": 1
+    },
+    {
+      "idProduct": 14229,
+      "idUser": 3,
+      "comment": "Trago muy rico, especial para un medio dia de calor.",
+      "id": 2
+    },
+    {
+      "idProduct": 17222,
+      "idUser": 1,
+      "comment": "exelente trago, lo volveria a hacer.",
+      "id": 3
+    },
+    {
+      "idProduct": "53060",
+      "idUser": 3,
+      "comment": "muy rica este comida, le puse mas queso y quedo muy rico.",
+      "id": 4
+    },
+    {
+      "idProduct": "52978",
+      "idUser": 3,
+      "comment": "Muy mala convinacion de ingredientes, a dejado que desear esta comida.",
+      "id": 5
+    },
+    {
+      "idProduct": 15997,
+      "idUser": 3,
+      "comment": "Trago muy refrecasnte",
+      "id": 6
+    },
+    {
+      "idProduct": 15288,
+      "idUser": 3,
+      "comment": "Si tomas muchos te genera dolor de panza.",
+      "id": 7
     }
   ]
 }
