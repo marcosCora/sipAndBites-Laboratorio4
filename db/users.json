@@ -225,7 +225,9 @@
           "strCreativeCommonsConfirmed": "",
           "dateModified": ""
         }
-      ]
+      ],
+      "drinksFavList" : [],
+      "mealsFavList" : []
     },
     {
       "id": 2,
@@ -346,7 +348,9 @@
           "strCreativeCommonsConfirmed": "",
           "dateModified": ""
         }
-      ]
+      ],
+      "drinksFavList" : [],
+      "mealsFavList" : []
     }
   ]
 }
