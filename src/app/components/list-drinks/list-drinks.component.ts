@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Drink } from 'src/app/models/drink';
+import { User } from 'src/app/models/user';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DrinkFilterService } from 'src/app/services/drink-filter.service';
 import { DrinkService } from 'src/app/services/drink.service';
 
@@ -13,7 +15,13 @@ export class ListDrinksComponent implements OnInit{
 
   drinksList : Drink[] = [];
   searchCheck : boolean = true;
-  constructor(private drinkService : DrinkService, private route : ActivatedRoute, private drinksFilter : DrinkFilterService){}
+  loggedUser : User = new User();
+  isLoggedIn : boolean = false;
+
+  constructor(private drinkService : DrinkService, 
+              private route : ActivatedRoute, 
+              private drinksFilter : DrinkFilterService,
+              private authenticationService : AuthenticationService){}
 
   
 
@@ -32,6 +40,15 @@ export class ListDrinksComponent implements OnInit{
       }
       
     });
+
+    this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
+      this.loggedUser = user;
+      console.log(this.loggedUser);
+      });
+
+      this.authenticationService.authStatusChangesIsLoggedIn.subscribe((result : boolean) => {
+        this.isLoggedIn = result;
+        });
   }
 
 
@@ -88,6 +105,10 @@ export class ListDrinksComponent implements OnInit{
       console.log(this.drinksList);
     }
     );
+  }
+
+  addToFavList(idDrink : string){
+    console.log("se agrego a fav!");
   }
 
 }
