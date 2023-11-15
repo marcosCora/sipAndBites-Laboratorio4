@@ -8,7 +8,8 @@
                   <div class="card_title">
                     <h5 class="card-title">{{meal.strMeal}}</h5>
                     <div *ngIf="isLoggedIn" class="img_star">
-                      <img src="../../../assets/star.png" (click)="addToFavList(meal.idMeal)" alt="Add to Favourites">
+                      <img *ngIf="!isMealInFavList(meal.idMeal)" src="../../../assets/addToList.png" (click)="addToFavList(meal.idMeal)" title="Add to Favourites">
+                      <img *ngIf="isMealInFavList(meal.idMeal)" src="../../../assets/star.png" (click)="removeFromFavList(meal.idMeal)" title="Remove from Favourites">
                     </div>
                   </div>
                   <p class="card-text">{{meal.strCategory}}</p>

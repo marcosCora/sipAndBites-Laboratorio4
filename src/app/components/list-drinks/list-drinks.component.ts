@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DrinkFilterService } from 'src/app/services/drink-filter.service';
 import { DrinkService } from 'src/app/services/drink.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-list-drinks',
@@ -21,7 +22,8 @@ export class ListDrinksComponent implements OnInit{
   constructor(private drinkService : DrinkService, 
               private route : ActivatedRoute, 
               private drinksFilter : DrinkFilterService,
-              private authenticationService : AuthenticationService){}
+              private authenticationService : AuthenticationService,
+              private userService : UserService){}
 
   
 
@@ -108,7 +110,29 @@ export class ListDrinksComponent implements OnInit{
   }
 
   addToFavList(idDrink : string){
-    console.log("se agrego a fav!");
+    this.loggedUser.drinksFavList.push(Number(idDrink));
+    this.userService.putUser(this.loggedUser).subscribe(
+      response => console.log('entra al put para agregar'),
+      error => console.log(error));
+  }
+
+  isDrinkInFavList(idDrink : string) : boolean {
+    let exists = false;
+
+    if(this.loggedUser.drinksFavList !== null){
+      exists = !!this.loggedUser.drinksFavList.find(id => id === Number(idDrink));
+    }
+
+    return exists;
+  }
+
+  removeFromFavList(idDrink : string) : void {
+    this.loggedUser.drinksFavList = this.loggedUser.drinksFavList.filter(id => id !== Number(idDrink));
+
+    this.userService.putUser(this.loggedUser).subscribe(
+      response => console.log('entra al put para eliminar'),
+      error => console.log(error));
+    
   }
 
 }
