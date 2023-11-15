@@ -14,7 +14,7 @@ import { CommentService } from 'src/app/services/comment.service';
 export class CommentComponent implements OnInit {
 
   dataComment: string = '';
-  commentComplete: Comment = {idProduct: 0, idUser: 0, comment: '', id: 0}; 
+  commentComplete: Comment = new Comment();
   @Input() idProduct !: number;
   inputValue = '';
 
@@ -35,10 +35,15 @@ export class CommentComponent implements OnInit {
   sendComment() {
 
     if (!this.formComment.invalid) {
+
+
       this.dataComment = this.formComment.value.comment;
       this.commentComplete.idProduct = this.idProduct;
       this.commentComplete.idUser = this.user.id;
       this.commentComplete.comment = this.dataComment;
+      this.commentComplete.nameUser = (this.user.firstName + ' ' + this.user.lastName);
+      this.setDateComment();
+
       this.commentService.postComment(this.commentComplete).subscribe(
         (response) => {
         console.log('response: ',response);
@@ -50,4 +55,10 @@ export class CommentComponent implements OnInit {
     }
     this.inputValue = ''
   }
+
+  setDateComment(){
+    let date = new Date();
+    this.commentComplete.dateComment = ((date.getDate()) + '-' + (date.getMonth()+1) + '-' + (date.getFullYear()));
+  }
+
 }
