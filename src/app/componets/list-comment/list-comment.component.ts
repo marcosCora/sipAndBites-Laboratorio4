@@ -20,8 +20,10 @@ export class ListCommentComponent implements OnInit {
 
   ngOnInit(): void {
     this.showComments();
-    
   }
+
+
+
 
   showComments() {
     this.commentService.getComments().subscribe(response => {
