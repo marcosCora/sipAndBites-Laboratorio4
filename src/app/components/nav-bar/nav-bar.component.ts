@@ -37,9 +37,9 @@ export class NavBarComponent implements OnInit{
   signOut() : void {
     this.loggedUser.active = false;
     this.userService.putUser(this.loggedUser).subscribe(
-      response => this.authenticationService.login(this.loggedUser),
+      response => this.authenticationService.logout(),
       error => console.log(error));
-    this.authenticationService.logout();
+    //this.authenticationService.logout();
   }
   
 }

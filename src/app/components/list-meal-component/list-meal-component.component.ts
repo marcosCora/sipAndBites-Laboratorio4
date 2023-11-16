@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { MealFilterService } from 'src/app/services/meal-filter.service';
 import { MealServiceService } from 'src/app/services/meal-service.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-list-meal-component',
@@ -21,7 +22,8 @@ export class ListMealComponentComponent implements OnInit {
 
   constructor(private mealService : MealServiceService,
               private filterService : MealFilterService,
-              private authenticationService : AuthenticationService){}
+              private authenticationService : AuthenticationService,
+              private userService : UserService){}
  
   
   ngOnInit(): void {
@@ -38,6 +40,10 @@ export class ListMealComponentComponent implements OnInit {
 
     this.authenticationService.authStatusChangesIsLoggedIn.subscribe(result => {
       this.isLoggedIn = result;
+    });
+
+    this.authenticationService.authStatusChangesUser.subscribe(user => {
+      this.loggedUser = user;
     });
   }
 
@@ -79,8 +85,28 @@ export class ListMealComponentComponent implements OnInit {
     })
    }
 
-   addToFavList(idMeal : string) {
-    
-   }
+   addToFavList(idMeal : string){
+    this.loggedUser.mealsFavList.push(Number(idMeal));
+    this.userService.putUser(this.loggedUser).subscribe(
+      response => console.log('entra al put para agregar'),
+      error => console.log(error));
+  }
+
+  isMealInFavList(idMeal : string) : boolean {
+    let exists = false;
+
+    if(this.loggedUser.mealsFavList){
+      exists = !!this.loggedUser.mealsFavList.find(mealId => mealId === Number(idMeal));
+    }
+
+    return exists;
+  }
+
+  removeFromFavList(idMeal : string) : void {
+    this.loggedUser.mealsFavList = this.loggedUser.mealsFavList.filter(mealId => mealId != Number(idMeal));
+    this.userService.putUser(this.loggedUser).subscribe(
+      response => console.log('entra al put para eliminar'),
+      error => console.log(error));
+  }
 
 }
