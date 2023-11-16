@@ -446,7 +446,8 @@
       "mealsFavList": [
         52942,
         52794,
-        52775
+        52775,
+        52948
       ]
     },
     {
@@ -641,6 +642,14 @@
       "idUser": 1,
       "nameUser": "Angeles Higa",
       "comment": "muy bueno",
+      "dateComment": "16-11-2023"
+    },
+    {
+      "id": 8,
+      "idProduct": 15997,
+      "idUser": 1,
+      "nameUser": "Angeles Higa",
+      "comment": "Riquisimo",
       "dateComment": "16-11-2023"
     }
   ]

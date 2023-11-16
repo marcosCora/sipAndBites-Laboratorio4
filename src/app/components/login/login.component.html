@@ -24,17 +24,19 @@
             </div>
         </div>
 
+        <div [hidden]="!wrongLogIn" class="alert alert-danger">
+            Incorrect email or/and password.
+        </div>
+
         <div class="form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Remember me</label>
           </div>
 
-        <div [hidden]="!wrongLogIn" class="alert alert-danger">
-                Incorrect email or/and password.
-        </div>
+        
 
         <div class="container-btn">
-            <button type="submit" class="btn btn-primary">Log In</button>
+            <button type="submit" class="btn btn-primary" [disabled]="logInForm.invalid">Log In</button>
         </div>
 
         <a routerLink="/newUser">Don't have an account?</a>

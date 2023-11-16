@@ -26,6 +26,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ListFavouritesComponent } from './components/list-favourites/list-favourites.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { ListCommentComponent } from './components/list-comment/list-comment.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { ListCommentComponent } from './components/list-comment/list-comment.com
     InvalidSearchComponent,
     ListFavouritesComponent,
     CommentComponent,
-    ListCommentComponent
+    ListCommentComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

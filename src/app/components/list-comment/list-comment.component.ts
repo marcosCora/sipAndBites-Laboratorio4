@@ -20,6 +20,7 @@ export class ListCommentComponent implements OnInit {
 
   ngOnInit(): void {
     this.showComments();
+
     this.commentService.getResponse().subscribe(response =>{
       this.listComment.push(response);
     })
@@ -33,11 +34,8 @@ export class ListCommentComponent implements OnInit {
         }
       })
     });
-  
 
   }
-
-
 
 }
 
