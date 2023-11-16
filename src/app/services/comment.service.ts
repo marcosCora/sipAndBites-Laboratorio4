@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 import { Comment } from '../models/comment';
 import { UrlTree } from '@angular/router';
 
@@ -12,16 +12,11 @@ export class CommentService {
 
   constructor(private http : HttpClient) { }
 
-  url : string = 'http://localhost:4000/comments'
-  private comments : BehaviorSubject<Comment[]> = new BehaviorSubject<Comment[]>([]);
-  comments$ : Observable<Comment[]> = this.comments.asObservable();
+  private url : string = 'http://localhost:4000/comments'
+  private commentResponse$ = new Subject<Comment>();
 
-  
   getComments() : Observable<Comment[]>{
-    return this.http.get<Comment[]>(this.url).pipe(
-      tap((response)=> this.comments.next(response))
-    );
-    //return this.http.get<Comment[]>(this.url);
+    return this.http.get<Comment[]>(this.url);
   }
   
   postComment(comment : Comment) : Observable<Comment[]>{
@@ -39,4 +34,13 @@ export class CommentService {
   getById(id : number) : Observable<Comment>{
     return this.http.get<Comment>(`${this.url}/${id}`);
   }
+
+  addResponse(comment : Comment){
+    this.commentResponse$.next(comment);
+  }
+
+  getResponse() : Observable<Comment>{
+    return this.commentResponse$.asObservable();
+  }
+
 }

@@ -47,6 +47,7 @@ export class CommentComponent implements OnInit {
       this.commentService.postComment(this.commentComplete).subscribe(
         (response) => {
         console.log('response: ',response);
+        this.commentService.addResponse(this.commentComplete);
         },
         (error)=>{
           console.log('Error:', error); 
