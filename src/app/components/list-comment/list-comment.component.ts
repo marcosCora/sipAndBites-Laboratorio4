@@ -20,21 +20,21 @@ export class ListCommentComponent implements OnInit {
 
   ngOnInit(): void {
     this.showComments();
+    this.commentService.getResponse().subscribe(response =>{
+      this.listComment.push(response);
+    })
   }
 
-
-
-
   showComments() {
-    this.commentService.getComments().subscribe(response => {
+     this.commentService.getComments().subscribe(response => {
       response.forEach(data => {
         if (data.idProduct == this.idProduct) {
           this.listComment.push(data);
-          
         }
       })
-
     });
+  
+
   }
 
 

@@ -384,6 +384,30 @@
       "nameUser": "Angeles Higa",
       "comment": "Muy rico trago",
       "dateComment": "15-11-2023"
+    },
+    {
+      "id": 4,
+      "idProduct": 13501,
+      "idUser": 3,
+      "nameUser": "Marcos Corasaniti",
+      "comment": "buen trago.",
+      "dateComment": "15-11-2023"
+    },
+    {
+      "id": 5,
+      "idProduct": 13501,
+      "idUser": 2,
+      "nameUser": "Juan Carlos Garcia",
+      "comment": "Todo muy claro para poder hacer el trago a la perfeccion.",
+      "dateComment": "16-11-2023"
+    },
+    {
+      "id": 6,
+      "idProduct": "53060",
+      "idUser": 2,
+      "nameUser": "Juan Carlos Garcia",
+      "comment": "Lo volvi a hacer y salio mucho mejor.",
+      "dateComment": "16-11-2023"
     }
   ]
 }
