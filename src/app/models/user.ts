@@ -14,7 +14,7 @@ export class User {
     drinks : Drink[] = [];
     meals : Meal[] = [];
 
-    drinksFavList : Number[] = [];
-    mealsFavList : Number[] = [];
+    drinksFavList : number[] = [];
+    mealsFavList : number[] = [];
     
 }
