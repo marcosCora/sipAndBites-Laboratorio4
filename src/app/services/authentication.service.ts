@@ -16,9 +16,7 @@ export class AuthenticationService {
 
 
   login(user : User) {
-    
-    
-    console.log('llega al login del service');
+
     // Lógica de autenticación (puede ser una llamada a una API, por ejemplo)
     this.isLoggedInSubject.next(true);
     this.loggedUserSubject.next(user);
