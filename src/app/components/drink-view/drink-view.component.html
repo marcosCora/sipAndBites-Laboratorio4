@@ -42,5 +42,10 @@
           </div>
         </div>
       </div>
-    
 </div>
+
+<app-list-comment [idProduct]="idDrink"></app-list-comment>
+
+<ng-container *ngIf="userLog">
+  <app-comment [idProduct]="idDrink"></app-comment>
+</ng-container>

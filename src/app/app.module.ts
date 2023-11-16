@@ -12,7 +12,6 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { NewDrinkComponent } from './components/new-drink/new-drink.component';
 import { NewMealComponent } from './components/new-meal/new-meal.component';
 import { ListUserRecipesComponent } from './components/list-user-recipes/list-user-recipes.component';
-
 import { ListDrinksComponent } from './components/list-drinks/list-drinks.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DrinkViewComponent } from './components/drink-view/drink-view.component';
@@ -25,6 +24,9 @@ import { FormFilterDrinkComponent } from './components/form-filter-drink/form-fi
 import { InvalidSearchComponent } from './components/invalid-search/invalid-search.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListFavouritesComponent } from './components/list-favourites/list-favourites.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { ListCommentComponent } from './components/list-comment/list-comment.component';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { ListFavouritesComponent } from './components/list-favourites/list-favou
     FormFilterMealComponent,
     FormFilterDrinkComponent,
     InvalidSearchComponent,
-    ListFavouritesComponent
+    ListFavouritesComponent,
+    CommentComponent,
+    ListCommentComponent
   ],
   imports: [
     BrowserModule,

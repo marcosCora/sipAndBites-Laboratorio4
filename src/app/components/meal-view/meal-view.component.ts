@@ -14,19 +14,24 @@ import { UserService } from 'src/app/services/user.service';
 export class MealViewComponent implements OnInit {
   
   meal !: Meal; 
+
   isLoggedIn : boolean = false;
   loggedUser : User = new User();
   isFavourite : boolean = false;
+userLog : boolean = false;
+  idMeal !: number;
 
   constructor(private mealService : MealServiceService,
               private route : ActivatedRoute,
               private authenticationService : AuthenticationService,
               private userService : UserService){}
   
+
+  
   ngOnInit(): void {
      this.route.params.subscribe(params=>{
-      let idMeal = params['id'];
-      this.mealService.getMealById(idMeal).subscribe((data : Meal[])=>{
+      this.idMeal = params['id'];
+      this.mealService.getMealById(this.idMeal).subscribe((data : Meal[])=>{
         this.meal = data[0];
         this.isFavourite = this.isMealInFavList();
         console.log('is favourite : ' , this.isFavourite);
@@ -45,7 +50,6 @@ export class MealViewComponent implements OnInit {
 
 
   addToFavList(idMeal : string) {
-    
     this.loggedUser.mealsFavList.push(Number(idMeal));
     this.isFavourite = true;
     this.userService.putUser(this.loggedUser).subscribe(

@@ -12,11 +12,11 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./drink-view.component.css']
 })
 export class DrinkViewComponent implements OnInit{
-
   drink !: Drink ;
   isLoggedIn : boolean = false;
   loggedUser : User = new User();
   isFavourite : boolean = false;
+  userLog : boolean = false;
 
   constructor(private drinkService : DrinkService,
               private route : ActivatedRoute,
@@ -25,11 +25,14 @@ export class DrinkViewComponent implements OnInit{
 
   ngOnInit(): void{
     this.route.params.subscribe(async param => {
-      const idDrink = +param['id'];
-      this.drinkService.getDrinkById(idDrink).subscribe((data : Drink) => {
+      this.idDrink = +param['id'];
+      this.drinkService.getDrinkById(this.idDrink).subscribe((data : Drink) => {
           this.drink = data;
           this.isFavourite = this.isDrinkInFavList();
           console.log(this.drink);
+          this.authenTicationUser.authStatusChangesIsLoggedIn.subscribe(response =>{
+            this.userLog = response;            
+          })
         });
     });
 
@@ -71,5 +74,7 @@ export class DrinkViewComponent implements OnInit{
       error => console.log(error));
     
   }
+
+  
 
 }
