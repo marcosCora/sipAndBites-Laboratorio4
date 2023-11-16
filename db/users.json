@@ -441,11 +441,13 @@
         }
       ],
       "drinksFavList": [
-        17222,
-        15997,
-        13501
+        17225
       ],
-      "mealsFavList": []
+      "mealsFavList": [
+        52942,
+        52794,
+        52775
+      ]
     },
     {
       "id": 2,
@@ -631,6 +633,14 @@
       "idUser": 2,
       "nameUser": "Juan Carlos Garcia",
       "comment": "Lo volvi a hacer y salio mucho mejor.",
+      "dateComment": "16-11-2023"
+    },
+    {
+      "id": 7,
+      "idProduct": 17222,
+      "idUser": 1,
+      "nameUser": "Angeles Higa",
+      "comment": "muy bueno",
       "dateComment": "16-11-2023"
     }
   ]

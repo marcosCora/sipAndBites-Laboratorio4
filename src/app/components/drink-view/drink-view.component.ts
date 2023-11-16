@@ -17,6 +17,7 @@ export class DrinkViewComponent implements OnInit{
   loggedUser : User = new User();
   isFavourite : boolean = false;
   userLog : boolean = false;
+  idDrink !: number;
 
   constructor(private drinkService : DrinkService,
               private route : ActivatedRoute,
@@ -30,7 +31,7 @@ export class DrinkViewComponent implements OnInit{
           this.drink = data;
           this.isFavourite = this.isDrinkInFavList();
           console.log(this.drink);
-          this.authenTicationUser.authStatusChangesIsLoggedIn.subscribe(response =>{
+          this.authenticationService.authStatusChangesIsLoggedIn.subscribe(response =>{
             this.userLog = response;            
           })
         });
