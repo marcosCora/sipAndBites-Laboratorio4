@@ -25,7 +25,7 @@ import { FormFilterDrinkComponent } from './components/form-filter-drink/form-fi
 import { InvalidSearchComponent } from './components/invalid-search/invalid-search.component';
 import { HomeComponent } from './components/home/home.component';
 import { CommentComponent } from './components/comment/comment.component';
-import { ListCommentComponent } from './componets/list-comment/list-comment.component';
+import { ListCommentComponent } from './components/list-comment/list-comment.component';
 
 @NgModule({
   declarations: [

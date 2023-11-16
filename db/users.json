@@ -384,6 +384,14 @@
       "nameUser": "Angeles Higa",
       "comment": "Muy rico trago",
       "dateComment": "15-11-2023"
+    },
+    {
+      "id": 4,
+      "idProduct": 13501,
+      "idUser": 3,
+      "nameUser": "Marcos Corasaniti",
+      "comment": "buen trago.",
+      "dateComment": "15-11-2023"
     }
   ]
 }
