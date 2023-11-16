@@ -61,11 +61,22 @@ h6{
     margin-top: 0.5rem;
 }
 
+.card_title {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.card-title {
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
 .img_star {
     width: 100%; /* Ancho del contenedor */
     height: 1.5rem; /* Altura del contenedor */
+    grid-column-start: 6;
+    grid-column-end: 6;
     
-
 }
 
 .img_star img {
@@ -74,4 +85,5 @@ h6{
     display:list-item;
     justify-content: flex-end;
     object-fit: contain; /* Hacer que la imagen se ajuste dentro del contenedor */
+    cursor: pointer;
 }

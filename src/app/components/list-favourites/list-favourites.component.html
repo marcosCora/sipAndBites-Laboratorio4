@@ -1,9 +1,6 @@
 <div class="container">
     <div *ngIf="loggedUser.drinksFavList.length > 0 || loggedUser.mealsFavList.length > 0" class="myFavTitle" >
         <h3>My Favourites</h3>
-        <!--<div class="img_star">
-            <img class="img_star" src="../../../assets/star.png">
-        </div>-->
     </div>
     
 
@@ -27,7 +24,12 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
+                            <div class="card_title">
                                 <h3 class="card-title">{{drink.strDrink}}</h3>
+                                <div class="img_star">
+                                  <img src="../../../assets/star.png"  (click)="removeDrinkFromFavList(drink.idDrink)" title="Remove from Favourites">
+                                </div>
+                              </div>
                                 <p class="card-text-small" *ngIf="drink.strCategory"><small class="text-muted">{{drink.strCategory}}</small></p>
                                 <p class="card-text-small" *ngIf="drink.strGlass"><small class="text-muted">{{drink.strGlass}}</small></p>
                                 <p class="card-text-small"><small class="text-muted">{{drink.strAlcoholic}}</small></p>
@@ -68,7 +70,12 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                           <h3 class="card-title">{{meal.strMeal}}</h3>
+                            <div class="card_title">
+                                <h3 class="card-title">{{meal.strMeal}}</h3>
+                                <div class="img_star">
+                                  <img src="../../../assets/star.png" (click)="removeMealFromFavList(meal.idMeal)" title="Remove from Favourites">
+                                </div>
+                              </div>
                             <p class="card-text-small" *ngIf="meal.strCategory"><small class="text-muted">{{meal.strCategory}}</small></p>
                             <p class="card-text-small" *ngIf="meal.strArea"><small class="text-muted">{{meal.strArea}}</small></p>
                 
