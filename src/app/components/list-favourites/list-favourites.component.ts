@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { Drink } from 'src/app/models/drink';
 import { Meal } from 'src/app/models/meal';
@@ -24,24 +25,35 @@ export class ListFavouritesComponent {
     constructor(private userService : UserService,
                 private authenticationService : AuthenticationService,
                 private drinkService : DrinkService,
-                private mealService : MealServiceService){}
+                private mealService : MealServiceService,
+                private router : Router){}
 
     ngOnInit(): void {
       this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
         this.loggedUser = user;
         
-        user.drinksFavList.forEach(id => {
+        this.loggedUser.drinksFavList.forEach(id => {
           this.drinkService.getDrinkById(id).subscribe(result => {
             this.drinkFav.push(result);
           });
         });
 
-        user.mealsFavList.forEach(id => {
+        this.loggedUser.mealsFavList.forEach(id => {
           this.mealService.getMealById(id).subscribe(result => {
             this.mealFav.push(result[0]);
           });
       });
-    })
+
+      this.drinkFav.forEach(r => console.log('drinkFav:' + r.idDrink));
+      console.log('drinksFavList:');
+      this.loggedUser.drinksFavList.forEach(id => console.log(id));
+
+      this.mealFav.forEach(r => console.log('mealFav:' + r.idMeal));
+      console.log('mealsFavList:');
+      this.loggedUser.mealsFavList.forEach(id => console.log(id));
+    });
+
+    
   }
 
     showMealList(){
@@ -70,5 +82,52 @@ export class ListFavouritesComponent {
       this.mealService.getMealById(idMeal).subscribe( result => {
         return result;
       });
+    }
+
+    removeDrinkFromFavList(idToDelete : string) : void {
+
+      if(this.showMealsFavList === false && this.drinkFav.length === 1){
+        this.showMealsFavList = true;
+      }
+
+      console.log('drinksFavList:');
+      this.loggedUser.drinksFavList.forEach(id => console.log(id));
+    
+      this.loggedUser.drinksFavList = this.loggedUser.drinksFavList.filter(id => id !== Number(idToDelete));
+      this.drinkFav = this.drinkFav.filter(drink => drink.idDrink !== idToDelete);
+
+      console.log('remove Drink:');
+      this.drinkFav.forEach(r => console.log('drinkFav:' + r.idDrink));
+      console.log('drinksFavList:');
+      this.loggedUser.drinksFavList.forEach(id => console.log(id));
+      
+      
+      this.userService.putUser(this.loggedUser).subscribe(
+        response => console.log('entra al put para eliminar'),
+        error => console.log(error));  
+      
+    }
+
+    removeMealFromFavList(idToDelete : string) : void {
+
+      if(this.showDrinksFavList === false && this.mealFav.length === 1){
+        this.showDrinksFavList = true;
+      }
+    
+      console.log('mealsFavList:');
+      this.loggedUser.mealsFavList.forEach(id => console.log(id));
+
+      this.loggedUser.mealsFavList = this.loggedUser.mealsFavList.filter(id => id !== Number(idToDelete));
+      this.mealFav = this.mealFav.filter(meal => meal.idMeal !== idToDelete);
+
+      console.log('remove Meal:');
+      this.mealFav.forEach(r => console.log('mealFav:' + r.idMeal));
+      console.log('mealsFavList:');
+      this.loggedUser.mealsFavList.forEach(id => console.log(id));
+      
+      this.userService.putUser(this.loggedUser).subscribe(
+        response => console.log('entra al put para eliminar'),
+        error => console.log(error));  
+      
     }
 }

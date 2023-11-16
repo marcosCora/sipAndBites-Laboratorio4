@@ -441,19 +441,11 @@
         }
       ],
       "drinksFavList": [
-        15997,
         17222,
-        13328,
-        12734,
-        15615,
-        12748,
-        12746
+        15997,
+        13501
       ],
-      "mealsFavList": [
-        52942,
-        52794,
-        52775
-      ]
+      "mealsFavList": []
     },
     {
       "id": 2,
@@ -575,15 +567,8 @@
           "dateModified": ""
         }
       ],
-      "drinksFavList": [
-        12658,
-        15951
-      ],
-      "mealsFavList": [
-        52773,
-        53033,
-        53065
-      ]
+      "drinksFavList": [],
+      "mealsFavList": []
     }
   ]
 }
