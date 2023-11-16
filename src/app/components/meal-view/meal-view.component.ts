@@ -18,7 +18,7 @@ export class MealViewComponent implements OnInit {
   isLoggedIn : boolean = false;
   loggedUser : User = new User();
   isFavourite : boolean = false;
-userLog : boolean = false;
+  
   idMeal !: number;
 
   constructor(private mealService : MealServiceService,
