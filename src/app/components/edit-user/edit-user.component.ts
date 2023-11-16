@@ -64,7 +64,4 @@ export class EditUserComponent {
     this.router.navigate(['home']);
   }
 
-  
-
-
 }

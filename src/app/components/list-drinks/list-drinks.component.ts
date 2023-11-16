@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Drink } from 'src/app/models/drink';
+import { User } from 'src/app/models/user';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DrinkFilterService } from 'src/app/services/drink-filter.service';
 import { DrinkService } from 'src/app/services/drink.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-list-drinks',
@@ -13,7 +16,14 @@ export class ListDrinksComponent implements OnInit{
 
   drinksList : Drink[] = [];
   searchCheck : boolean = true;
-  constructor(private drinkService : DrinkService, private route : ActivatedRoute, private drinksFilter : DrinkFilterService){}
+  loggedUser : User = new User();
+  isLoggedIn : boolean = false;
+
+  constructor(private drinkService : DrinkService, 
+              private route : ActivatedRoute, 
+              private drinksFilter : DrinkFilterService,
+              private authenticationService : AuthenticationService,
+              private userService : UserService){}
 
   
 
@@ -32,6 +42,15 @@ export class ListDrinksComponent implements OnInit{
       }
       
     });
+
+    this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
+      this.loggedUser = user;
+      console.log(this.loggedUser);
+      });
+
+      this.authenticationService.authStatusChangesIsLoggedIn.subscribe((result : boolean) => {
+        this.isLoggedIn = result;
+        });
   }
 
 
@@ -88,6 +107,32 @@ export class ListDrinksComponent implements OnInit{
       console.log(this.drinksList);
     }
     );
+  }
+
+  addToFavList(idDrink : string){
+    this.loggedUser.drinksFavList.push(Number(idDrink));
+    this.userService.putUser(this.loggedUser).subscribe(
+      response => console.log('entra al put para agregar'),
+      error => console.log(error));
+  }
+
+  isDrinkInFavList(idDrink : string) : boolean {
+    let exists = false;
+
+    if(this.loggedUser.drinksFavList !== null){
+      exists = !!this.loggedUser.drinksFavList.find(id => id === Number(idDrink));
+    }
+
+    return exists;
+  }
+
+  removeFromFavList(idDrink : string) : void {
+    this.loggedUser.drinksFavList = this.loggedUser.drinksFavList.filter(id => id !== Number(idDrink));
+
+    this.userService.putUser(this.loggedUser).subscribe(
+      response => console.log('entra al put para eliminar'),
+      error => console.log(error));
+    
   }
 
 }

@@ -135,8 +135,9 @@ export class NewDrinkComponent implements OnInit {
 
   }
 
-  addIngredient(){
+  addIngredient(event : Event){
     this.numberOfIngredients++;
+    event.preventDefault();
   }
 
 }

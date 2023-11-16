@@ -5,9 +5,17 @@
             <div class="card" style="width: 18rem">
                 <img *ngIf="meal.strMealThumb" src={{meal.strMealThumb}} class="card-img-top">
                 <div class="card-body">
-                  <h5 class="card-title">{{meal.strMeal}}</h5>
+                  <div class="card_title">
+                    <h5 class="card-title">{{meal.strMeal}}</h5>
+                    <div *ngIf="isLoggedIn" class="img_star">
+                      <img *ngIf="!isMealInFavList(meal.idMeal)" src="../../../assets/addToList.png" (click)="addToFavList(meal.idMeal)" title="Add to Favourites">
+                      <img *ngIf="isMealInFavList(meal.idMeal)" src="../../../assets/star.png" (click)="removeFromFavList(meal.idMeal)" title="Remove from Favourites">
+                    </div>
+                  </div>
                   <p class="card-text">{{meal.strCategory}}</p>
-                  <a  [routerLink]="['/meal', meal.idMeal]" routerLinkActive="active" class="btn btn-primary">Show details</a>
+                  <div class="btn_container">
+                    <a  [routerLink]="['/meal', meal.idMeal]" routerLinkActive="active" class="btn btn-primary">Show details</a>
+                  </div>
 
                 </div>
               </div>

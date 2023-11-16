@@ -145,7 +145,8 @@ export class NewMealComponent {
 
   }
 
-  addIngredient(){
+  addIngredient(event : Event){
     this.numberOfIngredients++;
+    event.preventDefault();
   }
 }

@@ -1,5 +1,40 @@
+.myFavTitle {
+    color: #BB29BB;
+    text-align: center;
+    margin-top: 2rem;
+    display: inline;
+}
+
+
+
+#checkboxBtn:checked {
+    background-color: #892889;
+    border-color: #892889;
+}
+
+h6{
+    align-items: center;
+    
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.list-drinks {
+    width: 1000px;
+}
+
+.list-meals {
+    width: 1000px;
+}
+
 .card{
     margin: 3rem;
+    
    
 }
 
@@ -33,7 +68,7 @@
 
 .card-title {
     grid-column-start: 1;
-    grid-column-end: 6;
+    grid-column-end: 5;
 }
 
 .img_star {
