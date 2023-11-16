@@ -1,23 +1,32 @@
 <app-form-filter-drink></app-form-filter-drink>
 
-<div class="container">
-    <div *ngIf="drinksList.length > 0 && searchCheck; else invalidSearchContent" class="list-container">
-        <div *ngFor="let drink of drinksList">
-            <div class="card" style="width: 18rem">
-                <img *ngIf="drink.strDrinkThumb" src={{drink.strDrinkThumb}} class="card-img-top">
-                <img *ngIf="!drink.strDrinkThumb" src="../../../assets/drinkDefaultImg.png" class="card-img-top">
-                <div class="card-body">
-                  <h5 class="card-title">{{drink.strDrink}}</h5>
-                  <p class="card-text">{{drink.strCategory}}</p>
-                  <a class="btn btn-primary" [routerLink]="['/drink',drink.idDrink]">Show details</a>
-                </div>
+<ng-template *ngIf="loader == true">
+  <p>HOLAAA</p>
+  <h1>hollaa</h1>
+  <app-loader></app-loader>
+</ng-template>
+
+<div class="container" *ngIf="!loader" >
+  <div *ngIf="drinksList.length > 0 && searchCheck; else invalidSearchContent" class="list-container">
+      <div *ngFor="let drink of drinksList">
+          <div class="card" style="width: 18rem">
+              <img *ngIf="drink.strDrinkThumb" src={{drink.strDrinkThumb}} class="card-img-top">
+              <img *ngIf="!drink.strDrinkThumb" src="../../../assets/drinkDefaultImg.png" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">{{drink.strDrink}}</h5>
+                <p class="card-text">{{drink.strCategory}}</p>
+                <a class="btn btn-primary" [routerLink]="['/drink',drink.idDrink]">Show details</a>
               </div>
-        </div>
-    </div>
+            </div>
+      </div>
+  </div>
+  
 </div> 
 
-<ng-template #invalidSearchContent>
+
+
+ <ng-template #invalidSearchContent>
   <div>
       <app-invalid-search></app-invalid-search>
   </div>
-</ng-template>
+</ng-template> 

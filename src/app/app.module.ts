@@ -26,6 +26,7 @@ import { InvalidSearchComponent } from './components/invalid-search/invalid-sear
 import { HomeComponent } from './components/home/home.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { ListCommentComponent } from './components/list-comment/list-comment.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ListCommentComponent } from './components/list-comment/list-comment.com
     FormFilterDrinkComponent,
     InvalidSearchComponent,
     CommentComponent,
-    ListCommentComponent
+    ListCommentComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
