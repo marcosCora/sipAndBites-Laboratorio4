@@ -15,6 +15,7 @@ import { ListDrinksComponent } from './components/list-drinks/list-drinks.compon
 import { DrinkViewComponent } from './components/drink-view/drink-view.component';
 import { MealViewComponent } from './components/meal-view/meal-view.component';
 import { ListMealComponentComponent } from './components/list-meal-component/list-meal-component.component';
+import { ListFavouritesComponent } from './components/list-favourites/list-favourites.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'listMeals', component: ListMealComponentComponent},
   {path: 'drink/:id', component: DrinkViewComponent},
   {path:'meal/:id', component: MealViewComponent},
+  {path:'userFavourites', component: ListFavouritesComponent},
   {path: '**', redirectTo: 'home'}
 ];
 
