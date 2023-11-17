@@ -43,14 +43,19 @@ export class ListDrinksComponent implements OnInit{
       
     });
 
-    this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
+    this.loggedUser = this.authenticationService.getCurrentUser();
+    if(this.loggedUser){
+      this.isLoggedIn = true;
+    }
+
+ /*    this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
       this.loggedUser = user;
       console.log(this.loggedUser);
       });
 
       this.authenticationService.authStatusChangesIsLoggedIn.subscribe((result : boolean) => {
         this.isLoggedIn = result;
-        });
+        }); */
   }
 
 

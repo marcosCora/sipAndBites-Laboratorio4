@@ -38,13 +38,18 @@ export class MealViewComponent implements OnInit {
       });
     }); 
 
-    this.authenticationService.authStatusChangesIsLoggedIn.subscribe(result => {
+    this.loggedUser = this.authenticationService.getCurrentUser();
+    if(this.loggedUser){
+      this.isLoggedIn = true;
+    }
+
+   /*  this.authenticationService.authStatusChangesIsLoggedIn.subscribe(result => {
       this.isLoggedIn = result;
     });
 
     this.authenticationService.authStatusChangesUser.subscribe(user => {
       this.loggedUser = user;
-    });
+    }); */
     
   }
 

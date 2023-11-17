@@ -54,10 +54,9 @@ export class LoginComponent implements OnInit{
       console.log("El mail existe");
       console.log(this.email);
       console.log(this.password);
-
-
       this.user = this.getUserByEmail();
       this.authenticationService.login(this.user);
+      
       
       this.router.navigate(['home']);
 

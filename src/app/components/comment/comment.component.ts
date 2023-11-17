@@ -24,9 +24,11 @@ export class CommentComponent implements OnInit {
 
   constructor(private commentService: CommentService, private userauthentication: AuthenticationService) { }
   ngOnInit(): void {
-    this.userauthentication.authStatusChangesUser.subscribe(response => {
+
+    this.user = this.userauthentication.getCurrentUser();
+ /*    this.userauthentication.authStatusChangesUser.subscribe(response => {
       this.user = response;
-    })
+    }) */
     this.formComment = new FormGroup({
       'comment': new FormControl('', [Validators.required])
     })

@@ -25,11 +25,13 @@ export class NewMealComponent {
   
   ngOnInit(): void {
     
-    this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
+    this.loggedUser = this.authenticationService.getCurrentUser();
+
+    /* this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
       this.loggedUser = user;
 
       console.log(this.loggedUser);
-      });
+      }); */
 
       this.newMealForm = new FormGroup({
         'strMeal' : new FormControl(this.newMeal.strMeal, [Validators.required]),

@@ -22,10 +22,12 @@ export class EditUserComponent {
   
   ngOnInit() : void {
     
-    this.authenticationService.authStatusChangesUser.subscribe({
+  this.editUser = this.authenticationService.getCurrentUser();
+
+   /*  this.authenticationService.authStatusChangesUser.subscribe({
         next : (user : User ) => this.editUser = user,
         error : (error) => console.log(error)
-    });
+    }); */
 
   
     

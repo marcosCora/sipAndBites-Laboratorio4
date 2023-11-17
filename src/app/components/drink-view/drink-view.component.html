@@ -46,6 +46,6 @@
 
 <app-list-comment [idProduct]="idDrink"></app-list-comment>
 
-<ng-container *ngIf="userLog">
+<ng-container *ngIf="isLoggedIn">
   <app-comment [idProduct]="idDrink"></app-comment>
 </ng-container>

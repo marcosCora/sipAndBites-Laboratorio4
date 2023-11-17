@@ -19,11 +19,11 @@ export class ListUserRecipesComponent implements OnInit {
               private authenticationService : AuthenticationService){}
 
   ngOnInit(): void {
-    this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
+    this.loggedUser = this.authenticationService.getCurrentUser();
+
+  /*   this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
       this.loggedUser = user;
-    });
-
-
+    }); */
   }
 
   showMealList(){
