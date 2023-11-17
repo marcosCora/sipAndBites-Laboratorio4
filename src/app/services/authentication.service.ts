@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
   
-  private localStorageKey = 'userCurrent';
+  private localStorageKey = 'userCurrent';  
+  private loginSubject = new Subject<void>();
+  loginEvent$ = this.loginSubject.asObservable();
 
- /*  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
-  authStatusChangesIsLoggedIn = this.isLoggedInSubject.asObservable();
   
-  private loggedUserSubject: BehaviorSubject<User> = new BehaviorSubject<User>(new User);  
-  authStatusChangesUser = this.loggedUserSubject.asObservable(); */
-  
+  triggerLoginEvent() {
+    this.loginSubject.next();
+  }
 
   login(user : User) {
     localStorage.setItem(this.localStorageKey, JSON.stringify(user));
-    console.log(user);
   }
 
   logout() {
@@ -27,8 +26,6 @@ export class AuthenticationService {
 
   getCurrentUser() : User{
     let user = localStorage.getItem(this.localStorageKey);
-    console.log(user);
-    
     return user ? JSON.parse(user) : null;
   }
 

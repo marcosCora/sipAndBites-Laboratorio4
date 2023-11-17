@@ -23,13 +23,6 @@ export class EditUserComponent {
   ngOnInit() : void {
     
   this.editUser = this.authenticationService.getCurrentUser();
-
-   /*  this.authenticationService.authStatusChangesUser.subscribe({
-        next : (user : User ) => this.editUser = user,
-        error : (error) => console.log(error)
-    }); */
-
-  
     
     this.editUserForm = new FormGroup({
 
@@ -53,9 +46,11 @@ export class EditUserComponent {
     this.editUser.password = this.editUserForm.controls['password'].value;
     this.editUser.dateOfBirth = this.editUserForm.controls['dateOfBirth'].value; 
 
-    this.userService.putUser(this.editUser).subscribe(response => this.router.navigate(['home']), 
+    this.userService.putUser(this.editUser).subscribe(
+    response => this.router.navigate(['home']), 
     error => console.log(error));
-    console.log(this.editUser);
+
+    this.authenticationService.login(this.editUser);
 
   }
 

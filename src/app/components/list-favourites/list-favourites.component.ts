@@ -17,8 +17,10 @@ import { UserService } from 'src/app/services/user.service';
 export class ListFavouritesComponent {
 
   loggedUser: User = new User;
+
   showMealsFavList: boolean = true;
   showDrinksFavList: boolean = true;
+
   mealFav: Meal[] = [];
   drinkFav: Drink[] = [];
 
@@ -35,6 +37,8 @@ export class ListFavouritesComponent {
     if (this.loggedUser) {
       this.loggedUser.drinksFavList.forEach(id => {
         this.drinkService.getDrinkById(id).subscribe(result => {
+          
+          
           this.drinkFav.push(result);
         });
       });
@@ -53,31 +57,6 @@ export class ListFavouritesComponent {
       console.log('mealsFavList:');
       this.loggedUser.mealsFavList.forEach(id => console.log(id));
     }
-       /* this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
-        this.loggedUser = user;
-        
-        this.loggedUser.drinksFavList.forEach(id => {
-          this.drinkService.getDrinkById(id).subscribe(result => {
-            this.drinkFav.push(result);
-          });
-        });
-
-        this.loggedUser.mealsFavList.forEach(id => {
-          this.mealService.getMealById(id).subscribe(result => {
-            this.mealFav.push(result[0]);
-          });
-      });
-
-      this.drinkFav.forEach(r => console.log('drinkFav:' + r.idDrink));
-      console.log('drinksFavList:');
-      this.loggedUser.drinksFavList.forEach(id => console.log(id));
-
-      this.mealFav.forEach(r => console.log('mealFav:' + r.idMeal));
-      console.log('mealsFavList:');
-      this.loggedUser.mealsFavList.forEach(id => console.log(id));
-    });
-      */
-
   }
 
   showMealList() {
