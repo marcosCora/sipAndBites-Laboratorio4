@@ -38,13 +38,10 @@ export class ListMealComponentComponent implements OnInit {
       }   
     });
 
-    this.authenticationService.authStatusChangesIsLoggedIn.subscribe(result => {
-      this.isLoggedIn = result;
-    });
-
-    this.authenticationService.authStatusChangesUser.subscribe(user => {
-      this.loggedUser = user;
-    });
+    this.loggedUser = this.authenticationService.getCurrentUser();
+    if(this.loggedUser){
+      this.isLoggedIn = true;
+    }
   }
 
    showMealsByName(){
@@ -56,37 +53,30 @@ export class ListMealComponentComponent implements OnInit {
    showMealById(){
     this.mealService.getMealById(52977).subscribe((data : Meal[])=>{
       this.mealList = data;
-      console.log('ID');
-      console.log(this.mealList);
     });
    }
 
    showMealByCategories(){
     this.mealService.getMealByCategories().subscribe((data : Meal[])=>{
       this.mealList = data;
-      console.log('Categories');
-      console.log(this.mealList);
     });
    }
 
    showMealByFirstLetter(){
     this.mealService.getMealByFirstLetter('l').subscribe((data : Meal[])=>{
       this.mealList = data;
-      console.log('Priemra letra');
-      console.log(this.mealList);
     });
    }
 
    showMealByIngredient(){
     this.mealService.getMealByIngredient('onion').subscribe((data : Meal[])=>{
       this.mealList = data;
-      console.log('Ingrediente');
-      console.log(this.mealList);
     })
    }
 
    addToFavList(idMeal : string){
     this.loggedUser.mealsFavList.push(Number(idMeal));
+    this.authenticationService.login(this.loggedUser);
     this.userService.putUser(this.loggedUser).subscribe(
       response => console.log('entra al put para agregar'),
       error => console.log(error));

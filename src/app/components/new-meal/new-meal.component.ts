@@ -25,11 +25,7 @@ export class NewMealComponent {
   
   ngOnInit(): void {
     
-    this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
-      this.loggedUser = user;
-
-      console.log(this.loggedUser);
-      });
+    this.loggedUser = this.authenticationService.getCurrentUser();
 
       this.newMealForm = new FormGroup({
         'strMeal' : new FormControl(this.newMeal.strMeal, [Validators.required]),
@@ -138,7 +134,7 @@ export class NewMealComponent {
 
 
     this.loggedUser.meals.push(this.newMeal);
-
+    this.authenticationService.login(this.loggedUser);
     this.userService.putUser(this.loggedUser).subscribe(response => this.router.navigate(['userRecipes']), 
     error => console.log(error));
     console.log(this.newMeal);

@@ -1,15 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-  <a class="navbar-brand" href="#">
-        <img src="../../../assets/LogoSipAndBites.png" width="150" height="50" class="d-inline-block align-top" alt="">
-    </a>
-   
-    <!-- annoymous-->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/home"><i class="fas fa-search"></i> Recipes & Drinks</a>
-      </li>
-    </ul>
+  <a class="navbar-brand" routerLink="/home">
+        <img src="../../../assets/LogoSipAndBites.png" width="150" height="50" class="d-inline-block align-top">
+  </a>
+
+  <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-search"></i> Select Option
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" [routerLink]="['/listDrinks']">Drinks</a></li>
+        <li><a class="dropdown-item" [routerLink]="['/listMeals']">Meals</a></li>
+      </ul>
+  </div>
 
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -23,25 +26,38 @@
 
         <!-- WHEN USER IS LOGGED IN-->
 
-        <li class="nav-item">
-          <a class="nav-link" *ngIf="isLoggedIn">Hello {{loggedUser.firstName}}</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/editUser" *ngIf="isLoggedIn">My Account</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" *ngIf="isLoggedIn" routerLink="/userRecipes">My Recipes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" *ngIf="isLoggedIn" routerLink="/userFavourites">My Favourites</a>
-        </li>
-      
-        <li class="nav-item">
-          <a class="nav-link" href="/home" *ngIf="isLoggedIn" (click)="logOut()" >Log out</a>
-        </li>
-        <li class="nav-item">
+        <div class="dropdown" *ngIf="isLoggedIn">
+          <button class="btn btn-secondary dropdown-toggle" id="btn_menu_options" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Hello {{loggedUser.firstName}}
+          </button>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="list_menu_options">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/editUser" *ngIf="isLoggedIn">My Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  routerLink="/userRecipes">My Recipes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/userFavourites">My Favourites</a>
+            </li>
+           <!--  <li class="nav-item">
+              <a class="nav-link" >What can I cook?</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" >What can I drink?</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="/home" (click)="logOut()" >Log out</a>
+            </li>
+          </ul>
+
+        </div>
+
+        
+        <!-- <li class="nav-item">
           <a class="nav-link" href="/home" *ngIf="isLoggedIn" (click)="signOut()" >Sign out</a>
-        </li>
+        </li> -->
       </ul>
     </div>
   </nav>

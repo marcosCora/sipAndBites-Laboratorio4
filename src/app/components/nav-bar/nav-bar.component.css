@@ -7,7 +7,18 @@
     margin-left: 1rem;
 }
 
-.navbar navbar-expand-lg navbar-light bg-light{
-    background-color: rgb(99, 27, 137);
+
+
+#btn_menu_options {
+    color: #892889;
+    background-color: #F8F9FA;
+    border: none;
 }
+
+#list_menu_options{
+    
+    border-color: #F8F9FA;
+}
+
+
 

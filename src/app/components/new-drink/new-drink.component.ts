@@ -26,11 +26,7 @@ export class NewDrinkComponent implements OnInit {
   
   ngOnInit(): void {
     
-    this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
-      this.loggedUser = user;
-
-      console.log(this.loggedUser);
-      });
+    this.loggedUser = this.authenticationService.getCurrentUser();
 
       this.newDrinkForm = new FormGroup({
         'strDrink' : new FormControl(this.newDrink.strDrink, [Validators.required]),
@@ -128,13 +124,14 @@ export class NewDrinkComponent implements OnInit {
 
 
     this.loggedUser.drinks.push(this.newDrink);
+    this.authenticationService.login(this.loggedUser);
 
     this.userService.putUser(this.loggedUser).subscribe(response => this.router.navigate(['userRecipes']), 
     error => console.log(error));
     console.log(this.newDrink);
 
   }
-
+  
   addIngredient(event : Event){
     this.numberOfIngredients++;
     event.preventDefault();

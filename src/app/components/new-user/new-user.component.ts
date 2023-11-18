@@ -26,9 +26,7 @@ export class NewUserComponent implements OnInit{
 
     this.getAllUsers();
     
-
     this.userForm = new FormGroup({
-      //'id' : new FormControl(this.user.id),
       'firstName' : new FormControl(this.user.firstName, [Validators.required, CustomValidator.forbiddenNames(/admin/)]),
       'lastName' : new FormControl(this.user.lastName, [Validators.required]),
       'email' : new FormControl(this.user.email, [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), CustomValidator.registeredEmails(this.registeredEmail)]),
@@ -44,29 +42,20 @@ export class NewUserComponent implements OnInit{
     this.userService.getUsers().subscribe((data : User[]) => {
       this.usersList = data;
       this.getRegisteredEmails();
-      console.log(this.usersList);
     });
   }
 
   getRegisteredEmails() : void {
-
-    
-
     for(let i=0 ; i < this.usersList.length ; i++){
         this.registeredEmail.push(this.usersList[i].email);
     }
-
-    console.log(this.registeredEmail);
-
   }
-
 
   addUser(){
 
     if(this.userForm.invalid){
       return;
     }
-    //this.user.id = 0;
     this.user.firstName = this.userForm.controls['firstName'].value;
     this.user.lastName = this.userForm.controls['lastName'].value;
     this.user.email = this.userForm.controls['email'].value;
@@ -77,6 +66,7 @@ export class NewUserComponent implements OnInit{
     this.userService.postUser(this.user).subscribe(
       response => {
         this.authenticationService.login(this.user);
+        this.authenticationService.triggerLoginEvent();
         this.router.navigate(['home']);
         }, 
       error => console.log(error));
@@ -86,10 +76,6 @@ export class NewUserComponent implements OnInit{
   get firstName(){
     return this.userForm.get('firstName');
   }
-
-  //get lastName(){
-  //  return this.userForm.get('lastName');
-  //}
 
 
 }
