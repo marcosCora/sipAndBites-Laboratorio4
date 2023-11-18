@@ -47,15 +47,6 @@ export class ListDrinksComponent implements OnInit{
     if(this.loggedUser){
       this.isLoggedIn = true;
     }
-
- /*    this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
-      this.loggedUser = user;
-      console.log(this.loggedUser);
-      });
-
-      this.authenticationService.authStatusChangesIsLoggedIn.subscribe((result : boolean) => {
-        this.isLoggedIn = result;
-        }); */
   }
 
 
@@ -69,7 +60,6 @@ export class ListDrinksComponent implements OnInit{
   showDrinksByFirstLetter(){
     this.drinkService.getDrinksByFirstLetter("a").subscribe((data : Drink[]) => {
       this.drinksList = data;
-      console.log(this.drinksList);
     }
     );
   }
@@ -77,7 +67,6 @@ export class ListDrinksComponent implements OnInit{
   showDrinksByIngredient(){
     this.drinkService.getDrinksByIngredient("gin").subscribe((data : Drink[]) => {
       this.drinksList = data;
-      console.log(this.drinksList);
     }
     );
   }
@@ -85,7 +74,6 @@ export class ListDrinksComponent implements OnInit{
   showAlcoholicDrinks(){
     this.drinkService.getDrinksByAlcohol("Alcoholic").subscribe((data : Drink[]) => {
       this.drinksList = data;
-      console.log(this.drinksList);
     }
     );
   }
@@ -93,7 +81,6 @@ export class ListDrinksComponent implements OnInit{
   showNonAlcoholicDrinks(){
     this.drinkService.getDrinksByAlcohol("Non_Alcoholic").subscribe((data : Drink[]) => {
       this.drinksList = data;
-      console.log(this.drinksList);
     }
     );
   }
@@ -101,7 +88,7 @@ export class ListDrinksComponent implements OnInit{
   showDrinksByCategory(){
     this.drinkService.getDrinksByCategoryOnly("Beer").subscribe((data : Drink[]) => {
       this.drinksList = data;
-      console.log(this.drinksList);
+
     }
     );
   }
@@ -109,15 +96,17 @@ export class ListDrinksComponent implements OnInit{
   showDrinkById(){
     this.drinkService.getDrinkById(11007).subscribe((data : Drink) => {
       this.drinksList[0] = data;
-      console.log(this.drinksList);
+
     }
     );
   }
 
   addToFavList(idDrink : string){
     this.loggedUser.drinksFavList.push(Number(idDrink));
+    this.authenticationService.login(this.loggedUser);
     this.userService.putUser(this.loggedUser).subscribe(
-      response => console.log('entra al put para agregar'),
+      response => console.log('entra al put para agregar')
+      ,
       error => console.log(error));
   }
 

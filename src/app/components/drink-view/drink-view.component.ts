@@ -37,20 +37,12 @@ export class DrinkViewComponent implements OnInit{
     if(this.loggedUser){
       this.isLoggedIn = true;
     }
-
-    
-   /*  this.authenticationService.authStatusChangesIsLoggedIn.subscribe(result => {
-      this.isLoggedIn = result;
-    });
-
-    this.authenticationService.authStatusChangesUser.subscribe(user => {
-      this.loggedUser = user;
-    }); */
   }
 
   addToFavList(idDrink : string){
     
     this.loggedUser.drinksFavList.push(Number(idDrink));
+    this.authenticationService.login(this.loggedUser);
     this.isFavourite = true;
     this.userService.putUser(this.loggedUser).subscribe(
       response => console.log('entra al put para guardar'),

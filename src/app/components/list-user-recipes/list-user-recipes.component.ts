@@ -20,10 +20,6 @@ export class ListUserRecipesComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedUser = this.authenticationService.getCurrentUser();
-
-  /*   this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
-      this.loggedUser = user;
-    }); */
   }
 
   showMealList(){

@@ -28,23 +28,5 @@ export class AuthenticationService {
     let user = localStorage.getItem(this.localStorageKey);
     return user ? JSON.parse(user) : null;
   }
-
-
-
-/*   login(user : User) {
-
-    // Lógica de autenticación (puede ser una llamada a una API, por ejemplo)
-    this.isLoggedInSubject.next(true);
-    this.loggedUserSubject.next(user);
-  }
-
-  logout() {
-    this.isLoggedInSubject.next(false);
-    this.loggedUserSubject.next(new User);
-  } */
-
-  
-
- 
 }
 

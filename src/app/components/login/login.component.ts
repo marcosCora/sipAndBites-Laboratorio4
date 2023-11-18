@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
   getAllUsers(): void {
     this.userService.getUsers().subscribe((data: User[]) => {
       this.usersList = data;
-      console.log(this.usersList);
     });
   }
 
@@ -51,9 +50,6 @@ export class LoginComponent implements OnInit {
     this.password = this.logInForm.controls['password'].value;
 
     if (this.validateLogIn()) {
-      console.log("El mail existe");
-      console.log(this.email);
-      console.log(this.password);
       this.user = this.getUserByEmail();
       this.authenticationService.login(this.user);
 

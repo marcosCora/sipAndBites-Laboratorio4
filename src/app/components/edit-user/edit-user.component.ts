@@ -23,35 +23,32 @@ export class EditUserComponent {
   ngOnInit() : void {
     
   this.editUser = this.authenticationService.getCurrentUser();
-    
-    this.editUserForm = new FormGroup({
+  
+  this.editUserForm = new FormGroup({
 
-      'firstName' : new FormControl(this.editUser.firstName, [Validators.required]),
-      'lastName' : new FormControl(this.editUser.lastName, [Validators.required]),
-      'email' : new FormControl(this.editUser.email, [Validators.required]),
-      'password' : new FormControl(this.editUser.password, [Validators.required, Validators.minLength(8)]),
-      'dateOfBirth' : new FormControl(this.editUser.dateOfBirth, [Validators.required, CustomValidator.legalAge])
-    });
+    'firstName' : new FormControl(this.editUser.firstName, [Validators.required]),
+    'lastName' : new FormControl(this.editUser.lastName, [Validators.required]),
+    'email' : new FormControl(this.editUser.email, [Validators.required]),
+    'password' : new FormControl(this.editUser.password, [Validators.required, Validators.minLength(8)]),
+    'dateOfBirth' : new FormControl(this.editUser.dateOfBirth, [Validators.required, CustomValidator.legalAge])
+  });
   }
 
   updateUser(){
 
-    if(this.editUserForm.invalid){
-      return;
+    if(!this.editUserForm.invalid){      
+      this.editUser.firstName = this.editUserForm.controls['firstName'].value;
+      this.editUser.lastName = this.editUserForm.controls['lastName'].value;
+      this.editUser.email = this.editUserForm.controls['email'].value;
+      this.editUser.password = this.editUserForm.controls['password'].value;
+      this.editUser.dateOfBirth = this.editUserForm.controls['dateOfBirth'].value;       
+      this.authenticationService.login(this.editUser);
+      
+      
+      this.userService.putUser(this.editUser).subscribe(
+      response => this.router.navigate(['home']), 
+      error => console.log(error));
     }
-    
-    this.editUser.firstName = this.editUserForm.controls['firstName'].value;
-    this.editUser.lastName = this.editUserForm.controls['lastName'].value;
-    this.editUser.email = this.editUserForm.controls['email'].value;
-    this.editUser.password = this.editUserForm.controls['password'].value;
-    this.editUser.dateOfBirth = this.editUserForm.controls['dateOfBirth'].value; 
-
-    this.userService.putUser(this.editUser).subscribe(
-    response => this.router.navigate(['home']), 
-    error => console.log(error));
-
-    this.authenticationService.login(this.editUser);
-
   }
 
   logOut() {

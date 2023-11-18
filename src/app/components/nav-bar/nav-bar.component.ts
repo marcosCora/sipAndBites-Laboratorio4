@@ -40,7 +40,6 @@ export class NavBarComponent implements OnInit{
     this.userService.putUser(this.loggedUser).subscribe(
       response => this.authenticationService.logout(),
       error => console.log(error));
-    //this.authenticationService.logout();
   }
   
 }
