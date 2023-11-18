@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoginComponent } from './components/login/login.component';
-import { ItemViewComponent } from './components/item-view/item-view.component';
 import { NewRecipeComponent } from './components/new-recipe/new-recipe.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -33,7 +32,6 @@ import { ListCommentComponent } from './components/list-comment/list-comment.com
     AppComponent,
     NavBarComponent,
     LoginComponent,
-    ItemViewComponent,
     NewRecipeComponent,
     NewUserComponent,
     EditUserComponent,
@@ -42,7 +40,6 @@ import { ListCommentComponent } from './components/list-comment/list-comment.com
     ListUserRecipesComponent,
     HomeComponent,
     ListDrinksComponent,
-    ///showDrinkDetails,
     DrinkViewComponent,
     ListMealComponentComponent,
     MealViewComponent,

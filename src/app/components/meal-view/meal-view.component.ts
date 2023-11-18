@@ -38,19 +38,17 @@ export class MealViewComponent implements OnInit {
       });
     }); 
 
-    this.authenticationService.authStatusChangesIsLoggedIn.subscribe(result => {
-      this.isLoggedIn = result;
-    });
+    this.loggedUser = this.authenticationService.getCurrentUser();
+    if(this.loggedUser){
+      this.isLoggedIn = true;
+    }
 
-    this.authenticationService.authStatusChangesUser.subscribe(user => {
-      this.loggedUser = user;
-    });
-    
   }
 
 
   addToFavList(idMeal : string) {
     this.loggedUser.mealsFavList.push(Number(idMeal));
+    this.authenticationService.login(this.loggedUser);
     this.isFavourite = true;
     this.userService.putUser(this.loggedUser).subscribe(
       response => console.log('entra al put para agregar'),

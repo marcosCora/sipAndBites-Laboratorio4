@@ -16,7 +16,6 @@ export class DrinkViewComponent implements OnInit{
   isLoggedIn : boolean = false;
   loggedUser : User = new User();
   isFavourite : boolean = false;
-  userLog : boolean = false;
   idDrink !: number;
 
   constructor(private drinkService : DrinkService,
@@ -31,24 +30,19 @@ export class DrinkViewComponent implements OnInit{
           this.drink = data;
           this.isFavourite = this.isDrinkInFavList();
           console.log(this.drink);
-          this.authenticationService.authStatusChangesIsLoggedIn.subscribe(response =>{
-            this.userLog = response;            
-          })
         });
     });
 
-    this.authenticationService.authStatusChangesIsLoggedIn.subscribe(result => {
-      this.isLoggedIn = result;
-    });
-
-    this.authenticationService.authStatusChangesUser.subscribe(user => {
-      this.loggedUser = user;
-    });
+    this.loggedUser = this.authenticationService.getCurrentUser();
+    if(this.loggedUser){
+      this.isLoggedIn = true;
+    }
   }
 
   addToFavList(idDrink : string){
     
     this.loggedUser.drinksFavList.push(Number(idDrink));
+    this.authenticationService.login(this.loggedUser);
     this.isFavourite = true;
     this.userService.putUser(this.loggedUser).subscribe(
       response => console.log('entra al put para guardar'),

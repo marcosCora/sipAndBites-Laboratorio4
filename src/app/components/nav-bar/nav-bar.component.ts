@@ -19,15 +19,16 @@ export class NavBarComponent implements OnInit{
   }
   
   ngOnInit(): void {
-    
-      this.authenticationService.authStatusChangesUser.subscribe((user : User) => {
-        this.loggedUser = user;
-      });
 
-      this.authenticationService.authStatusChangesIsLoggedIn.subscribe((isLoggedIn: boolean) => {
-        this.isLoggedIn = isLoggedIn;
-        console.log(this.loggedUser.firstName); 
-      });
+    this.authenticationService.loginEvent$.subscribe(response =>{
+      this.isLoggedIn = true;
+      this.loggedUser = this.authenticationService.getCurrentUser();
+    });
+    
+    this.loggedUser = this.authenticationService.getCurrentUser();
+    if(this.loggedUser){
+      this.isLoggedIn = true;      
+    }
   }
 
   logOut() : void {
@@ -39,7 +40,6 @@ export class NavBarComponent implements OnInit{
     this.userService.putUser(this.loggedUser).subscribe(
       response => this.authenticationService.logout(),
       error => console.log(error));
-    //this.authenticationService.logout();
   }
   
 }

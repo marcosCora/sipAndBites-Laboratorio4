@@ -10,93 +10,86 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
   user !: User;
-  usersList : User[] = [];
-  email : string = '';
+  usersList: User[] = [];
+  email: string = '';
   password: string = '';
-  logInForm !: FormGroup; 
-  wrongLogIn : boolean = false;
+  logInForm !: FormGroup;
+  wrongLogIn: boolean = false;
 
-  constructor(private userService : UserService,
-              private authenticationService : AuthenticationService,
-              private router : Router
-    ){}
+  constructor(private userService: UserService,
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
 
     this.getAllUsers();
 
     this.logInForm = new FormGroup({
-      'email' : new FormControl(this.email, [Validators.required]),
-      'password' : new FormControl(this.password, [Validators.required])
+      'email': new FormControl(this.email, [Validators.required]),
+      'password': new FormControl(this.password, [Validators.required])
     });
   }
 
-  getAllUsers() : void {
-    this.userService.getUsers().subscribe((data : User[]) => {
+  getAllUsers(): void {
+    this.userService.getUsers().subscribe((data: User[]) => {
       this.usersList = data;
-      console.log(this.usersList);
     });
   }
 
-  logIn(){
-    
-    if(this.logInForm.invalid){
+  logIn() {
+
+    if (this.logInForm.invalid) {
       return;
     }
-    
+
     this.email = this.logInForm.controls['email'].value;
     this.password = this.logInForm.controls['password'].value;
-    
-    if(this.validateLogIn()){
-      console.log("El mail existe");
-      console.log(this.email);
-      console.log(this.password);
 
-
+    if (this.validateLogIn()) {
       this.user = this.getUserByEmail();
       this.authenticationService.login(this.user);
-      
+
       this.router.navigate(['home']);
-
-
+      this.authenticationService.triggerLoginEvent();
     }
   }
 
-  validateLogIn() : boolean {
+  validateLogIn(): boolean {
 
-    let exists : boolean = false;
+    let exists: boolean = false;
 
-    for(let i=0 ; i < this.usersList.length ; i++ ){
+    for (let i = 0; i < this.usersList.length; i++) {
 
-      if(this.email == this.usersList[i].email && this.password == this.usersList[i].password && this.usersList[i].active){
+      if (this.email == this.usersList[i].email && this.password == this.usersList[i].password && this.usersList[i].active) {
         exists = true;
         break;
       }
     }
 
-    if(!exists){
+    if (!exists) {
       this.wrongLogIn = true;
     }
 
     return exists;
   }
 
-  getUserByEmail() : User {
+  getUserByEmail(): User {
 
-    for(let i=0 ; i < this.usersList.length ; i++ ){
+    for (let i = 0; i < this.usersList.length; i++) {
 
-      if(this.email == this.usersList[i].email){
+      if (this.email == this.usersList[i].email) {
         return this.usersList[i];
       }
     }
 
     return new User;
-  
+
   }
 
-  
+
 
 }
