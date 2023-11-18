@@ -1,0 +1,18 @@
+footer {
+    background-color: #b2b2b2;
+    margin-top: 1rem;
+    color: black;
+}
+
+img {
+    height: 3rem;
+}
+
+a {
+    text-decoration: none;
+    color:#6C757D;
+}
+
+#text {
+    color: #6C757D;
+}
