@@ -37,8 +37,6 @@ export class ListFavouritesComponent {
     if (this.loggedUser) {
       this.loggedUser.drinksFavList.forEach(id => {
         this.drinkService.getDrinkById(id).subscribe(result => {
-          
-          
           this.drinkFav.push(result);
         });
       });
