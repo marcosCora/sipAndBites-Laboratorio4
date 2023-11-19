@@ -25,8 +25,6 @@ export class ListDrinksComponent implements OnInit{
               private authenticationService : AuthenticationService,
               private userService : UserService){}
 
-  
-
 
   ngOnInit(): void {
     this.route.params.subscribe(params =>{
@@ -105,8 +103,7 @@ export class ListDrinksComponent implements OnInit{
     this.loggedUser.drinksFavList.push(Number(idDrink));
     this.authenticationService.login(this.loggedUser);
     this.userService.putUser(this.loggedUser).subscribe(
-      response => console.log('entra al put para agregar')
-      ,
+      response => console.log('entra al put para agregar'),
       error => console.log(error));
   }
 

@@ -70,4 +70,12 @@ export class DrinkService {
     );
   }
 
+  getRandomDrink() : Observable<Drink> {
+    return this.http.get<any>(`${this.url}/random.php`).pipe(
+      map( (response : any) => {
+        return response.drinks[0];
+      })
+    );
+  }
+
 }
