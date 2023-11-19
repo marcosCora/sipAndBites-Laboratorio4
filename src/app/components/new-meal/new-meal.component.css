@@ -76,3 +76,7 @@ span {
     color: #cc0000;
     margin-top: 0.5rem;
 }
+
+#category_label {
+    margin-bottom: 0.5rem;
+}

@@ -84,4 +84,20 @@ export class MealServiceService {
     );
   }
 
+  getMealCategoriesList() : Observable<any[]> {
+    return this.http.get<any>(`${this.apiMealUrl}/list.php?c=list`).pipe(
+      map( (response : any) => {
+        return response.meals;
+      })
+    );
+  }
+
+  getMealAreasList() : Observable<any[]> {
+    return this.http.get<any>(`${this.apiMealUrl}/list.php?a=list`).pipe(
+      map( (response : any) => {
+        return response.meals;
+      })
+    );
+  }
+
 }

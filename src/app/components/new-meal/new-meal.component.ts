@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Meal } from 'src/app/models/meal';
 import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { MealServiceService } from 'src/app/services/meal-service.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -16,15 +17,28 @@ export class NewMealComponent {
   loggedUser : User = new User();
   newMeal : Meal = new Meal(); 
   numberOfIngredients : number = 1;
+  categoriesList : any[] = [];
+  areasList : any[] = [];
   
 
   constructor(private authenticationService : AuthenticationService,
               private userService : UserService,
-              private router : Router){}
+              private router : Router,
+              private mealService : MealServiceService){}
   
   
   ngOnInit(): void {
     
+    this.mealService.getMealCategoriesList().subscribe(result => {
+      this.categoriesList = result;
+      this.categoriesList.sort((a, b) => a.strCategory.localeCompare(b.strCategory));
+    });
+
+    this.mealService.getMealAreasList().subscribe(result => {
+      this.areasList = result;
+      this.areasList.sort((a, b) => a.strArea.localeCompare(b.strArea));
+    });
+
     this.loggedUser = this.authenticationService.getCurrentUser();
 
       this.newMealForm = new FormGroup({
