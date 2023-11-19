@@ -26,6 +26,7 @@ import { ListFavouritesComponent } from './components/list-favourites/list-favou
 import { CommentComponent } from './components/comment/comment.component';
 import { ListCommentComponent } from './components/list-comment/list-comment.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CarouselModule } from './carousel/carousel.module';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { FooterComponent } from './components/footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    CarouselModule
   ],
   providers: [MealServiceService],
   bootstrap: [AppComponent]
