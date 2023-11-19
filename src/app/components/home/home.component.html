@@ -1,3 +1,5 @@
-<app-carousel [images]="images"
-              [autoSlide]="true"
-></app-carousel>
+<div *ngIf="dataLoaded">
+    <app-carousel [images]="images"
+                  [autoSlide]="true"
+    ></app-carousel>
+</div>

@@ -48,31 +48,40 @@ export class MealServiceService {
     );
   }
 
-getMealByFirstLetter(firstLetter : string) : Observable<Meal[]>{
-  let urlComplete = this.apiMealUrl + 'search.php?f=' + firstLetter;
-  return this.http.get<any>(urlComplete).pipe(
-    map((response : any)=>{
-      return response.meals
-    })
-  );
-}
+  getMealByFirstLetter(firstLetter : string) : Observable<Meal[]>{
+    let urlComplete = this.apiMealUrl + 'search.php?f=' + firstLetter;
+    return this.http.get<any>(urlComplete).pipe(
+      map((response : any)=>{
+        return response.meals
+      })
+    );
+  }
 
-getMealByIngredient(ingredient : string) : Observable<Meal[]>{
-  let urlComplete = this.apiMealUrl + 'filter.php?i=' + ingredient;
-  return this.http.get<any>(urlComplete).pipe(
-    map((response : any)=>{
-      return response.meals
-    })
-  );
-}
+  getMealByIngredient(ingredient : string) : Observable<Meal[]>{
+    let urlComplete = this.apiMealUrl + 'filter.php?i=' + ingredient;
+    return this.http.get<any>(urlComplete).pipe(
+      map((response : any)=>{
+        return response.meals
+      })
+    );
+  }
 
-getMealByCountry(country : string) : Observable<Meal[]>{
-  let urlComplete = this.apiMealUrl + 'filter.php?a=' + country;
-  return this.http.get<any>(urlComplete).pipe(
-    map((response : any)=>{
-      return response.meals
-    })
-  );
-} 
+  getMealByCountry(country : string) : Observable<Meal[]>{
+    let urlComplete = this.apiMealUrl + 'filter.php?a=' + country;
+    return this.http.get<any>(urlComplete).pipe(
+      map((response : any)=>{
+        return response.meals
+      })
+    );
+  } 
+
+  getRandomMeal() : Observable<Meal>{
+    let urlComplete = this.apiMealUrl + 'random.php';
+    return this.http.get<any>(urlComplete).pipe(
+      map((response : any)=>{
+        return response.meals[0]
+      })
+    );
+  }
 
 }

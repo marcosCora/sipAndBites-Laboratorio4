@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { carouselImage } from 'src/app/models/carouselImage';
 
 @Component({
@@ -15,6 +16,8 @@ export class CarouselComponent implements OnInit{
   @Input() slideInterval = 3000; //default to 3 s
 
   selectedIndex = 0;
+
+  constructor(private router : Router){}
   
   ngOnInit() : void {
     if(this.autoSlide){
@@ -49,6 +52,11 @@ export class CarouselComponent implements OnInit{
     }else{
       this.selectedIndex++;
     }
+  }
+
+  goToProduct(type: string, id : string) : void {
+    this.router.navigate([`${type}/${id}`]);
+    console.log("entra??")
   }
 
 }

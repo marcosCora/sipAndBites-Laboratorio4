@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs/internal/observable/forkJoin';
 import { carouselImage } from 'src/app/models/carouselImage';
 import { DrinkService } from 'src/app/services/drink.service';
+import { MealServiceService } from 'src/app/services/meal-service.service';
 
 @Component({
   selector: 'app-home',
@@ -9,46 +11,41 @@ import { DrinkService } from 'src/app/services/drink.service';
 })
 export class HomeComponent {
 
-  //images !: carouselImage[];
+  images : carouselImage[] = [];
+  dataLoaded : boolean = false;
   
-  images = [
-    {
-      imageSrc : "https://www.thecocktaildb.com/images/media/drink/l3cd7f1504818306.jpg",
-      imageAlt : "Ace" 
-    },
-    {
-      imageSrc : "https:\/\/www.themealdb.com\/images\/media\/meals\/ustsqw1468250014.jpg",
-      imageAlt : "Arrabiata" 
-    },
-    {
-      imageSrc : "https:\/\/www.thecocktaildb.com\/images\/media\/drink\/xxsxqy1472668106.jpg",
-      imageAlt : "747" 
-    },
-    {
-      imageSrc : "https:\/\/www.themealdb.com\/images\/media\/meals\/rwuyqx1511383174.jpg",
-      imageAlt : "pancakes" 
-    },
-    {
-      imageSrc : "https:\/\/www.thecocktaildb.com\/images\/media\/drink\/5a3vg61504372070.jpg",
-      imageAlt : "b52" 
-    },
-    {
-      imageSrc : "\/\/www.themealdb.com\/images\/media\/meals\/urzj1d1587670726.jpg",
-      imageAlt : "bigmac" 
-    }
-  ] 
-
-/*  constructor(private drinkService : DrinkService){}
+  constructor(private drinkService : DrinkService,
+             private mealService : MealServiceService){}
 
   ngOnInit(): void {
     
-    for(let i=0 ; i < 6 ; i ++){
+    for(let i=0 ; i < 6 ; i++){
+      this.images.push({ imageSrc: '', imageAlt: '' , imageId : '', type : ''});
+    }
+
+    for(let i=0 ; i < 6 ; i = i + 2){
+      this.mealService.getRandomMeal().subscribe(meal => {
+        this.images[i].imageSrc = meal.strMealThumb;
+        this.images[i].imageAlt = meal.strMeal;
+        this.images[i].imageId = meal.idMeal;
+        this.images[i].type = 'meal'; 
+        console.log(meal);
+      });
+    } 
+
+    for(let i=1 ; i < 6 ; i = i + 2){
       this.drinkService.getRandomDrink().subscribe(drink => {
         this.images[i].imageSrc = drink.strDrinkThumb;
         this.images[i].imageAlt = drink.strDrink; 
-      });
+        this.images[i].imageId = drink.idDrink; 
+        this.images[i].type = 'drink'; 
+        console.log("entra al subsribe");
+     });
     } 
-  }*/
 
+   
+    console.log("entra al ngOnInit");
+    setTimeout(()=> this.dataLoaded = true, 400);
+  } 
 
 }

@@ -52,21 +52,32 @@
 
 /*text*/
 
-
-
-/* .text {
+.text-container {
     position: absolute;
     right: 0;
     left: 0;
     bottom: 0;
     display: flex;
     justify-content: center;
-    padding: 0;
+    padding: 0.5rem;
     margin-bottom: 3rem;
+    margin-left: 0.5rem;
     background-color: #dce1e189;
     border-radius: 16px;
-   /*color: #892889;
-} */
+    width: 15rem;
+    color: #892889;
+    
+} 
+
+.text-container h5 {
+    display: none;
+}
+
+.text-container h5.text-active {
+    display: block;
+    font-weight: bold;
+    cursor: pointer;
+}
 
 /*image transition fade effect*/
 .fade {
