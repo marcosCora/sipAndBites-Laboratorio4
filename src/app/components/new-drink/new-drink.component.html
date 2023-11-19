@@ -15,8 +15,11 @@
         </div>
 
         <div class="form-group">
-            <label for="strCategory">Category</label>
-            <input type="text" class="form-control" id="strCategory" formControlName="strCategory" placeholder="Enter the category">
+            <label for="strCategory" id="category_label">Category</label>
+            <select formControlName='strCategory' class="form-select" id="strCategory">
+                <option value="" disabled selected>Select the category</option>
+                <option *ngFor="let category of categoriesList" [value]="category.strCategory" >{{category.strCategory}}</option>
+            </select>
         </div>
 
         <div class="form-check">
@@ -26,7 +29,10 @@
 
         <div class="form-group">
             <label for="strGlass">Glass</label>
-            <input type="text" class="form-control" id="strGlass" formControlName="strGlass" placeholder="Enter the glass type">
+            <select formControlName='strGlass' class="form-select" id="strGlass">
+                <option value="" disabled selected>Select the glass</option>
+                <option *ngFor="let glass of glassList" [value]="glass.strGlass" >{{glass.strGlass}}</option>
+            </select>
         </div>
 
         <div class="form-group">

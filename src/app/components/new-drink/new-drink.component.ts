@@ -6,6 +6,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CustomValidator } from '../custom-validator';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { DrinkService } from 'src/app/services/drink.service';
 
 @Component({
   selector: 'app-new-drink',
@@ -17,14 +18,29 @@ export class NewDrinkComponent implements OnInit {
   loggedUser : User = new User();
   newDrink : Drink = new Drink(); 
   numberOfIngredients : number = 1;
+  categoriesList : any[] = [];
+  glassList : any[] = [];
   
 
   constructor(private authenticationService : AuthenticationService,
               private userService : UserService,
-              private router : Router){}
+              private router : Router,
+              private drinkService : DrinkService){}
   
   
   ngOnInit(): void {
+
+    this.drinkService.getDrinkCategoriesList().subscribe(result => {
+      this.categoriesList = result;
+      this.categoriesList.sort((a, b) => a.strCategory.localeCompare(b.strCategory));
+      console.log(result);
+    });
+
+    this.drinkService.getDrinkGlassList().subscribe(result => {
+      this.glassList = result;
+      this.glassList.sort((a, b) => a.strGlass.localeCompare(b.strGlass));
+      console.log(result);
+    });
     
     this.loggedUser = this.authenticationService.getCurrentUser();
 
