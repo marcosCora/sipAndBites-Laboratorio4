@@ -35,3 +35,12 @@ h3 {
     border-color: #892889;
     margin-bottom: 1rem;
 }
+
+span {
+    color: #cc0000;
+}
+
+.text_required {
+    color: #cc0000;
+    margin-top: 0.5rem;
+}

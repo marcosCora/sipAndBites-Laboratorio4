@@ -3,8 +3,9 @@
 <div class="container">
 
     <form [formGroup]="newDrinkForm" (ngSubmit)="addRecipe()">
+        <p class="text_required"><small>* Required</small></p>
         <div class="form-group">
-            <label for="strDrink">Name</label>
+            <label for="strDrink">Name <span>*</span></label>
             <input type="text" class="form-control" id="strDrink" formControlName="strDrink" placeholder="Enter the name">
         </div>
         <div *ngIf="newDrinkForm.get('strDrink')?.invalid && (newDrinkForm.get('strDrink')?.dirty || newDrinkForm.get('strDrink')?.touched)" class="alert alert-danger">
@@ -34,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            <label for="strInstructions">Instructions</label>
+            <label for="strInstructions">Instructions <span>*</span></label>
             <textarea formControlName="strInstructions" id="strInstructions" cols="30" rows="10" placeholder="  Enter the instructions" aria-label="With textarea"></textarea>
         </div>
         <div *ngIf="newDrinkForm.get('strInstructions')?.invalid && (newDrinkForm.get('strInstructions')?.dirty || newDrinkForm.get('strInstructions')?.touched)" class="alert alert-danger">
@@ -45,17 +46,17 @@
 
         <div class="container-ingredients">
             <div class="form-group">
-                <label for="strIngredient1">#1 Ingredient</label>
+                <label for="strIngredient1">#1 Ingredient <span>*</span></label>
                 <input type="text" class="form-control" id="strIngredient1" formControlName="strIngredient1" placeholder="Enter ingredient">
             </div>
             <div class="form-group">
-                <label for="strMeasure1">Measure</label>
+                <label for="strMeasure1">Measure <span>*</span></label>
                 <input type="text" class="form-control" id="strMeasure1" formControlName="strMeasure1" placeholder="Enter measure">
             </div>
 
             <div *ngIf="newDrinkForm.get('strIngredient1')?.invalid && (newDrinkForm.get('strIngredient1')?.dirty || newDrinkForm.get('strIngredient1')?.touched)" class="alert alert-danger">
                 <div *ngIf="newDrinkForm.get('strIngredient1')?.errors?.['required']">
-                    At least one ingredient must be enter
+                    At least one ingredient must be entered
                 </div>
             </div>
             <div *ngIf="newDrinkForm.get('strMeasure1')?.invalid && (newDrinkForm.get('strMeasure1')?.dirty || newDrinkForm.get('strMeasure1')?.touched)" class="alert alert-danger">
