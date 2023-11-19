@@ -137,4 +137,13 @@ export class NewDrinkComponent implements OnInit {
     event.preventDefault();
   }
 
+  subtractIngredient(event : Event){
+    
+    this.newDrinkForm.controls[`strIngredient${this.numberOfIngredients}`].reset('');
+    this.newDrinkForm.controls[`strMeasure${this.numberOfIngredients}`].reset(''); 
+    
+    this.numberOfIngredients--;
+    event.preventDefault();
+  }
+
 }
