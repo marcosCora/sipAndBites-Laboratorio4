@@ -36,10 +36,16 @@ h3 {
     margin-bottom: 1rem;
 }
 
-#addIngridient {
+.ing_btn {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#addIngredient, #subtractIngredient {
     background-color: #892889;
     border-color: #892889;
-    justify-content: left;
+    font-size: small;
 }
 
 .form-check-input:checked{
