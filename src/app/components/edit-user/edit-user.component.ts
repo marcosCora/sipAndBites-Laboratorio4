@@ -28,7 +28,7 @@ export class EditUserComponent {
 
     'firstName' : new FormControl(this.editUser.firstName, [Validators.required]),
     'lastName' : new FormControl(this.editUser.lastName, [Validators.required]),
-    'email' : new FormControl(this.editUser.email, [Validators.required]),
+    'email' : new FormControl(this.editUser.email, [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]),
     'password' : new FormControl(this.editUser.password, [Validators.required, Validators.minLength(8)]),
     'dateOfBirth' : new FormControl(this.editUser.dateOfBirth, [Validators.required, CustomValidator.legalAge])
   });

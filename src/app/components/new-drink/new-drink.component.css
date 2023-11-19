@@ -61,3 +61,12 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
 }
+
+span {
+    color: #cc0000;
+}
+
+.text_required {
+    color: #cc0000;
+    margin-top: 0.5rem;
+}
