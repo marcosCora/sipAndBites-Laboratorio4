@@ -145,4 +145,13 @@ export class NewMealComponent {
     this.numberOfIngredients++;
     event.preventDefault();
   }
+
+  subtractIngredient(event : Event){
+    
+    this.newMealForm.controls[`strIngredient${this.numberOfIngredients}`].reset('');
+    this.newMealForm.controls[`strMeasure${this.numberOfIngredients}`].reset(''); 
+    
+    this.numberOfIngredients--;
+    event.preventDefault();
+  }
 }

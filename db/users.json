@@ -440,7 +440,10 @@
           "dateModified": ""
         }
       ],
-      "drinksFavList": [],
+      "drinksFavList": [
+        13332,
+        15853
+      ],
       "mealsFavList": []
     },
     {
