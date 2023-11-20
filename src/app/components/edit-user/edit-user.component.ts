@@ -134,7 +134,7 @@ export class EditUserComponent {
 
     Swal.fire({
       title: `We are sorry to see you go...`,
-      text: "Como back any time!",
+      text: "Come back any time!",
       icon: "success",
       confirmButtonColor: '#892889'
     });
@@ -150,7 +150,7 @@ export class EditUserComponent {
     ); 
 
     this.router.navigate(['home']);
-    
+
   }
 
 }
