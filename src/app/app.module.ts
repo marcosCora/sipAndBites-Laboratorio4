@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoginComponent } from './components/login/login.component';
-import { NewRecipeComponent } from './components/new-recipe/new-recipe.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
@@ -28,13 +27,11 @@ import { ListCommentComponent } from './components/list-comment/list-comment.com
 import { FooterComponent } from './components/footer/footer.component';
 import { CarouselModule } from './carousel/carousel.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     LoginComponent,
-    NewRecipeComponent,
     NewUserComponent,
     EditUserComponent,
     NewDrinkComponent,

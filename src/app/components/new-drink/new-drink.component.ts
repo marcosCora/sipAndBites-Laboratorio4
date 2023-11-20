@@ -7,6 +7,7 @@ import { CustomValidator } from '../custom-validator';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { DrinkService } from 'src/app/services/drink.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-drink',
@@ -157,10 +158,24 @@ export class NewDrinkComponent implements OnInit {
     this.loggedUser.drinks.push(this.newDrink);
     this.authenticationService.login(this.loggedUser);
 
-    this.userService.putUser(this.loggedUser).subscribe(response => this.router.navigate(['userRecipes']), 
+    this.userService.putUser(this.loggedUser).subscribe(
+      response => {
+                      this.showMessage();
+                      this.router.navigate(['userRecipes']);
+                  }, 
     error => console.log(error));
     console.log(this.newDrink);
 
+  }
+
+  showMessage() : void {
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Your recipe has been saved!",
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
   
   addIngredient(event : Event){
