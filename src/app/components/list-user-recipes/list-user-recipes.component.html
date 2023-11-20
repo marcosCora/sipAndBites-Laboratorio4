@@ -1,18 +1,29 @@
-<button class="btn btn-primary" routerLink="/newDrink" id="addRecipe">Add a new Drink</button>
-<button class="btn btn-primary" routerLink="/newMeal" id="addRecipe">Add a new Meal</button>
+<div class="heading_container">
 
+    <div class="dropdown add_recipes_btn">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="addRecipe" data-bs-toggle="dropdown" aria-expanded="false">
+          Add a Recipe
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" routerLink="/newDrink">Add a new Drink</a></li>
+          <li><a class="dropdown-item" routerLink="/newMeal">Add a new Meal</a></li>
+        </ul>
+    </div>
+    
+    <h3 *ngIf="loggedUser.drinks.length > 0 || loggedUser.meals.length > 0" id="myRecipesTitle">My Recipes</h3>
+    
+</div>
 
 <div class="container">
-    <h3 *ngIf="loggedUser.drinks.length > 0 || loggedUser.meals.length > 0" id="myRecipesTitle">My Recipes</h3>
 
     <div *ngIf="loggedUser.drinks.length > 0 && loggedUser.meals.length > 0">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="checkboxBtn" checked (click)="showDrinkList()">
-            <label class="form-check-label" for="showDrinks">Show Drink Recipes</label>
+            <label class="form-check-label" for="showDrinks"><small>Show Drink Recipes</small></label>
         </div>
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="checkboxBtn" checked (click)="showMealList()">
-            <label class="form-check-label" for="showMeals">Show Meal Recipes</label>
+            <label class="form-check-label" for="showMeals"><small>Show Meal Recipes</small></label>
         </div>
     </div>
 

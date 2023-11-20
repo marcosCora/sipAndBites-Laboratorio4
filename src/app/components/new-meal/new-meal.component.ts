@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Meal } from 'src/app/models/meal';
 import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { MealServiceService } from 'src/app/services/meal-service.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -16,20 +17,33 @@ export class NewMealComponent {
   loggedUser : User = new User();
   newMeal : Meal = new Meal(); 
   numberOfIngredients : number = 1;
+  categoriesList : any[] = [];
+  areasList : any[] = [];
   
 
   constructor(private authenticationService : AuthenticationService,
               private userService : UserService,
-              private router : Router){}
+              private router : Router,
+              private mealService : MealServiceService){}
   
   
   ngOnInit(): void {
     
+    this.mealService.getMealCategoriesList().subscribe(result => {
+      this.categoriesList = result;
+      this.categoriesList.sort((a, b) => a.strCategory.localeCompare(b.strCategory));
+    });
+
+    this.mealService.getMealAreasList().subscribe(result => {
+      this.areasList = result;
+      this.areasList.sort((a, b) => a.strArea.localeCompare(b.strArea));
+    });
+
     this.loggedUser = this.authenticationService.getCurrentUser();
 
       this.newMealForm = new FormGroup({
         'strMeal' : new FormControl(this.newMeal.strMeal, [Validators.required]),
-        'strCategory' : new FormControl(this.newMeal.strCategory),
+        'strCategory' : new FormControl(this.newMeal.strCategory, [Validators.required]),
         'strArea' : new FormControl(this.newMeal.strArea),
         'strInstructions' : new FormControl(this.newMeal.strInstructions, [Validators.required]),
         'strMealThumbs' : new FormControl(this.newMeal.strMealThumb),
@@ -87,7 +101,7 @@ export class NewMealComponent {
     this.newMeal.strMeal = this.newMealForm.controls['strMeal'].value;
     this.newMeal.strCategory = this.newMealForm.controls['strCategory'].value;
     this.newMeal.strArea = this.newMealForm.controls['strArea'].value;
-    //this.newMeal.strMealThumb = this.newMealForm.controls['strMealThumb'].value;
+    this.newMeal.strMealThumb = `../../../assets/meals/${this.newMeal.strCategory}.jpg`;
     this.newMeal.strInstructions = this.newMealForm.controls['strInstructions'].value; 
 
     this.newMeal.strIngredient1 = this.newMealForm.controls['strIngredient1'].value; 

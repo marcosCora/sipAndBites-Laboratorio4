@@ -78,4 +78,20 @@ export class DrinkService {
     );
   }
 
+  getDrinkCategoriesList() : Observable<any[]> {
+    return this.http.get<any>(`${this.url}/list.php?c=list`).pipe(
+      map( (response : any) => {
+        return response.drinks;
+      })
+    );
+  }
+
+  getDrinkGlassList() : Observable<any[]> {
+    return this.http.get<any>(`${this.url}/list.php?g=list`).pipe(
+      map( (response : any) => {
+        return response.drinks;
+      })
+    );
+  }
+
 }

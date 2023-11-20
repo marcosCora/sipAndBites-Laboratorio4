@@ -1,16 +1,32 @@
+.heading_container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
 #myRecipesTitle {
     color: #BB29BB;
     text-align: center;
-    margin-top: 2rem;
+    margin: auto;
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+.add_recipes_btn {
+    grid-column-start: 1;
+    grid-column-end: 1;
 }
 
 #addRecipe {
-    justify-content: right;
-    display: block;
-    margin: 1rem;
-    width: 9rem;
+    margin: 0.5rem;
     background-color: #892889;
     border: #892889;
+}
+
+.dropdown-menu {
+    border-color: #F8F9FA;
+}
+.dropdown-item {
+    font-size: small;
 }
 
 #checkboxBtn:checked {
@@ -38,9 +54,7 @@ h6{
 }
 
 .card{
-    margin: 3rem;
-    
-   
+    margin: 2rem;
 }
 
 .card-text-instructions {

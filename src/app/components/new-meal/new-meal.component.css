@@ -12,7 +12,6 @@ h3 {
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
     border-radius: 16px;
-
 }
 
 .form-group{
@@ -22,7 +21,6 @@ h3 {
 
 .form-control{
     margin-top: .5rem;
-   
 }
 
 .container-btn {
@@ -59,7 +57,6 @@ h3 {
     border-radius: .375rem;
     width: 100%; 
     height: 100px;
-    
 }
 
 .container-ingredients{
@@ -75,4 +72,8 @@ span {
 .text_required {
     color: #cc0000;
     margin-top: 0.5rem;
+}
+
+#category_label {
+    margin-bottom: 0.5rem;
 }

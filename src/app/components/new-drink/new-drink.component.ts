@@ -6,6 +6,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CustomValidator } from '../custom-validator';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { DrinkService } from 'src/app/services/drink.service';
 
 @Component({
   selector: 'app-new-drink',
@@ -17,20 +18,35 @@ export class NewDrinkComponent implements OnInit {
   loggedUser : User = new User();
   newDrink : Drink = new Drink(); 
   numberOfIngredients : number = 1;
+  categoriesList : any[] = [];
+  glassList : any[] = [];
   
 
   constructor(private authenticationService : AuthenticationService,
               private userService : UserService,
-              private router : Router){}
+              private router : Router,
+              private drinkService : DrinkService){}
   
   
   ngOnInit(): void {
+
+    this.drinkService.getDrinkCategoriesList().subscribe(result => {
+      this.categoriesList = result;
+      this.categoriesList.sort((a, b) => a.strCategory.localeCompare(b.strCategory));
+      console.log(result);
+    });
+
+    this.drinkService.getDrinkGlassList().subscribe(result => {
+      this.glassList = result;
+      this.glassList.sort((a, b) => a.strGlass.localeCompare(b.strGlass));
+      console.log(result);
+    });
     
     this.loggedUser = this.authenticationService.getCurrentUser();
 
       this.newDrinkForm = new FormGroup({
         'strDrink' : new FormControl(this.newDrink.strDrink, [Validators.required]),
-        'strCategory' : new FormControl(this.newDrink.strCategory),
+        'strCategory' : new FormControl(this.newDrink.strCategory, [Validators.required]),
         'strAlcoholic' : new FormControl(this.newDrink.strAlcoholic),
         'strGlass' : new FormControl(this.newDrink.strGlass),
         'strInstructions' : new FormControl(this.newDrink.strInstructions, [Validators.required]),
@@ -88,7 +104,22 @@ export class NewDrinkComponent implements OnInit {
     
     this.newDrink.strGlass = this.newDrinkForm.controls['strGlass'].value;
     this.newDrink.strInstructions = this.newDrinkForm.controls['strInstructions'].value;
-    //this.newDrink.strDrinkThumb = this.newDrinkForm.controls['strDrinkThumb'].value; //ver como se guarda
+
+    if(this.newDrink.strCategory === 'Coffee / Tea'){
+      this.newDrink.strDrinkThumb = `../../../assets/drinks/Coffee.jpg`;
+    }else if(this.newDrink.strCategory === 'Homemade Liqueur'){
+      this.newDrink.strDrinkThumb = `../../../assets/drinks/Homemade.jpg`;
+    }else if(this.newDrink.strCategory === 'Ordinary Drink'){
+      this.newDrink.strDrinkThumb = `../../../assets/drinks/Ordinary.jpg`;
+    }else if(this.newDrink.strCategory === 'Other / Unknown'){
+      this.newDrink.strDrinkThumb = `../../../assets/drinks/Other.jpg`;
+    }else if(this.newDrink.strCategory === 'Punch / Party Drink'){
+      this.newDrink.strDrinkThumb = `../../../assets/drinks/Punch.jpg`;
+    }else if(this.newDrink.strCategory === 'Soft Drink'){
+      this.newDrink.strDrinkThumb = `../../../assets/drinks/Soft.jpg`;
+    }else{
+      this.newDrink.strDrinkThumb = `../../../assets/drinks/${this.newDrink.strCategory}.jpg`;
+    }
 
     this.newDrink.strIngredient1 = this.newDrinkForm.controls['strIngredient1'].value; 
     this.newDrink.strIngredient2 = this.newDrinkForm.controls['strIngredient2'].value; 

@@ -21,8 +21,11 @@ h3 {
 }
 
 .form-control{
-    margin-top: .5rem;
-   
+    margin-top: .5rem;   
+}
+
+#category_label {
+    margin-bottom: 0.5rem;
 }
 
 .container-btn {
