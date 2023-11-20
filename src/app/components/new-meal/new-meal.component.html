@@ -15,11 +15,16 @@
         </div>
 
         <div class="form-group">
-            <label for="strCategory" id="category_label">Category</label>
+            <label for="strCategory" id="category_label">Category <span>*</span></label>
             <select formControlName='strCategory' class="form-select" id="strCategory">
                 <option value="" disabled selected>Select the category</option>
                 <option *ngFor="let category of categoriesList" [value]="category.strCategory" >{{category.strCategory}}</option>
             </select>
+        </div>
+        <div *ngIf="newMealForm.get('strCategory')?.invalid && (newMealForm.get('strCategory')?.dirty || newMealForm.get('strCategory')?.touched)" class="alert alert-danger">
+            <div *ngIf="newMealForm.get('strCategory')?.errors?.['required']">
+                Category is required
+            </div>
         </div>
 
         <div class="form-group">
@@ -28,11 +33,6 @@
                 <option value="" disabled selected>Select the area</option>
                 <option *ngFor="let area of areasList" [value]="area.strArea" >{{area.strArea}}</option>
             </select>
-        </div>
-
-        <div class="form-group">
-            <label for="strMealThumbs">Image</label>
-            <input type="file" class="form-control" id="strMealThumbs" formControlName="strMealThumbs">
         </div>
 
         <div class="form-group">

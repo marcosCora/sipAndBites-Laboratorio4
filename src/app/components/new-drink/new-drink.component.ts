@@ -46,7 +46,7 @@ export class NewDrinkComponent implements OnInit {
 
       this.newDrinkForm = new FormGroup({
         'strDrink' : new FormControl(this.newDrink.strDrink, [Validators.required]),
-        'strCategory' : new FormControl(this.newDrink.strCategory),
+        'strCategory' : new FormControl(this.newDrink.strCategory, [Validators.required]),
         'strAlcoholic' : new FormControl(this.newDrink.strAlcoholic),
         'strGlass' : new FormControl(this.newDrink.strGlass),
         'strInstructions' : new FormControl(this.newDrink.strInstructions, [Validators.required]),
@@ -104,7 +104,22 @@ export class NewDrinkComponent implements OnInit {
     
     this.newDrink.strGlass = this.newDrinkForm.controls['strGlass'].value;
     this.newDrink.strInstructions = this.newDrinkForm.controls['strInstructions'].value;
-    //this.newDrink.strDrinkThumb = this.newDrinkForm.controls['strDrinkThumb'].value; //ver como se guarda
+
+    if(this.newDrink.strCategory === 'Coffee / Tea'){
+      this.newDrink.strDrinkThumb = `../../../assets/drinks/Coffee.jpg`;
+    }else if(this.newDrink.strCategory === 'Homemade Liqueur'){
+      this.newDrink.strDrinkThumb = `../../../assets/drinks/Homemade.jpg`;
+    }else if(this.newDrink.strCategory === 'Ordinary Drink'){
+      this.newDrink.strDrinkThumb = `../../../assets/drinks/Ordinary.jpg`;
+    }else if(this.newDrink.strCategory === 'Other / Unknown'){
+      this.newDrink.strDrinkThumb = `../../../assets/drinks/Other.jpg`;
+    }else if(this.newDrink.strCategory === 'Punch / Party Drink'){
+      this.newDrink.strDrinkThumb = `../../../assets/drinks/Punch.jpg`;
+    }else if(this.newDrink.strCategory === 'Soft Drink'){
+      this.newDrink.strDrinkThumb = `../../../assets/drinks/Soft.jpg`;
+    }else{
+      this.newDrink.strDrinkThumb = `../../../assets/drinks/${this.newDrink.strCategory}.jpg`;
+    }
 
     this.newDrink.strIngredient1 = this.newDrinkForm.controls['strIngredient1'].value; 
     this.newDrink.strIngredient2 = this.newDrinkForm.controls['strIngredient2'].value; 

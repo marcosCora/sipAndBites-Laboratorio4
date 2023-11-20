@@ -43,7 +43,7 @@ export class NewMealComponent {
 
       this.newMealForm = new FormGroup({
         'strMeal' : new FormControl(this.newMeal.strMeal, [Validators.required]),
-        'strCategory' : new FormControl(this.newMeal.strCategory),
+        'strCategory' : new FormControl(this.newMeal.strCategory, [Validators.required]),
         'strArea' : new FormControl(this.newMeal.strArea),
         'strInstructions' : new FormControl(this.newMeal.strInstructions, [Validators.required]),
         'strMealThumbs' : new FormControl(this.newMeal.strMealThumb),
@@ -101,7 +101,7 @@ export class NewMealComponent {
     this.newMeal.strMeal = this.newMealForm.controls['strMeal'].value;
     this.newMeal.strCategory = this.newMealForm.controls['strCategory'].value;
     this.newMeal.strArea = this.newMealForm.controls['strArea'].value;
-    //this.newMeal.strMealThumb = this.newMealForm.controls['strMealThumb'].value;
+    this.newMeal.strMealThumb = `../../../assets/meals/${this.newMeal.strCategory}.jpg`;
     this.newMeal.strInstructions = this.newMealForm.controls['strInstructions'].value; 
 
     this.newMeal.strIngredient1 = this.newMealForm.controls['strIngredient1'].value; 
