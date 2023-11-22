@@ -56,7 +56,6 @@ export class CarouselComponent implements OnInit{
 
   goToProduct(type: string, id : string) : void {
     this.router.navigate([`${type}/${id}`]);
-    console.log("entra??")
   }
 
 }

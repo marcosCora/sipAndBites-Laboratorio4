@@ -40,6 +40,12 @@ export class FormFilterMealComponent implements OnInit {
 
   }
 
+  showbyName(){
+    this.serviceMeal.getMealByName('').subscribe(response =>{
+      this.filterService.setMealFilter(response);
+    })
+  }
+
   showCountry(){
     this.serviceMeal.getMealByName(this.nameMeal).subscribe((data : Meal[])=>{
       let arrayAux : string[] = [];
