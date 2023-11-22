@@ -47,13 +47,7 @@ export class ListFavouritesComponent {
         });
       });
 
-      this.drinkFav.forEach(r => console.log('drinkFav:' + r.idDrink));
-      console.log('drinksFavList:');
-      this.loggedUser.drinksFavList.forEach(id => console.log(id));
 
-      this.mealFav.forEach(r => console.log('mealFav:' + r.idMeal));
-      console.log('mealsFavList:');
-      this.loggedUser.mealsFavList.forEach(id => console.log(id));
     }
   }
 
@@ -91,18 +85,12 @@ export class ListFavouritesComponent {
       this.showMealsFavList = true;
     }
 
-    console.log('drinksFavList:');
-    this.loggedUser.drinksFavList.forEach(id => console.log(id));
 
     this.loggedUser.drinksFavList = this.loggedUser.drinksFavList.filter(id => id !== Number(idToDelete));
     this.drinkFav = this.drinkFav.filter(drink => drink.idDrink !== idToDelete);
 
-    console.log('remove Drink:');
-    this.drinkFav.forEach(r => console.log('drinkFav:' + r.idDrink));
-    console.log('drinksFavList:');
-    this.loggedUser.drinksFavList.forEach(id => console.log(id));
-
-
+    this.authenticationService.login(this.loggedUser);
+    
     this.userService.putUser(this.loggedUser).subscribe(
       response => console.log('entra al put para eliminar'),
       error => console.log(error));
@@ -115,17 +103,10 @@ export class ListFavouritesComponent {
       this.showDrinksFavList = true;
     }
 
-    console.log('mealsFavList:');
-    this.loggedUser.mealsFavList.forEach(id => console.log(id));
-
     this.loggedUser.mealsFavList = this.loggedUser.mealsFavList.filter(id => id !== Number(idToDelete));
     this.mealFav = this.mealFav.filter(meal => meal.idMeal !== idToDelete);
 
-    console.log('remove Meal:');
-    this.mealFav.forEach(r => console.log('mealFav:' + r.idMeal));
-    console.log('mealsFavList:');
-    this.loggedUser.mealsFavList.forEach(id => console.log(id));
-
+    this.authenticationService.login(this.loggedUser);
     this.userService.putUser(this.loggedUser).subscribe(
       response => console.log('entra al put para eliminar'),
       error => console.log(error));
