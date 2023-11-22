@@ -44,3 +44,8 @@ span {
     color: #cc0000;
     margin-top: 0.5rem;
 }
+
+.container_sign_out_btn{
+    display: flex;
+    justify-content: center;
+}

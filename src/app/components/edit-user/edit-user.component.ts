@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UserService } from 'src/app/services/user.service';
 import { CustomValidator } from '../custom-validator';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-user',
@@ -14,6 +15,7 @@ import { CustomValidator } from '../custom-validator';
 export class EditUserComponent {
   editUser : User = new User();
   editUserForm !: FormGroup;
+  edit : boolean = false;
 
   constructor(private userService : UserService,
               private router : Router,
@@ -36,7 +38,35 @@ export class EditUserComponent {
 
   updateUser(){
 
-    if(!this.editUserForm.invalid){      
+    Swal.fire({
+      title: "Do you want to save the changes?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Save",
+      confirmButtonColor: '#892889',
+      denyButtonText: `Don't save`
+    }).then((result) => {
+      
+      if (result.isConfirmed) {
+
+        this.saveUpdatedUser();
+
+      } else if (result.isDenied) {
+        
+        this.dontSaveUpdatedUser();
+      
+      }
+    });
+
+    
+  }
+
+  saveUpdatedUser() : void {
+
+    if(!this.editUserForm.invalid){   
+      
+      console.log('entra al save');
+      
       this.editUser.firstName = this.editUserForm.controls['firstName'].value;
       this.editUser.lastName = this.editUserForm.controls['lastName'].value;
       this.editUser.email = this.editUserForm.controls['email'].value;
@@ -44,18 +74,83 @@ export class EditUserComponent {
       this.editUser.dateOfBirth = this.editUserForm.controls['dateOfBirth'].value;       
       this.authenticationService.login(this.editUser);
       
+      console.log(this.editUser);
       
       this.userService.putUser(this.editUser).subscribe(
-      response => this.router.navigate(['home']), 
+      response => {
+                  Swal.fire(
+                    {
+                      title: `Saved!`,
+                      text: "",
+                      icon: "success",
+                      showConfirmButton: false
+                    });
+                    setTimeout(() => {window.location.reload()}, 1000);
+                  }, 
       error => console.log(error));
+
     }
   }
 
-  logOut() {
+  dontSaveUpdatedUser() : void {
+    Swal.fire(
+      {
+        title: `Changes were not saved`,
+        text: "",
+        icon: "info",
+        showConfirmButton: false
+      });
+    
+    setTimeout(() => {window.location.reload()}, 1000);
+  }
 
+  logOut() {
     this.editUser.active = false;
     this.authenticationService.logout();
     this.router.navigate(['home']);
+  }
+
+  signOut() : void {
+
+      Swal.fire({
+        title: 'Are you sure you want to unsubscribe?',
+        text: `You won't be able to revert this!`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#892889',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.signOutAction();
+        }
+      });
+
+  }
+
+
+  signOutAction() : void {
+
+    Swal.fire({
+      title: `We are sorry to see you go...`,
+      text: "Come back any time!",
+      icon: "success",
+      confirmButtonColor: '#892889'
+    });
+
+    this.editUser.active = false;
+
+    this.userService.putUser(this.editUser).subscribe(
+      () => {
+                this.authenticationService.logout();
+                
+            },
+      error => console.log(error)
+    ); 
+
+    this.router.navigate(['home']);
+
   }
 
 }

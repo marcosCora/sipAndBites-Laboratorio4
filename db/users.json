@@ -311,8 +311,8 @@
       "firstName": "Juan Carlos",
       "lastName": "Garcia",
       "email": "jcg@gmail.com",
-      "dateOfBirth": "2023-10-19",
-      "password": "1234",
+      "dateOfBirth": "2000-10-19",
+      "password": "12345678",
       "active": true,
       "drinks": [
         {
@@ -578,19 +578,6 @@
       "lastName": "Betbeder",
       "dateOfBirth": "2002-03-06",
       "email": "gotia@gmail.com",
-      "password": "12345678",
-      "active": true,
-      "drinks": [],
-      "meals": [],
-      "drinksFavList": [],
-      "mealsFavList": []
-    },
-    {
-      "id": 7,
-      "firstName": "Juan",
-      "lastName": "Fernandez",
-      "dateOfBirth": "2005-05-15",
-      "email": "juan@gmail.com",
       "password": "12345678",
       "active": true,
       "drinks": [],
