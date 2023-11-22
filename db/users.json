@@ -174,7 +174,10 @@
         }
       ],
       "drinksFavList": [],
-      "mealsFavList": []
+      "mealsFavList": [
+        53060,
+        53065
+      ]
     },
     {
       "id": 1,
