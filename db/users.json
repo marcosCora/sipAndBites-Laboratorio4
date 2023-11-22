@@ -7,7 +7,7 @@
       "dateOfBirth": "2002-11-05",
       "email": "marcos@gmail.com",
       "password": "123",
-      "active": true,
+      "active": false,
       "drinks": [
         {
           "idDrink": "",
@@ -71,12 +71,12 @@
     },
     {
       "id": 1,
-      "firstName": "Angeles",
+      "firstName": "Angeles Maria",
       "lastName": "Higa",
       "email": "angeles.higa@gmail.com",
       "dateOfBirth": "1996-06-30",
-      "password": "1234",
-      "active": true,
+      "password": "12345678",
+      "active": false,
       "drinks": [
         {
           "idDrink": "11007",
@@ -298,13 +298,9 @@
         }
       ],
       "drinksFavList": [
-        17225
+        17222
       ],
-      "mealsFavList": [
-        52942,
-        52794,
-        52775
-      ]
+      "mealsFavList": []
     },
     {
       "id": 2,
@@ -313,7 +309,7 @@
       "email": "jcg@gmail.com",
       "dateOfBirth": "2000-10-19",
       "password": "12345678",
-      "active": true,
+      "active": false,
       "drinks": [
         {
           "idDrink": "",
@@ -436,7 +432,7 @@
       "dateOfBirth": "2000-05-15",
       "email": "pepe@gmail.com",
       "password": "12345678",
-      "active": true,
+      "active": false,
       "drinks": [],
       "meals": [],
       "drinksFavList": [],

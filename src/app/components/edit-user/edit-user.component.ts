@@ -143,7 +143,9 @@ export class EditUserComponent {
 
     this.userService.putUser(this.editUser).subscribe(
       () => {
+                console.log('entra al sign out ');
                 this.authenticationService.logout();
+                window.location.reload()
                 
             },
       error => console.log(error)
