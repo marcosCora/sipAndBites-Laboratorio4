@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.getAllUsers();
 
     this.logInForm = new FormGroup({
-      'email': new FormControl(this.email, [Validators.required]),
+      'email': new FormControl(this.email, [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]),
       'password': new FormControl(this.password, [Validators.required])
     });
   }

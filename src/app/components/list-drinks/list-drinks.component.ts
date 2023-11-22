@@ -119,11 +119,10 @@ export class ListDrinksComponent implements OnInit{
 
   removeFromFavList(idDrink : string) : void {
     this.loggedUser.drinksFavList = this.loggedUser.drinksFavList.filter(id => id !== Number(idDrink));
-
+    this.authenticationService.login(this.loggedUser);
     this.userService.putUser(this.loggedUser).subscribe(
       response => console.log('entra al put para eliminar'),
       error => console.log(error));
-    
   }
 
 }

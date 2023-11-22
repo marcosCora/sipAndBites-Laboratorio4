@@ -94,6 +94,7 @@ export class ListMealComponentComponent implements OnInit {
 
   removeFromFavList(idMeal : string) : void {
     this.loggedUser.mealsFavList = this.loggedUser.mealsFavList.filter(mealId => mealId != Number(idMeal));
+    this.authenticationService.login(this.loggedUser);
     this.userService.putUser(this.loggedUser).subscribe(
       response => console.log('entra al put para eliminar'),
       error => console.log(error));
