@@ -34,6 +34,12 @@ export class FormFilterDrinkComponent implements OnInit {
 
   }
 
+  showbyName(){
+    this.drinkService.getDrinksByName('').subscribe(response =>{
+      this.drinkFilterService.setDrinkFilter(response)
+    })
+  }
+
   showByCategories(){
     this.drinkService.getDrinkByCategories().subscribe(response =>{
       this.listCategories = response;
