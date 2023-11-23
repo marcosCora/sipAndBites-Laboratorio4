@@ -6,13 +6,8 @@
       "lastName": "Corasaniti",
       "dateOfBirth": "2002-05-18",
       "email": "marcos@gmail.com",
-<<<<<<< HEAD
-      "password": "12345678",
-      "active": true,
-=======
       "password": "123",
-      "active": false,
->>>>>>> 638f82243fa9f542817c645a4bdf976814e65048
+      "active": true,
       "drinks": [
         {
           "idDrink": "",
@@ -68,10 +63,17 @@
           "dateModified": ""
         }
       ],
-      "drinksFavList": [],
+      "drinksFavList": [
+        15288,
+        14229,
+        17225
+      ],
       "mealsFavList": [
         53065,
-        53060
+        53060,
+        52977,
+        53069,
+        53026
       ]
     },
     {
@@ -723,6 +725,22 @@
       "nameUser": "Karla Kjer",
       "comment": "Tremendo\n",
       "dateComment": "18-11-2023"
+    },
+    {
+      "id": 19,
+      "idProduct": 15853,
+      "idUser": 3,
+      "nameUser": "Marcos Agustin Corasaniti",
+      "comment": "Tremendo trago",
+      "dateComment": "23-11-2023"
+    },
+    {
+      "id": 20,
+      "idProduct": "52978",
+      "idUser": 3,
+      "nameUser": "Marcos Agustin Corasaniti",
+      "comment": "Que rico",
+      "dateComment": "23-11-2023"
     }
   ]
 }
