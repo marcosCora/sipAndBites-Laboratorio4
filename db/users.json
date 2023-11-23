@@ -2,11 +2,11 @@
   "users": [
     {
       "id": 3,
-      "firstName": "Marcos",
+      "firstName": "Marcos Agustin",
       "lastName": "Corasaniti",
-      "dateOfBirth": "2002-11-05",
+      "dateOfBirth": "2002-05-18",
       "email": "marcos@gmail.com",
-      "password": "123",
+      "password": "12345678",
       "active": true,
       "drinks": [
         {
