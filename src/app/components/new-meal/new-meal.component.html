@@ -1,0 +1,360 @@
+<h3>Add your Meal recipe!</h3>
+
+<div class="container">
+
+    <form [formGroup]="newMealForm" (ngSubmit)="addRecipe()">
+        <p class="text_required"><small>* Required</small></p>
+        <div class="form-group">
+            <label for="strMeal">Name <span>*</span></label>
+            <input type="text" class="form-control" id="strMeal" formControlName="strMeal" placeholder="Enter the name">
+        </div>
+        <div *ngIf="newMealForm.get('strMeal')?.invalid && (newMealForm.get('strMeal')?.dirty || newMealForm.get('strMeal')?.touched)" class="alert alert-danger">
+            <div *ngIf="newMealForm.get('strMeal')?.errors?.['required']">
+                Meal's name is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="strCategory" id="category_label">Category <span>*</span></label>
+            <select formControlName='strCategory' class="form-select" id="strCategory">
+                <option value="" disabled selected>Select the category</option>
+                <option *ngFor="let category of categoriesList" [value]="category.strCategory" >{{category.strCategory}}</option>
+            </select>
+        </div>
+        <div *ngIf="newMealForm.get('strCategory')?.invalid && (newMealForm.get('strCategory')?.dirty || newMealForm.get('strCategory')?.touched)" class="alert alert-danger">
+            <div *ngIf="newMealForm.get('strCategory')?.errors?.['required']">
+                Category is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="strArea" id="category_label">Area</label>
+            <select formControlName='strArea' class="form-select" id="strArea">
+                <option value="" disabled selected>Select the area</option>
+                <option *ngFor="let area of areasList" [value]="area.strArea" >{{area.strArea}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="strInstructions">Instructions <span>*</span></label>
+            <textarea formControlName="strInstructions" id="strInstructions" cols="30" rows="10" placeholder="  Enter the instructions" aria-label="With textarea"></textarea>
+        </div>
+        <div *ngIf="newMealForm.get('strInstructions')?.invalid && (newMealForm.get('strInstructions')?.dirty || newMealForm.get('strInstructions')?.touched)" class="alert alert-danger">
+            <div *ngIf="newMealForm.get('strInstructions')?.errors?.['required']">
+                Intructions are required
+            </div>
+        </div>
+
+        <div class="container-ingredients">
+            <div class="form-group">
+                <label for="strIngredient1">#1 Ingredient <span>*</span></label>
+                <input type="text" class="form-control" id="strIngredient1" formControlName="strIngredient1" placeholder="Enter ingredient">
+            </div>
+            <div class="form-group">
+                <label for="strMeasure1">Measure <span>*</span></label>
+                <input type="text" class="form-control" id="strMeasure1" formControlName="strMeasure1" placeholder="Enter measure">
+            </div>
+
+            <div *ngIf="newMealForm.get('strIngredient1')?.invalid && (newMealForm.get('strIngredient1')?.dirty || newMealForm.get('strIngredient1')?.touched)" class="alert alert-danger">
+                <div *ngIf="newMealForm.get('strIngredient1')?.errors?.['required']">
+                    At least one ingredient must be entered
+                </div>
+            </div>
+            <div *ngIf="newMealForm.get('strMeasure1')?.invalid && (newMealForm.get('strMeasure1')?.dirty || newMealForm.get('strMeasure1')?.touched)" class="alert alert-danger">
+                <div *ngIf="newMealForm.get('strMeasure1')?.errors?.['required']">
+                    Measure is required
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>1">
+            <div class="form-group">
+                <label for="strIngredient2">#2 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient2" formControlName="strIngredient2" placeholder="Enter ingredient">
+            </div>
+            
+            <div class="form-group">
+                <label for="strMeasure2">Measure</label>
+                <input type="text" class="form-control" id="strMeasure2" formControlName="strMeasure2" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient2')?.value && !newMealForm.get('strMeasure2')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>2">
+            <div class="form-group">
+                <label for="strIngredient3">#3 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient3" formControlName="strIngredient3" placeholder="Enter ingredient">
+            </div>
+            
+            <div class="form-group">
+                <label for="strMeasure3">Measure</label>
+                <input type="text" class="form-control" id="strMeasure3" formControlName="strMeasure3" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient3')?.value && !newMealForm.get('strMeasure3')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>3">
+            <div class="form-group">
+                <label for="strIngredient4">#4 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient4" formControlName="strIngredient4" placeholder="Enter ingredient">
+            </div>
+            
+            <div class="form-group">
+                <label for="strMeasure4">Measure</label>
+                <input type="text" class="form-control" id="strMeasure4" formControlName="strMeasure4" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient4')?.value && !newMealForm.get('strMeasure4')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>4">
+            <div class="form-group">
+                <label for="strIngredient5">#5 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient5" formControlName="strIngredient5" placeholder="Enter ingredient">
+            </div>
+            
+            <div class="form-group">
+                <label for="strMeasure5">Measure</label>
+                <input type="text" class="form-control" id="strMeasure5" formControlName="strMeasure5" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient5')?.value && !newMealForm.get('strMeasure5')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>5">
+            <div class="form-group">
+                <label for="strIngredient6">#6 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient6" formControlName="strIngredient6" placeholder="Enter ingredient">
+            </div>
+            
+            <div class="form-group">
+                <label for="strMeasure6">Measure</label>
+                <input type="text" class="form-control" id="strMeasure6" formControlName="strMeasure6" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient6')?.value && !newMealForm.get('strMeasure6')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>6">
+            <div class="form-group">
+                <label for="strIngredient7">#7 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient7" formControlName="strIngredient7" placeholder="Enter ingredient">
+            </div>
+            
+            <div class="form-group">
+                <label for="strMeasure7">Measure</label>
+                <input type="text" class="form-control" id="strMeasure7" formControlName="strMeasure7" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient7')?.value && !newMealForm.get('strMeasure7')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>7">
+            <div class="form-group">
+                <label for="strIngredient8">#8 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient8" formControlName="strIngredient8" placeholder="Enter ingredient">
+            </div>
+            <div class="form-group">
+                <label for="strMeasure8">Measure</label>
+                <input type="text" class="form-control" id="strMeasure8" formControlName="strMeasure8" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient8')?.value && !newMealForm.get('strMeasure8')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>8">
+            <div class="form-group">
+                <label for="strIngredient9">#9 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient9" formControlName="strIngredient9" placeholder="Enter ingredient">
+            </div>
+            <div class="form-group">
+                <label for="strMeasure9">Measure</label>
+                <input type="text" class="form-control" id="strMeasure9" formControlName="strMeasure9" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient9')?.value && !newMealForm.get('strMeasure9')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>9">
+            <div class="form-group">
+                <label for="strIngredient10">#10 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient10" formControlName="strIngredient10" placeholder="Enter ingredient">
+            </div>
+            <div class="form-group">
+                <label for="strMeasure10">Measure</label>
+                <input type="text" class="form-control" id="strMeasure10" formControlName="strMeasure10" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient10')?.value && !newMealForm.get('strMeasure10')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>10">
+            <div class="form-group">
+                <label for="strIngredient11">#11 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient11" formControlName="strIngredient11" placeholder="Enter ingredient">
+            </div>
+            <div class="form-group">
+                <label for="strMeasure11">Measure</label>
+                <input type="text" class="form-control" id="strMeasure11" formControlName="strMeasure11" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient11')?.value && !newMealForm.get('strMeasure11')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>11">
+            <div class="form-group">
+                <label for="strIngredient12">#12 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient12" formControlName="strIngredient12" placeholder="Enter ingredient">
+            </div>
+            <div class="form-group">
+                <label for="strMeasure12">Measure</label>
+                <input type="text" class="form-control" id="strMeasure12" formControlName="strMeasure12" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient12')?.value && !newMealForm.get('strMeasure12')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>12">
+            <div class="form-group">
+                <label for="strIngredient13">#13 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient13" formControlName="strIngredient13" placeholder="Enter ingredient">
+            </div>
+            <div class="form-group">
+                <label for="strMeasure13">Measure</label>
+                <input type="text" class="form-control" id="strMeasure13" formControlName="strMeasure13" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient13')?.value && !newMealForm.get('strMeasure13')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>13">
+            <div class="form-group">
+                <label for="strIngredient14">#14 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient14" formControlName="strIngredient14" placeholder="Enter ingredient">
+            </div>
+            <div class="form-group">
+                <label for="strMeasure14">Measure</label>
+                <input type="text" class="form-control" id="strMeasure14" formControlName="strMeasure14" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient14')?.value && !newMealForm.get('strMeasure14')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>14">
+            <div class="form-group">
+                <label for="strIngredient15">#15 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient15" formControlName="strIngredient15" placeholder="Enter ingredient">
+            </div>
+            <div class="form-group">
+                <label for="strMeasure15">Measure</label>
+                <input type="text" class="form-control" id="strMeasure15" formControlName="strMeasure15" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient15')?.value && !newMealForm.get('strMeasure15')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>15">
+            <div class="form-group">
+                <label for="strIngredient16">#16 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient16" formControlName="strIngredient16" placeholder="Enter ingredient">
+            </div>
+            <div class="form-group">
+                <label for="strMeasure16">Measure</label>
+                <input type="text" class="form-control" id="strMeasure16" formControlName="strMeasure16" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient16')?.value && !newMealForm.get('strMeasure16')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>16">
+            <div class="form-group">
+                <label for="strIngredient17">#17 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient17" formControlName="strIngredient17" placeholder="Enter ingredient">
+            </div>
+            <div class="form-group">
+                <label for="strMeasure16">Measure</label>
+                <input type="text" class="form-control" id="strMeasure16" formControlName="strMeasure16" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient17')?.value && !newMealForm.get('strMeasure16')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>17">
+            <div class="form-group">
+                <label for="strIngredient18">#18 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient18" formControlName="strIngredient18" placeholder="Enter ingredient">
+            </div>
+            <div class="form-group">
+                <label for="strMeasure18">Measure</label>
+                <input type="text" class="form-control" id="strMeasure18" formControlName="strMeasure18" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient18')?.value && !newMealForm.get('strMeasure18')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>18">
+            <div class="form-group">
+                <label for="strIngredient19">#19 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient19" formControlName="strIngredient19" placeholder="Enter ingredient">
+            </div>
+            <div class="form-group">
+                <label for="strMeasure19">Measure</label>
+                <input type="text" class="form-control" id="strMeasure19" formControlName="strMeasure19" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient19')?.value && !newMealForm.get('strMeasure19')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+        <div class="container-ingredients" *ngIf="numberOfIngredients>19">
+            <div class="form-group">
+                <label for="strIngredient20">#20 Ingredient</label>
+                <input type="text" class="form-control" id="strIngredient20" formControlName="strIngredient20" placeholder="Enter ingredient">
+            </div>
+            <div class="form-group">
+                <label for="strMeasure20">Measure</label>
+                <input type="text" class="form-control" id="strMeasure20" formControlName="strMeasure20" placeholder="Enter measure">
+            </div>
+        </div>
+        <div *ngIf="newMealForm.get('strIngredient20')?.value && !newMealForm.get('strMeasure20')?.value" class="alert alert-danger">
+            Measure is required
+        </div>
+
+
+        
+        <div class="ing_btn">
+            <div>
+                <button class="btn btn-primary" id="subtractIngredient" (click)="subtractIngredient($event)" *ngIf="numberOfIngredients>1">- Ingredient</button>
+            </div>
+            <div>
+                <button class="btn btn-primary" id="addIngredient" (click)="addIngredient($event)" *ngIf="numberOfIngredients<20">+ Ingredient</button>
+            </div>
+        </div>
+
+        <div class="container-btn">
+            <button type="submit" class="btn btn-primary" [disabled]="newMealForm.invalid">Save</button>
+        </div>
+
+    </form>
+</div>
+

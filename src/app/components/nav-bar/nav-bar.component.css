@@ -1,0 +1,25 @@
+.navbar {
+    margin-bottom: 1rem;
+}
+
+.collapse {
+    justify-content: right;
+    padding-right: 1rem;
+}
+
+.navbar-brand{
+    margin-left: 1rem;
+}
+
+#btn_menu_options {
+    color: #892889;
+    background-color: #F8F9FA;
+    border: none;
+}
+
+#list_menu_options{
+    border-color: #F8F9FA;
+}
+
+
+

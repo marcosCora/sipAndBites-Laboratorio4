@@ -1,1 +1,50 @@
-<p>login works!</p>
+<h3>Login</h3>
+
+<div class="container">
+
+    <form [formGroup]="logInForm" (ngSubmit)="logIn()">
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter your email">
+        </div>
+        <div *ngIf="logInForm.get('email')?.invalid && (logInForm.get('email')?.dirty || logInForm.get('email')?.touched)" class="alert alert-danger">
+            <div *ngIf="logInForm.get('email')?.errors?.['required']">
+                Email is required
+            </div>
+            <div *ngIf="logInForm.get('email')?.errors?.['pattern']">
+                Email is invalid
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+        </div>
+        <div *ngIf="logInForm.get('password')?.invalid && (logInForm.get('password')?.dirty || logInForm.get('password')?.touched)" class="alert alert-danger">
+            <div *ngIf="logInForm.get('password')?.errors?.['required']">
+                Password is required
+            </div>
+        </div>
+
+        <div [hidden]="!wrongLogIn" class="alert alert-danger">
+            Incorrect email or/and password.
+        </div>
+
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+          </div>
+
+        
+
+        <div class="container-btn">
+            <button type="submit" class="btn btn-primary" [disabled]="logInForm.invalid">Log In</button>
+        </div>
+
+        <a routerLink="/newUser">Don't have an account?</a>
+
+    </form>
+</div>
+
+

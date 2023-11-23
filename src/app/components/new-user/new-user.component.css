@@ -1,0 +1,46 @@
+h3 {
+    color: #BB29BB;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.container{
+    width: 35%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: #E8CDE8;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    border-radius: 16px;
+
+}
+
+.form-group{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-control{
+    margin-top: .5rem;
+   
+}
+
+.container-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    background-color: #892889;
+    border-color: #892889;
+    margin-bottom: 1rem;
+}
+
+span {
+    color: #cc0000;
+}
+
+.text_required {
+    color: #cc0000;
+    margin-top: 0.5rem;
+}

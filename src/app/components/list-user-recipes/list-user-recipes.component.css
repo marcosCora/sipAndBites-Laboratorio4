@@ -1,0 +1,82 @@
+.heading_container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+#myRecipesTitle {
+    color: #BB29BB;
+    text-align: center;
+    margin: auto;
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+.add_recipes_btn {
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+#addRecipe {
+    margin: 0.5rem;
+    background-color: #892889;
+    border: #892889;
+}
+
+.dropdown-menu {
+    border-color: #F8F9FA;
+}
+.dropdown-item {
+    font-size: small;
+}
+
+#checkboxBtn:checked {
+    background-color: #892889;
+    border-color: #892889;
+}
+
+h6{
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.list-drinks {
+    width: 1000px;
+}
+
+.list-meals {
+    width: 1000px;
+}
+
+.card{
+    margin: 2rem;
+}
+
+.card-text-instructions {
+    text-align: justify;
+}
+
+.card-img{
+    object-fit: cover;
+    width: 100%;
+    height:425px;
+}
+
+.card-text-small{
+    background-color: #E8CDE8;
+    display: inline;
+    border-radius: 15px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-right: 0.25rem;
+}
+
+.card-title-sub{
+    margin-top: 0.5rem;
+}
+

@@ -1,0 +1,45 @@
+.container{
+    width: 25%;
+    margin-top: 2rem;
+    background-color: #E8CDE8;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    border-radius: 16px;
+
+}
+
+h3 {
+    color: #BB29BB;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.form-group{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-control{
+    margin-top: .5rem;
+   
+}
+
+.container-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    background-color: #892889;
+    border-color: #892889;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+a{
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    color: #892889;
+    margin-bottom: 1rem;
+}

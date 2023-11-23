@@ -1,0 +1,87 @@
+<h3>My Account</h3>
+
+<div class="container">
+
+    <form [formGroup]="editUserForm" (ngSubmit)="updateUser()">
+        <p class="text_required"><small>* Required</small></p>
+        <div class="form-group">
+            <label for="firstName">First Name <span>*</span></label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName" value="{{editUser.firstName}}" placeholder="Enter your first name">
+        </div>
+        <div *ngIf="editUserForm.get('firstName')?.invalid && (editUserForm.get('firstName')?.dirty || editUserForm.get('firstName')?.touched)" class="alert alert-danger">
+            <div *ngIf="editUserForm.get('firstName')?.errors?.['required']">
+                First Name is required
+            </div>
+            <div *ngIf="editUserForm.get('firstName')?.errors?.['pattern']">
+                First Name is invalid
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label for="lastName">Last Name <span>*</span></label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName" value="{{editUser.lastName}}" placeholder="Enter your last name">
+        </div>
+        <div *ngIf="editUserForm.get('lastName')?.invalid && (editUserForm.get('lastName')?.dirty || editUserForm.get('lastName')?.touched)" class="alert alert-danger">
+            <div *ngIf="editUserForm.get('lastName')?.errors?.['required']">
+                Last Name is required
+            </div>
+            <div *ngIf="editUserForm.get('lastName')?.errors?.['pattern']">
+                Last Name is invalid
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="dateOfBirth">Date of Birth <span>*</span></label>
+            <input type="date" class="form-control" id="dateOfBirth" formControlName="dateOfBirth" value="{{editUser.dateOfBirth}}">
+        </div>
+        <div *ngIf="editUserForm.get('dateOfBirth')?.invalid && (editUserForm.get('dateOfBirth')?.dirty || editUserForm.get('dateOfBirth')?.touched)" class="alert alert-danger">
+            <div *ngIf="editUserForm.get('dateOfBirth')?.errors?.['required']">
+                Date of Birth is required
+            </div>
+            <div *ngIf="editUserForm.get('dateOfBirth')?.errors?.['notLegalAge']">
+                You have to be at least 18 years old
+            </div>
+        </div>
+
+
+        <!-- <div class="form-group">
+            <label for="email">Email <span>*</span></label>
+            <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter your email">
+          </div>
+          <div *ngIf="editUserForm.get('email')?.invalid && (editUserForm.get('email')?.dirty || editUserForm.get('email')?.touched)" class="alert alert-danger">
+              <div *ngIf="editUserForm.get('email')?.errors?.['required']">
+                  Email is required
+              </div>
+              <div *ngIf="editUserForm.get('email')?.errors?.['pattern']">
+                  Email is invalid
+              </div>
+              <div *ngIf="editUserForm.get('email')?.errors?.['emailExists']">
+                  Email is already registered
+              </div>
+          </div> -->
+
+        <div class="form-group">
+          <label for="password">Password <span>*</span></label>
+          <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password" >
+        </div>
+        <div *ngIf="editUserForm.get('password')?.invalid && (editUserForm.get('password')?.dirty || editUserForm.get('password')?.touched)" class="alert alert-danger">
+            <div *ngIf="editUserForm.get('password')?.errors?.['required']">
+                Password is required
+            </div>
+            <div *ngIf="editUserForm.get('password')?.errors?.['minlength']">
+                Minimum 8 characters
+            </div>
+        </div>
+
+        
+        <div class="container-btn">
+            <button type="submit" class="btn btn-primary" [disabled]="editUserForm.invalid">Save changes</button>
+        </div>
+
+    </form>
+
+</div>
+
+<div class="container_sign_out_btn">
+    <button id="sign_out_btn" class="btn btn-primary" (click)="signOut()">Sign out</button>
+</div>

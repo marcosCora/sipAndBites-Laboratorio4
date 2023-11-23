@@ -1,15 +1,59 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-        <img src="../../../assets/LogoSipAndBites.png" width="150" height="50" class="d-inline-block align-top" alt="">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+
+  <a class="navbar-brand" routerLink="/home">
+        <img src="../../../assets/LogoSipAndBites.png" width="150" height="50" class="d-inline-block align-top" title="Home">
+  </a>
+
+  <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-search"></i> Select Option
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" [routerLink]="['/listDrinks']">Drinks</a></li>
+        <li><a class="dropdown-item" [routerLink]="['/listMeals']">Meals</a></li>
+      </ul>
+  </div>
+
+
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#" style="padding-left: 1900%;">Login</a>
+          <a class="nav-link" routerLink="/newUser" *ngIf="!isLoggedIn">Sign Up</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" *ngIf="!isLoggedIn">Login</a>
+        </li>
+
+        <!-- WHEN USER IS LOGGED IN-->
+
+        <div class="dropdown" *ngIf="isLoggedIn">
+          <button class="btn btn-secondary dropdown-toggle" id="btn_menu_options" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Hello {{loggedUser.firstName}}
+          </button>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="list_menu_options">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/editUser" *ngIf="isLoggedIn">My Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  routerLink="/userRecipes">My Recipes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/userFavourites">My Favourites</a>
+            </li>
+           <!--  <li class="nav-item">
+              <a class="nav-link" >What can I cook?</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" >What can I drink?</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="/home" (click)="logOut()" >Log out</a>
+            </li>
+          </ul>
+
+        </div>
+        
       </ul>
     </div>
   </nav>
