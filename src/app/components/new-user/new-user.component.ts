@@ -28,8 +28,8 @@ export class NewUserComponent implements OnInit{
     this.getAllUsers();
     
     this.userForm = new FormGroup({
-      'firstName' : new FormControl(this.user.firstName, [Validators.required, CustomValidator.forbiddenNames(/admin/)]),
-      'lastName' : new FormControl(this.user.lastName, [Validators.required]),
+      'firstName' : new FormControl(this.user.firstName, [Validators.required, CustomValidator.forbiddenNames(/admin/), Validators.pattern(/^[A-Za-z ]+$/)]),
+      'lastName' : new FormControl(this.user.lastName, [Validators.required, Validators.pattern(/^[A-Za-z ]+$/)]),
       'email' : new FormControl(this.user.email, [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), CustomValidator.registeredEmails(this.registeredEmail)]),
       'password' : new FormControl(this.user.password, [Validators.required, Validators.minLength(8)]),
       'confirmPassword' : new FormControl(this.user.password, [Validators.required]),
@@ -66,8 +66,8 @@ export class NewUserComponent implements OnInit{
 
     this.userService.postUser(this.user).subscribe(
       response => {
-        this.authenticationService.login(this.user);
-        this.authenticationService.triggerLoginEvent();
+       // this.authenticationService.login(this.user);
+        //this.authenticationService.triggerLoginEvent();
         Swal.fire({
           title: `Welcome ${this.user.firstName}!`,
           text: "Thank you for joining us!",

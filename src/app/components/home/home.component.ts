@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs/internal/observable/forkJoin';
 import { carouselImage } from 'src/app/models/carouselImage';
 import { DrinkService } from 'src/app/services/drink.service';
-import { MealServiceService } from 'src/app/services/meal-service.service';
+import { MealService } from 'src/app/services/meal.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +15,7 @@ export class HomeComponent {
   dataLoaded : boolean = false;
   
   constructor(private drinkService : DrinkService,
-             private mealService : MealServiceService){}
+             private mealService : MealService){}
 
   ngOnInit(): void {
     
@@ -43,8 +43,6 @@ export class HomeComponent {
      });
     } 
 
-   
-    console.log("entra al ngOnInit");
     setTimeout(()=> this.dataLoaded = true, 400);
   } 
 

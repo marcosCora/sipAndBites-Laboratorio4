@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Meal } from 'src/app/models/meal';
 import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { MealFilterService } from 'src/app/services/meal-filter.service';
-import { MealServiceService } from 'src/app/services/meal-service.service';
+import { MealService } from 'src/app/services/meal.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -20,7 +19,7 @@ export class ListMealComponentComponent implements OnInit {
   isLoggedIn : boolean = false;
   loggedUser : User = new User();
 
-  constructor(private mealService : MealServiceService,
+  constructor(private mealService : MealService,
               private filterService : MealFilterService,
               private authenticationService : AuthenticationService,
               private userService : UserService){}
@@ -94,6 +93,7 @@ export class ListMealComponentComponent implements OnInit {
 
   removeFromFavList(idMeal : string) : void {
     this.loggedUser.mealsFavList = this.loggedUser.mealsFavList.filter(mealId => mealId != Number(idMeal));
+    this.authenticationService.login(this.loggedUser);
     this.userService.putUser(this.loggedUser).subscribe(
       response => console.log('entra al put para eliminar'),
       error => console.log(error));

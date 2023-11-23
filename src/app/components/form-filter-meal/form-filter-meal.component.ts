@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Meal } from 'src/app/models/meal';
 import { MealFilterService } from 'src/app/services/meal-filter.service';
-import { MealServiceService } from 'src/app/services/meal-service.service';
+import { MealService } from 'src/app/services/meal.service';
 
 
 
@@ -26,7 +25,7 @@ export class FormFilterMealComponent implements OnInit {
   listCountry : string[] = [];
 
 
-  constructor(private serviceMeal: MealServiceService, private filterService: MealFilterService) { }
+  constructor(private serviceMeal: MealService, private filterService: MealFilterService) { }
 
   ngOnInit(): void {
     this.showCategories();
@@ -38,6 +37,19 @@ export class FormFilterMealComponent implements OnInit {
     });
 
 
+  }
+
+  showbyName(){
+    this.serviceMeal.getMealByName('').subscribe(response =>{
+      this.filterService.setMealFilter(response);
+    })
+  }
+
+  removeFilter() : void {
+    this.showbyName();
+    this.filterForm.controls['name'].reset('');
+    this.filterForm.controls['categories'].reset('');
+    this.filterForm.controls['country'].reset('');
   }
 
   showCountry(){

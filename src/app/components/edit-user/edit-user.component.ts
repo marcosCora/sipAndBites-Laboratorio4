@@ -28,8 +28,8 @@ export class EditUserComponent {
   
   this.editUserForm = new FormGroup({
 
-    'firstName' : new FormControl(this.editUser.firstName, [Validators.required]),
-    'lastName' : new FormControl(this.editUser.lastName, [Validators.required]),
+    'firstName' : new FormControl(this.editUser.firstName, [Validators.required, Validators.pattern(/^[A-Za-z ]+$/)]),
+    'lastName' : new FormControl(this.editUser.lastName, [Validators.required, Validators.pattern(/^[A-Za-z ]+$/)]),
     'email' : new FormControl(this.editUser.email, [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]),
     'password' : new FormControl(this.editUser.password, [Validators.required, Validators.minLength(8)]),
     'dateOfBirth' : new FormControl(this.editUser.dateOfBirth, [Validators.required, CustomValidator.legalAge])
@@ -65,16 +65,12 @@ export class EditUserComponent {
 
     if(!this.editUserForm.invalid){   
       
-      console.log('entra al save');
-      
       this.editUser.firstName = this.editUserForm.controls['firstName'].value;
       this.editUser.lastName = this.editUserForm.controls['lastName'].value;
       this.editUser.email = this.editUserForm.controls['email'].value;
       this.editUser.password = this.editUserForm.controls['password'].value;
       this.editUser.dateOfBirth = this.editUserForm.controls['dateOfBirth'].value;       
       this.authenticationService.login(this.editUser);
-      
-      console.log(this.editUser);
       
       this.userService.putUser(this.editUser).subscribe(
       response => {
@@ -143,7 +139,9 @@ export class EditUserComponent {
 
     this.userService.putUser(this.editUser).subscribe(
       () => {
+                console.log('entra al sign out ');
                 this.authenticationService.logout();
+                window.location.reload()
                 
             },
       error => console.log(error)
