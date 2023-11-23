@@ -40,6 +40,13 @@ export class FormFilterDrinkComponent implements OnInit {
     })
   }
 
+  removeFilter() : void {
+    this.showbyName();
+    this.filterForm.controls['name'].reset('');
+    this.filterForm.controls['categories'].reset('');
+    this.filterForm.controls['alcoholic'].reset('');
+  }
+
   showByCategories(){
     this.drinkService.getDrinkByCategories().subscribe(response =>{
       this.listCategories = response;

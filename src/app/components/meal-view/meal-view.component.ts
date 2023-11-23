@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Meal } from 'src/app/models/meal';
 import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { MealServiceService } from 'src/app/services/meal-service.service';
+import { MealService } from 'src/app/services/meal.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class MealViewComponent implements OnInit {
   isFavourite : boolean = false;
   idMeal !: number;
 
-  constructor(private mealService : MealServiceService,
+  constructor(private mealService : MealService,
               private route : ActivatedRoute,
               private authenticationService : AuthenticationService,
               private userService : UserService){}
@@ -33,7 +33,6 @@ export class MealViewComponent implements OnInit {
       this.mealService.getMealById(this.idMeal).subscribe((data : Meal[])=>{
         this.meal = data[0];
         this.isFavourite = this.isMealInFavList();
-        console.log('is favourite : ' , this.isFavourite);
       });
     }); 
 

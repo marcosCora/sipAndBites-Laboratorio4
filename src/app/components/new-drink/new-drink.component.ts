@@ -102,7 +102,6 @@ export class NewDrinkComponent implements OnInit {
       this.newDrink.strAlcoholic = 'Non Alcoholic';
     }
 
-    
     this.newDrink.strGlass = this.newDrinkForm.controls['strGlass'].value;
     this.newDrink.strInstructions = this.newDrinkForm.controls['strInstructions'].value;
 
@@ -154,7 +153,6 @@ export class NewDrinkComponent implements OnInit {
     this.newDrink.strMeasure14 = this.newDrinkForm.controls['strMeasure14'].value;
     this.newDrink.strMeasure15 = this.newDrinkForm.controls['strMeasure15'].value;  
 
-
     this.loggedUser.drinks.push(this.newDrink);
     this.authenticationService.login(this.loggedUser);
 
@@ -164,7 +162,6 @@ export class NewDrinkComponent implements OnInit {
                       this.router.navigate(['userRecipes']);
                   }, 
     error => console.log(error));
-    console.log(this.newDrink);
 
   }
 

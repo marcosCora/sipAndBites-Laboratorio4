@@ -1,5 +1,3 @@
-import { numberAttribute } from "@angular/core";
-
 export class Comment {
     id : number;
     idProduct : number;

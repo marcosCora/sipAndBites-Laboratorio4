@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Meal } from 'src/app/models/meal';
 import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { MealServiceService } from 'src/app/services/meal-service.service';
+import { MealService } from 'src/app/services/meal.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -25,7 +25,7 @@ export class NewMealComponent {
   constructor(private authenticationService : AuthenticationService,
               private userService : UserService,
               private router : Router,
-              private mealService : MealServiceService){}
+              private mealService : MealService){}
   
   
   ngOnInit(): void {
@@ -156,7 +156,6 @@ export class NewMealComponent {
         this.router.navigate(['userRecipes']);
       }, 
     error => console.log(error));
-    console.log(this.newMeal);
 
   }
 

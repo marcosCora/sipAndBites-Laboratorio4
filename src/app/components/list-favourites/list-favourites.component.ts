@@ -6,7 +6,7 @@ import { Meal } from 'src/app/models/meal';
 import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { DrinkService } from 'src/app/services/drink.service';
-import { MealServiceService } from 'src/app/services/meal-service.service';
+import { MealService } from 'src/app/services/meal.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class ListFavouritesComponent {
   constructor(private userService: UserService,
     private authenticationService: AuthenticationService,
     private drinkService: DrinkService,
-    private mealService: MealServiceService,
+    private mealService: MealService,
     private router: Router) { }
 
   ngOnInit(): void {

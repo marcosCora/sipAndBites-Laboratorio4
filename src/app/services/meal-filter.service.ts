@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, forkJoin } from 'rxjs';
 import { Meal } from '../models/meal';
-import { MealServiceService } from './meal-service.service';
+import { MealService } from './meal.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class MealFilterService {
   private filteredMeals: BehaviorSubject<Meal[]> = new BehaviorSubject<Meal[]>([]);
   filteredMeals$: Observable<Meal[]> = this.filteredMeals.asObservable();
 
-  constructor(private mealService: MealServiceService) { }
+  constructor(private mealService: MealService) { }
 
   getMealFilter() {
     return this.filteredMeals.getValue();
