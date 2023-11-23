@@ -6,6 +6,7 @@ import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { MealServiceService } from 'src/app/services/meal-service.service';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-meal',
@@ -149,10 +150,24 @@ export class NewMealComponent {
 
     this.loggedUser.meals.push(this.newMeal);
     this.authenticationService.login(this.loggedUser);
-    this.userService.putUser(this.loggedUser).subscribe(response => this.router.navigate(['userRecipes']), 
+    this.userService.putUser(this.loggedUser).subscribe(response => 
+      {
+        this.showMessage();
+        this.router.navigate(['userRecipes']);
+      }, 
     error => console.log(error));
     console.log(this.newMeal);
 
+  }
+
+  showMessage() : void {
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Your recipe has been saved!",
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
   addIngredient(event : Event){

@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { CustomValidator } from '../custom-validator';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-user',
@@ -67,6 +68,12 @@ export class NewUserComponent implements OnInit{
       response => {
         this.authenticationService.login(this.user);
         this.authenticationService.triggerLoginEvent();
+        Swal.fire({
+          title: `Welcome ${this.user.firstName}!`,
+          text: "Thank you for joining us!",
+          icon: "success",
+          confirmButtonColor: '#892889'
+        });
         this.router.navigate(['home']);
         }, 
       error => console.log(error));

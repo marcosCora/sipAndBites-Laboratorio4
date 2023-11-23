@@ -6,8 +6,13 @@
       "lastName": "Corasaniti",
       "dateOfBirth": "2002-05-18",
       "email": "marcos@gmail.com",
+<<<<<<< HEAD
       "password": "12345678",
       "active": true,
+=======
+      "password": "123",
+      "active": false,
+>>>>>>> 638f82243fa9f542817c645a4bdf976814e65048
       "drinks": [
         {
           "idDrink": "",
@@ -71,12 +76,12 @@
     },
     {
       "id": 1,
-      "firstName": "Angeles",
+      "firstName": "Angeles Maria",
       "lastName": "Higa",
       "email": "angeles.higa@gmail.com",
       "dateOfBirth": "1996-06-30",
-      "password": "1234",
-      "active": true,
+      "password": "12345678",
+      "active": false,
       "drinks": [
         {
           "idDrink": "11007",
@@ -298,22 +303,18 @@
         }
       ],
       "drinksFavList": [
-        17225
+        17222
       ],
-      "mealsFavList": [
-        52942,
-        52794,
-        52775
-      ]
+      "mealsFavList": []
     },
     {
       "id": 2,
       "firstName": "Juan Carlos",
       "lastName": "Garcia",
       "email": "jcg@gmail.com",
-      "dateOfBirth": "2023-10-19",
-      "password": "1234",
-      "active": true,
+      "dateOfBirth": "2000-10-19",
+      "password": "12345678",
+      "active": false,
       "drinks": [
         {
           "idDrink": "",
@@ -436,7 +437,7 @@
       "dateOfBirth": "2000-05-15",
       "email": "pepe@gmail.com",
       "password": "12345678",
-      "active": true,
+      "active": false,
       "drinks": [],
       "meals": [],
       "drinksFavList": [],
@@ -578,19 +579,6 @@
       "lastName": "Betbeder",
       "dateOfBirth": "2002-03-06",
       "email": "gotia@gmail.com",
-      "password": "12345678",
-      "active": true,
-      "drinks": [],
-      "meals": [],
-      "drinksFavList": [],
-      "mealsFavList": []
-    },
-    {
-      "id": 7,
-      "firstName": "Juan",
-      "lastName": "Fernandez",
-      "dateOfBirth": "2005-05-15",
-      "email": "juan@gmail.com",
       "password": "12345678",
       "active": true,
       "drinks": [],
