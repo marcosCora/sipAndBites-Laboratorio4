@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Meal } from '../models/meal';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MealServiceService {
+export class MealService {
   
   constructor(private http : HttpClient) { }
 

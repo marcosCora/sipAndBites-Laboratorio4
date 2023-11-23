@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
@@ -11,8 +10,7 @@ export class UserService {
 
   url : string = 'http://localhost:4000/users';
 
-  constructor(private http : HttpClient, 
-              private router : Router){}
+  constructor(private http : HttpClient){}
 
   getUsers() : Observable<User[]> {
     return this.http.get<User[]>(this.url);
@@ -35,6 +33,5 @@ export class UserService {
   getUserById(idUser : number) : Observable<User> {
     return this.http.get<User>(`${this.url}/${idUser}`);
   }
-
 
 }

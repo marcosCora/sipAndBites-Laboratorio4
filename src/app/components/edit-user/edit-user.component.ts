@@ -65,16 +65,12 @@ export class EditUserComponent {
 
     if(!this.editUserForm.invalid){   
       
-      console.log('entra al save');
-      
       this.editUser.firstName = this.editUserForm.controls['firstName'].value;
       this.editUser.lastName = this.editUserForm.controls['lastName'].value;
       this.editUser.email = this.editUserForm.controls['email'].value;
       this.editUser.password = this.editUserForm.controls['password'].value;
       this.editUser.dateOfBirth = this.editUserForm.controls['dateOfBirth'].value;       
       this.authenticationService.login(this.editUser);
-      
-      console.log(this.editUser);
       
       this.userService.putUser(this.editUser).subscribe(
       response => {

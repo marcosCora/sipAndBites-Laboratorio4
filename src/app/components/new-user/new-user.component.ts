@@ -66,8 +66,8 @@ export class NewUserComponent implements OnInit{
 
     this.userService.postUser(this.user).subscribe(
       response => {
-        this.authenticationService.login(this.user);
-        this.authenticationService.triggerLoginEvent();
+       // this.authenticationService.login(this.user);
+        //this.authenticationService.triggerLoginEvent();
         Swal.fire({
           title: `Welcome ${this.user.firstName}!`,
           text: "Thank you for joining us!",
