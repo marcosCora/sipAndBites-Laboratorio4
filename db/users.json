@@ -190,13 +190,67 @@
     },
     {
       "id": 7,
-      "firstName": "Marcos Agustin",
+      "firstName": "Marcos ",
       "lastName": "Corasaniti",
       "dateOfBirth": "2002-05-18",
       "email": "marcos@gmail.com",
       "password": "12345678",
       "active": true,
-      "drinks": [],
+      "drinks": [
+        {
+          "idDrink": "",
+          "strDrink": "ojrsgf",
+          "strDrinkAlternate": "",
+          "strTags": "",
+          "strVideo": "",
+          "strCategory": "Cocoa",
+          "strIBA": "",
+          "strAlcoholic": "Alcoholic",
+          "strGlass": "Copper Mug",
+          "strInstructions": "sfsdds",
+          "strInstructionsES": "",
+          "strInstructionsDE": "",
+          "strInstructionsFR": "",
+          "strInstructionsIT": "",
+          "strInstructionsZHHANS": "",
+          "strInstructionsZHHANT": "",
+          "strDrinkThumb": "../../../assets/drinks/Cocoa.jpg",
+          "strIngredient1": "sdf",
+          "strIngredient2": "sdfds",
+          "strIngredient3": "",
+          "strIngredient4": "",
+          "strIngredient5": "",
+          "strIngredient6": "",
+          "strIngredient7": "",
+          "strIngredient8": "",
+          "strIngredient9": "",
+          "strIngredient10": "",
+          "strIngredient11": "",
+          "strIngredient12": "",
+          "strIngredient13": "",
+          "strIngredient14": "",
+          "strIngredient15": "",
+          "strMeasure1": "55",
+          "strMeasure2": "44",
+          "strMeasure3": "",
+          "strMeasure4": "",
+          "strMeasure5": "",
+          "strMeasure6": "",
+          "strMeasure7": "",
+          "strMeasure8": "",
+          "strMeasure9": "",
+          "strMeasure10": "",
+          "strMeasure11": "",
+          "strMeasure12": "",
+          "strMeasure13": "",
+          "strMeasure14": "",
+          "strMeasure15": "",
+          "strImageSource": "",
+          "strImageAttribution": "",
+          "strCreativeCommonsConfirmed": "",
+          "dateModified": ""
+        }
+      ],
       "meals": [
         {
           "idMeal": "",
@@ -256,9 +310,23 @@
       ],
       "drinksFavList": [],
       "mealsFavList": [
-        52977,
         53060
       ]
+    },
+    {
+      "id": 8,
+      "firstName": "agus",
+      "lastName": "lapenna",
+      "dateOfBirth": "2000-08-15",
+      "email": "agus@gmail.com",
+      "password": "12345678",
+      "active": false,
+      "drinks": [],
+      "meals": [],
+      "drinksFavList": [
+        13501
+      ],
+      "mealsFavList": []
     }
   ],
   "comments": [
@@ -380,6 +448,22 @@
       "idUser": 0,
       "nameUser": "Marcos Agustin Corasaniti",
       "comment": "Muy bueno",
+      "dateComment": "23-11-2023"
+    },
+    {
+      "id": 20,
+      "idProduct": "52929",
+      "idUser": 7,
+      "nameUser": "Marcos Agustin Corasaniti",
+      "comment": "muy buenos",
+      "dateComment": "23-11-2023"
+    },
+    {
+      "id": 21,
+      "idProduct": "52862",
+      "idUser": 7,
+      "nameUser": "Marcos Agustin Corasaniti",
+      "comment": "Holaa",
       "dateComment": "23-11-2023"
     }
   ]
