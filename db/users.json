@@ -308,7 +308,9 @@
           "dateModified": ""
         }
       ],
-      "drinksFavList": [],
+      "drinksFavList": [
+        15997
+      ],
       "mealsFavList": [
         53060
       ]
